@@ -23,7 +23,7 @@
 
 /* Container for the RPPA box, legend, and map */
 .map-container {
-    width: 800px; /* fixed width to match map and legend */
+    width: 850px; /* fixed width to match map and legend */
     margin-top: 20px; 
 }
 
@@ -37,30 +37,38 @@
 <body>
 <h1>Routing Points (RP) Visualization</h1>
 <form id="myForm">
-    <label for="country">Select a country:</label><br>
-    <select name="country" id="country">
-        {% for country in countries %}
-        <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
-        {% endfor %}
-    </select><br><br>
-
-    <label for="release_version">Select Release Version:</label><br>
-    <select name="release_version" id="release_version">
-        {% for rv in release_versions %}
-        <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
-        {% endfor %}
-    </select><br><br>
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <div>
+            <label for="country">Select a country:</label><br>
+            <select name="country" id="country">
+                {% for country in countries %}
+                <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="release_version">Select Release Version:</label><br>
+            <select name="release_version" id="release_version">
+                {% for rv in release_versions %}
+                <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <br><br>
 
     <label for="poi">Select a POI:</label><br>
-    <!-- Search box to filter POIs -->
-    <input type="text" id="poiSearch" placeholder="Search..." style="width:200px; margin-bottom:5px;"><br>
-    <select name="poi" id="poi" size="10">
+    <!-- Wrap the search box and the button in a flex container -->
+    <div style="display: flex; align-items: flex-end; gap: 10px; margin-bottom:5px;">
+        <input type="text" id="poiSearch" placeholder="Search..." style="width:200px;">
+        <button type="submit">Show Map</button>
+    </div>
+
+    <select name="poi" id="poi" size="10" style="margin-bottom:10px;">
         {% for p in pois %}
         <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
         {% endfor %}
-    </select><br><br>
-
-    <button type="submit">Show Map</button>
+    </select>
 </form>
 
 <div id="mapContainer"></div>
@@ -111,6 +119,11 @@ document.getElementById('release_version').addEventListener('change', updatePois
 // Event listener for the search input
 document.getElementById('poiSearch').addEventListener('input', filterPois);
 
+// Call updatePois() on page load to ensure allPois is populated immediately
+document.addEventListener('DOMContentLoaded', () => {
+    updatePois();
+});
+
 // Handle form submission via AJAX to show the map
 document.getElementById('myForm').addEventListener('submit', function(event){
     event.preventDefault();
@@ -130,16 +143,16 @@ document.getElementById('myForm').addEventListener('submit', function(event){
         
         // Create a container to hold the RPPA box, legend, and map together
         mapContainer.innerHTML = `
-            <div class="map-container">
-                <div class="rppa-box" style="background-color: ${data.rppa_color};">
-                    RPPA: ${data.rppa}
-                </div>
-                <div class="legend-container">
-                    <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
-                </div>
-                ${data.map_html}
-            </div>
-        `;
+        <div class="map-container" style="display: flex; align-items: center; gap: 20px;">
+        <div class="rppa-box" style="background-color: ${data.rppa_color};">
+            RPPA: ${data.rppa}
+        </div>
+        <div class="legend-container">
+            <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
+        </div>
+    </div>
+    ${data.map_html}
+`;
     })
     .catch(error => console.error('Error:', error));
 });
@@ -147,3 +160,4 @@ document.getElementById('myForm').addEventListener('submit', function(event){
 
 </body>
 </html>
+

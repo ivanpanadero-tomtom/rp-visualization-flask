@@ -29,18 +29,20 @@ def calculate_bounds(lat, lon, distance_meters):
     lon_offset = distance_meters / (40008000 * (1 / 360)) * (1 / (111320 * 2))
     return [[lat - lat_offset, lon - lon_offset], [lat + lat_offset, lon + lon_offset]]
 
-def prepare_poi_options(data):
+def prepare_poi_options(data, include_release_version=False):
     data['num_reference_routing_points'] = data["reference_routing_points"].apply(len)
     data['num_provider_routing_points'] = data["provider_routing_points"].apply(len)
 
     names_with_info = [
-        f"{name} - {category} - [{num_ref}, {num_provider}] - RPPA = {rppa}"
-        for name, category, num_ref, num_provider, rppa in zip(
+        f"{name} - {category} - [{num_ref}, {num_provider}] - RPPA = {rppa}" +
+        (f" - {release_version}" if include_release_version else "")
+        for name, category, num_ref, num_provider, rppa, release_version in zip(
             data["name"], 
             data["category_name"], 
             data["num_reference_routing_points"], 
             data["num_provider_routing_points"], 
-            data["rpav_matching"].apply(lambda x: x['fields']['rppa'])
+            data["rpav_matching"].apply(lambda x: x['fields']['rppa']),
+            data["release_version"]
         )
     ]
     return names_with_info
@@ -58,11 +60,21 @@ def index():
     ).notna()]
 
     release_versions = df_pandas['release_version'].unique().tolist()
+    release_versions.insert(0, 'All')  # Add 'All' as the first option
+    selected_version = release_versions[0]  # Default to 'All'
+
     selected_version = release_versions[0] if release_versions else None
-    if selected_version:
+    if selected_version != 'All':
         df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
 
-    pois = prepare_poi_options(df_pandas)
+    # Filter the DataFrame if a specific version is selected
+    include_release_version = False
+    if selected_version != 'All':
+        df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
+    else:
+        include_release_version = True
+
+    pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
 
     return render_template(
         'index.html',
@@ -85,10 +97,17 @@ def update_pois():
         lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
     ).notna()]
 
-    if release_version:
+    if release_version and release_version != 'All':
         df_pandas = df_pandas[df_pandas['release_version'] == release_version]
 
-    pois = prepare_poi_options(df_pandas)
+    # Filter the DataFrame if a specific version is selected
+    include_release_version = False
+    if release_version != 'All':
+        df_pandas = df_pandas[df_pandas['release_version'] == release_version]
+    else:
+        include_release_version = True
+
+    pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
 
     return jsonify({'pois': pois})
 
@@ -105,10 +124,13 @@ def get_map():
         lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
     ).notna()]
 
-    if selected_version:
+    include_release_version = False
+    if selected_version and selected_version != 'All':
         df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
+    else:
+        include_release_version = True
 
-    names_with_info = prepare_poi_options(df_pandas)
+    names_with_info = prepare_poi_options(df_pandas, include_release_version=include_release_version)
     name_to_index = {info: idx for idx, info in enumerate(names_with_info)}
 
     if selected_poi not in name_to_index:
@@ -122,6 +144,8 @@ def get_map():
     assignation = row['rpav_matching']['fields']['assignation']
     reference_latlon = (float(row['ref_lat']), float(row['ref_lon']))
     provider_latlon = provider_latlon_(json.loads(row['provider_response']))
+    poi_name = row['name']
+    poi_category = row['category_name']
 
     # Create the map
     m = folium.Map(location=reference_latlon, zoom_start=17, tiles='openstreetmap')
@@ -156,7 +180,9 @@ def get_map():
     return jsonify({
         'map_html': map_html,
         'rppa': rppa,
-        'rppa_color': rppa_color
+        'rppa_color': rppa_color,
+        'poi_name': poi_name,
+        'poi_category': poi_category
     })
 
 

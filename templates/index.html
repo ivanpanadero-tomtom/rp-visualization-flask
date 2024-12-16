@@ -14,6 +14,12 @@
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+/* Optional styling for the POI box */
+#poi {
+    width: 400px;
+    overflow-y: auto;
+}
 </style>
 </head>
 <body>
@@ -34,7 +40,8 @@
     </select><br><br>
 
     <label for="poi">Select a POI:</label><br>
-    <select name="poi" id="poi">
+    <!-- Added size attribute for scrollable list and styling for overflow -->
+    <select name="poi" id="poi" size="10">
         {% for p in pois %}
         <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
         {% endfor %}

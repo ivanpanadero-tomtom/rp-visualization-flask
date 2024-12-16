@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Routing Points (RP) Visualization</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+.rppa-box {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+<h1>Routing Points (RP) Visualization</h1>
+<form id="myForm">
+    <label for="country">Select a country:</label><br>
+    <select name="country" id="country">
+        {% for country in countries %}
+        <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="release_version">Select Release Version:</label><br>
+    <select name="release_version" id="release_version">
+        {% for rv in release_versions %}
+        <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label for="poi">Select a POI:</label><br>
+    <select name="poi" id="poi">
+        {% for p in pois %}
+        <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Show Map</button>
+</form>
+
+<div id="mapContainer" style="margin-top: 20px;"></div>
+
+<script>
+// Update POI options when country or release_version changes
+function updatePois() {
+    const country = document.getElementById('country').value;
+    const releaseVersion = document.getElementById('release_version').value;
+    const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const poiSelect = document.getElementById('poi');
+            poiSelect.innerHTML = '';
+            data.pois.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p;
+                option.textContent = p;
+                poiSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching POIs:', error));
+}
+
+document.getElementById('country').addEventListener('change', updatePois);
+document.getElementById('release_version').addEventListener('change', updatePois);
+
+// Handle form submission via AJAX to show the map
+document.getElementById('myForm').addEventListener('submit', function(event){
+    event.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('/get_map', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const mapContainer = document.getElementById('mapContainer');
+        if (data.error) {
+            mapContainer.innerHTML = `<p style="color:red;">${data.error}</p>`;
+            return;
+        }
+        mapContainer.innerHTML = `
+            <div class="rppa-box" style="background-color: ${data.rppa_color};">
+                RPPA: ${data.rppa}
+            </div>
+            ${data.map_html}
+            <div style="margin-top: 20px;">
+                <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="200">
+            </div>
+        `;
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
+
+</body>
+</html>

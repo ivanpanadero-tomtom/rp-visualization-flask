@@ -1,163 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Routing Points (RP) Visualization</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<style>
-.rppa-box {
-    text-align: center;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px; /* reduced margin for tighter spacing */
-    width: 100%; /* match container width */
-}
+    <meta charset="UTF-8" />
+    <title>Routing Points (RP) Visualization</title>
+    <!-- Integrate Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Custom Styles */
+        .rppa-box {
+            text-align: center;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-#poi {
-    width: 400px;
-    overflow-y: auto;
-}
+        .legend-container img {
+            max-width: 100%;
+            height: auto;
+        }
 
-/* Container for the RPPA box, legend, and map */
-.map-container {
-    width: 850px; /* fixed width to match map and legend */
-    margin-top: 20px; 
-}
+        /* Container for the RPPA box, map, and legend */
+        .map-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            padding: 20px; /* Optional padding */
+            background-color: #f8f9fa; /* Optional background color */
+        }
 
-/* Center the legend and give some spacing */
-.legend-container {
-    text-align: center;
-    margin: 10px 0;
-}
-</style>
+        /* Style the map to be responsive */
+        .map-iframe {
+            width: 100%;
+            height: 600px; /* Adjust height as needed */
+            border: none;
+        }
+
+        /* Responsive adjustments for smaller devices */
+        @media (max-width: 768px) {
+            .rppa-box, .legend-container {
+                width: 100%;
+            }
+
+            .map-iframe {
+                height: 400px;
+            }
+        }
+
+        /* Style for the informational text */
+        .info-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #343a40; /* Dark gray color */
+        }
+    </style>
 </head>
 <body>
-<h1>Routing Points (RP) Visualization</h1>
-<form id="myForm">
-    <div style="display: flex; align-items: flex-start; gap: 20px;">
-        <div>
-            <label for="country">Select a country:</label><br>
-            <select name="country" id="country">
-                {% for country in countries %}
-                <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div>
-            <label for="release_version">Select Release Version:</label><br>
-            <select name="release_version" id="release_version">
-                {% for rv in release_versions %}
-                <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
-                {% endfor %}
-            </select>
+    <!-- Container for the Form -->
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Routing Points (RP) Visualization</h1>
+        <form id="myForm">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="country" class="form-label">Select a Country:</label>
+                    <select name="country" id="country" class="form-select">
+                        {% for country in countries %}
+                        <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="release_version" class="form-label">Select Release Version:</label>
+                    <select name="release_version" id="release_version" class="form-select">
+                        {% for rv in release_versions %}
+                        <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="poi" class="form-label">Select a POI:</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
+                    <button type="submit" class="btn btn-primary">Show Map</button>
+                </div>
+                
+                <!-- Información adicional insertada aquí -->
+                <div class="info-text">
+                    POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
+                </div>
+
+                <select name="poi" id="poi" size="10" class="form-select">
+                    {% for p in pois %}
+                    <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <!-- Full-width Container for the Map and Legend -->
+    <div class="container-fluid p-0">
+        <div id="mapContainer" class="map-container">
+            <!-- The map and legend will be injected here -->
         </div>
     </div>
-    <br><br>
 
-    <label for="poi">Select a POI:</label><br>
-    <!-- Wrap the search box and the button in a flex container -->
-    <div style="display: flex; align-items: flex-end; gap: 10px; margin-bottom:5px;">
-        <input type="text" id="poiSearch" placeholder="Search..." style="width:200px;">
-        <button type="submit">Show Map</button>
-    </div>
+    <!-- Integrate Bootstrap JS and dependencies from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allPois = []; // Will store all POIs fetched from the server
 
-    <select name="poi" id="poi" size="10" style="margin-bottom:10px;">
-        {% for p in pois %}
-        <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
-        {% endfor %}
-    </select>
-</form>
+        // Update POI options when country or release_version changes
+        function updatePois() {
+            const country = document.getElementById('country').value;
+            const releaseVersion = document.getElementById('release_version').value;
+            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}`;
 
-<div id="mapContainer"></div>
-
-<script>
-let allPois = []; // Will store all POIs fetched from the server
-
-// Update POI options when country or release_version changes
-function updatePois() {
-    const country = document.getElementById('country').value;
-    const releaseVersion = document.getElementById('release_version').value;
-    const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Store all the POIs in an array
-            allPois = data.pois;
-            // Initially display all POIs
-            renderPois(allPois);
-        })
-        .catch(error => console.error('Error fetching POIs:', error));
-}
-
-// Render POIs into the select element
-function renderPois(pois) {
-    const poiSelect = document.getElementById('poi');
-    poiSelect.innerHTML = '';
-    pois.forEach(p => {
-        const option = document.createElement('option');
-        option.value = p;
-        option.textContent = p;
-        poiSelect.appendChild(option);
-    });
-}
-
-// Filter POIs based on the search input
-function filterPois() {
-    const searchQuery = document.getElementById('poiSearch').value.toLowerCase();
-    const filtered = allPois.filter(p => p.toLowerCase().includes(searchQuery));
-    renderPois(filtered);
-}
-
-// Event listeners for country and release version changes
-document.getElementById('country').addEventListener('change', updatePois);
-document.getElementById('release_version').addEventListener('change', updatePois);
-
-// Event listener for the search input
-document.getElementById('poiSearch').addEventListener('input', filterPois);
-
-// Call updatePois() on page load to ensure allPois is populated immediately
-document.addEventListener('DOMContentLoaded', () => {
-    updatePois();
-});
-
-// Handle form submission via AJAX to show the map
-document.getElementById('myForm').addEventListener('submit', function(event){
-    event.preventDefault();
-    const formData = new FormData(this);
-
-    fetch('/get_map', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        const mapContainer = document.getElementById('mapContainer');
-        if (data.error) {
-            mapContainer.innerHTML = `<p style="color:red;">${data.error}</p>`;
-            return;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Store all the POIs in an array
+                    allPois = data.pois;
+                    // Initially display all POIs
+                    renderPois(allPois);
+                })
+                .catch(error => console.error('Error fetching POIs:', error));
         }
-        
-        // Create a container to hold the RPPA box, legend, and map together
-        mapContainer.innerHTML = `
-        <div class="map-container" style="display: flex; align-items: center; gap: 20px;">
-        <div class="rppa-box" style="background-color: ${data.rppa_color};">
-            RPPA: ${data.rppa}
-        </div>
-        <div class="legend-container">
-            <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
-        </div>
-    </div>
-    ${data.map_html}
-`;
-    })
-    .catch(error => console.error('Error:', error));
-});
-</script>
 
+        // Render POIs into the select element
+        function renderPois(pois) {
+            const poiSelect = document.getElementById('poi');
+            poiSelect.innerHTML = '';
+            pois.forEach(p => {
+                const option = document.createElement('option');
+                option.value = p;
+                option.textContent = p;
+                poiSelect.appendChild(option);
+            });
+        }
+
+        // Filter POIs based on the search input
+        function filterPois() {
+            const searchQuery = document.getElementById('poiSearch').value.toLowerCase();
+            const filtered = allPois.filter(p => p.toLowerCase().includes(searchQuery));
+            renderPois(filtered);
+        }
+
+        // Event listeners for country and release version changes
+        document.getElementById('country').addEventListener('change', updatePois);
+        document.getElementById('release_version').addEventListener('change', updatePois);
+
+        // Event listener for the search input
+        document.getElementById('poiSearch').addEventListener('input', filterPois);
+
+        // Call updatePois() on page load to ensure allPois is populated immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePois();
+        });
+
+        // Handle form submission via AJAX to show the map
+        document.getElementById('myForm').addEventListener('submit', function(event){
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/get_map', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const mapContainer = document.getElementById('mapContainer');
+                if (data.error) {
+                    mapContainer.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                    return;
+                }
+
+                // Create a container to hold the RPPA box and the map
+                mapContainer.innerHTML = `
+                    <div class="map-container">
+                        <div class="rppa-box" style="background-color: ${data.rppa_color};">
+                            RPPA: ${data.rppa}
+                        </div>
+                        <div class="map-wrapper w-100 mb-3">
+                            ${data.map_html}
+                        </div>
+                        <div class="legend-container">
+                            <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
-

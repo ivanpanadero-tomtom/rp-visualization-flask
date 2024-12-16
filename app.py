@@ -124,7 +124,7 @@ def get_map():
     provider_latlon = provider_latlon_(json.loads(row['provider_response']))
 
     # Create the map
-    m = folium.Map(location=reference_latlon, zoom_start=17, tiles='openstreetmap', width=800, height=600)
+    m = folium.Map(location=reference_latlon, zoom_start=17, tiles='openstreetmap')
     folium.Marker(location=reference_latlon, icon=folium.Icon(color='black', icon="")).add_to(m)
 
     if provider_latlon and isinstance(provider_latlon, tuple) and len(provider_latlon) == 2:

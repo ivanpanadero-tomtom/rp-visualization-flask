@@ -125,36 +125,30 @@ def get_map():
 
     # Create the map
     m = folium.Map(location=reference_latlon, zoom_start=17, tiles='openstreetmap', width=800, height=600)
-    folium.Marker(location=reference_latlon, icon=folium.Icon(color='black')).add_to(m)
-    markers = [reference_latlon]
+    folium.Marker(location=reference_latlon, icon=folium.Icon(color='black', icon="")).add_to(m)
 
     if provider_latlon and isinstance(provider_latlon, tuple) and len(provider_latlon) == 2:
-        folium.Marker(location=provider_latlon, icon=folium.Icon(color='red')).add_to(m)
-        markers.append(provider_latlon)
+        folium.Marker(location=provider_latlon, icon=folium.Icon(color='red', icon="")).add_to(m)
 
-    # Provider RPs
+    markers = [reference_latlon, provider_latlon]
+
     for rp in provider_routing_points:
-        folium.Circle(location=rp, radius=0.7*poi_characteristic_distance, color="red", fill=True, fill_color='red', fill_opacity=0.2).add_to(m)
-        folium.CircleMarker(location=rp, radius=4, color="red", fill=False).add_to(m)
-        if provider_latlon:
-            folium.PolyLine(locations=[rp, provider_latlon], color="red", weight=2, dashArray="5, 5").add_to(m)
+        folium.Circle(location=rp, radius=0.7*poi_characteristic_distance, color="red", fill = True, fill_color = 'red', fill_opacity = 0.2).add_to(m)
+        folium.CircleMarker(location=rp, radius=4, color="red", fill=False, fill_color = 'red', fill_opacity = 1).add_to(m)
+        folium.PolyLine(locations=[rp, provider_latlon], color="red", weight=2, dashArray="5, 5").add_to(m)
         markers.append(rp)
 
-    # Assignations
     if rppa > 0:
         for asign in assignation:
-            ref_rp = reference_routing_points[asign[0]]
-            prov_rp = provider_routing_points[asign[1]]
-            if geodesic(ref_rp, prov_rp).m < 0.7 * poi_characteristic_distance:
-                folium.PolyLine(locations=[ref_rp, prov_rp], color="green", weight=4).add_to(m)
+            if geodesic(reference_routing_points[asign[0]], provider_routing_points[asign[1]]).m < 0.7 * poi_characteristic_distance:
+                folium.PolyLine(locations=[reference_routing_points[asign[0]], provider_routing_points[asign[1]]], color="green", weight=4).add_to(m)
 
-    # Reference RPs
     for rp in reference_routing_points:
-        folium.CircleMarker(location=rp, radius=4, color="black", fill=False).add_to(m)
+        folium.CircleMarker(location=rp, radius=4, color="black", fill=False, fill_color = 'black', fill_opacity = 1).add_to(m)
         folium.PolyLine(locations=[rp, reference_latlon], color="black", weight=2, dashArray="5, 5").add_to(m)
 
-    bounds = calculate_bounds(reference_latlon[0], reference_latlon[1], 1.5 * max_distance(reference_latlon, markers))
-    m.fit_bounds(bounds)
+        bounds = calculate_bounds(reference_latlon[0], reference_latlon[1], 1.5 * max_distance(reference_latlon, markers))
+        m.fit_bounds(bounds)
 
     map_html = m._repr_html_()
     rppa_color = f"rgb({int(255 * (1 - rppa))}, {int(rppa * 255)}, 0)"

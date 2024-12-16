@@ -12,13 +12,25 @@
     border-radius: 5px;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* reduced margin for tighter spacing */
+    width: 100%; /* match container width */
 }
 
-/* Optional styling for the POI box */
 #poi {
     width: 400px;
     overflow-y: auto;
+}
+
+/* Container for the RPPA box, legend, and map */
+.map-container {
+    width: 800px; /* fixed width to match map and legend */
+    margin-top: 20px; 
+}
+
+/* Center the legend and give some spacing */
+.legend-container {
+    text-align: center;
+    margin: 10px 0;
 }
 </style>
 </head>
@@ -40,7 +52,8 @@
     </select><br><br>
 
     <label for="poi">Select a POI:</label><br>
-    <!-- Added size attribute for scrollable list and styling for overflow -->
+    <!-- Search box to filter POIs -->
+    <input type="text" id="poiSearch" placeholder="Search..." style="width:200px; margin-bottom:5px;"><br>
     <select name="poi" id="poi" size="10">
         {% for p in pois %}
         <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
@@ -50,9 +63,11 @@
     <button type="submit">Show Map</button>
 </form>
 
-<div id="mapContainer" style="margin-top: 20px;"></div>
+<div id="mapContainer"></div>
 
 <script>
+let allPois = []; // Will store all POIs fetched from the server
+
 // Update POI options when country or release_version changes
 function updatePois() {
     const country = document.getElementById('country').value;
@@ -62,20 +77,39 @@ function updatePois() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            const poiSelect = document.getElementById('poi');
-            poiSelect.innerHTML = '';
-            data.pois.forEach(p => {
-                const option = document.createElement('option');
-                option.value = p;
-                option.textContent = p;
-                poiSelect.appendChild(option);
-            });
+            // Store all the POIs in an array
+            allPois = data.pois;
+            // Initially display all POIs
+            renderPois(allPois);
         })
         .catch(error => console.error('Error fetching POIs:', error));
 }
 
+// Render POIs into the select element
+function renderPois(pois) {
+    const poiSelect = document.getElementById('poi');
+    poiSelect.innerHTML = '';
+    pois.forEach(p => {
+        const option = document.createElement('option');
+        option.value = p;
+        option.textContent = p;
+        poiSelect.appendChild(option);
+    });
+}
+
+// Filter POIs based on the search input
+function filterPois() {
+    const searchQuery = document.getElementById('poiSearch').value.toLowerCase();
+    const filtered = allPois.filter(p => p.toLowerCase().includes(searchQuery));
+    renderPois(filtered);
+}
+
+// Event listeners for country and release version changes
 document.getElementById('country').addEventListener('change', updatePois);
 document.getElementById('release_version').addEventListener('change', updatePois);
+
+// Event listener for the search input
+document.getElementById('poiSearch').addEventListener('input', filterPois);
 
 // Handle form submission via AJAX to show the map
 document.getElementById('myForm').addEventListener('submit', function(event){
@@ -93,13 +127,17 @@ document.getElementById('myForm').addEventListener('submit', function(event){
             mapContainer.innerHTML = `<p style="color:red;">${data.error}</p>`;
             return;
         }
+        
+        // Create a container to hold the RPPA box, legend, and map together
         mapContainer.innerHTML = `
-            <div class="rppa-box" style="background-color: ${data.rppa_color};">
-                RPPA: ${data.rppa}
-            </div>
-            ${data.map_html}
-            <div style="margin-top: 20px;">
-                <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="200">
+            <div class="map-container">
+                <div class="rppa-box" style="background-color: ${data.rppa_color};">
+                    RPPA: ${data.rppa}
+                </div>
+                <div class="legend-container">
+                    <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
+                </div>
+                ${data.map_html}
             </div>
         `;
     })

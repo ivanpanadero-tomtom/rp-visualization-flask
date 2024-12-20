@@ -519,3 +519,312 @@
 2024-12-20 14:58:09,857 INFO:Map generated for POI: Playa de las Barqueras
 2024-12-20 14:58:09,858 INFO:127.0.0.1 - - [20/Dec/2024 14:58:09] "POST /get_map HTTP/1.1" 200 -
 2024-12-20 14:58:09,981 INFO:127.0.0.1 - - [20/Dec/2024 14:58:09] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:09:09,035 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 15:09:09,091 INFO: * Restarting with stat
+2024-12-20 15:09:09,396 WARNING: * Debugger is active!
+2024-12-20 15:09:09,402 INFO: * Debugger PIN: 996-351-733
+2024-12-20 15:11:50,262 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 15:11:50,321 INFO: * Restarting with stat
+2024-12-20 15:11:50,601 WARNING: * Debugger is active!
+2024-12-20 15:11:50,606 INFO: * Debugger PIN: 996-351-733
+2024-12-20 15:11:56,126 INFO:Data loaded and cached for Spain
+2024-12-20 15:11:56,126 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:11:56,127 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 15:11:56,144 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:11:56,179 INFO:127.0.0.1 - - [20/Dec/2024 15:11:56] "GET / HTTP/1.1" 200 -
+2024-12-20 15:11:56,212 INFO:127.0.0.1 - - [20/Dec/2024 15:11:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 15:11:56,407 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 15:11:56,407 INFO:Loaded data from cache for Spain
+2024-12-20 15:11:56,408 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:11:56,431 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:11:56,437 INFO:127.0.0.1 - - [20/Dec/2024 15:11:56] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 15:12:00,897 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 15:12:00,966 INFO: * Restarting with stat
+2024-12-20 15:12:01,254 WARNING: * Debugger is active!
+2024-12-20 15:12:01,259 INFO: * Debugger PIN: 996-351-733
+2024-12-20 15:12:04,360 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 15:12:04,414 INFO: * Restarting with stat
+2024-12-20 15:12:36,701 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 15:12:36,701 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 15:12:42,568 INFO:Data loaded and cached for Spain
+2024-12-20 15:12:42,569 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:12:42,569 ERROR:Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/app.py", line 50, in index
+    routing_points_counts = extract_unique_routing_points_counts(df_pandas)
+NameError: name 'extract_unique_routing_points_counts' is not defined
+2024-12-20 15:12:42,571 INFO:10.8.86.40 - - [20/Dec/2024 15:12:42] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-12-20 15:12:51,536 INFO:Loaded data from cache for Spain
+2024-12-20 15:12:51,537 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:12:51,537 ERROR:Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/app.py", line 50, in index
+    routing_points_counts = extract_unique_routing_points_counts(df_pandas)
+NameError: name 'extract_unique_routing_points_counts' is not defined
+2024-12-20 15:12:51,538 INFO:127.0.0.1 - - [20/Dec/2024 15:12:51] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-12-20 15:12:51,545 INFO:127.0.0.1 - - [20/Dec/2024 15:12:51] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:12:51,548 INFO:127.0.0.1 - - [20/Dec/2024 15:12:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 15:13:27,021 INFO:Loaded data from cache for Spain
+2024-12-20 15:13:27,022 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:13:27,022 ERROR:Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/app.py", line 50, in index
+    # Extract unique Routing Points Counts
+NameError: name 'extract_unique_routing_points_counts' is not defined
+2024-12-20 15:13:27,023 INFO:127.0.0.1 - - [20/Dec/2024 15:13:27] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-12-20 15:14:04,627 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:04,629 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:04,629 ERROR:Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/.venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ivan.panadero/Codes/rp-visualization-flask/app.py", line 50, in index
+    # Extract unique Routing Points Counts
+NameError: name 'extract_unique_routing_points_counts' is not defined
+2024-12-20 15:14:04,630 INFO:127.0.0.1 - - [20/Dec/2024 15:14:04] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-12-20 15:14:10,752 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 15:14:10,752 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 15:14:15,456 INFO:Data loaded and cached for Spain
+2024-12-20 15:14:15,456 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:15,457 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:14:15,458 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 15:14:15,476 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:14:15,512 INFO:10.8.86.40 - - [20/Dec/2024 15:14:15] "GET / HTTP/1.1" 200 -
+2024-12-20 15:14:15,520 INFO:10.8.86.40 - - [20/Dec/2024 15:14:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 15:14:15,713 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=All
+2024-12-20 15:14:15,713 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:15,714 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:15,715 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:14:15,735 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:14:15,738 INFO:10.8.86.40 - - [20/Dec/2024 15:14:15] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=All HTTP/1.1" 200 -
+2024-12-20 15:14:26,145 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=2 RPs Reference, 2 RPs Provider
+2024-12-20 15:14:26,145 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:26,147 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:26,150 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:14:26,152 INFO:Filtered data by routing_points_count: 2 RPs Reference, 2 RPs Provider
+2024-12-20 15:14:26,153 INFO:Prepared POI options: ['Sevilla - Airport - [2, 2] - RPPA = 1.0 - 2024.03.005_00', 'Plaza Río 2 Shopping Center - Shopping Center - [2, 2] - RPPA = 0.5 - 2024.03.005_00', 'Hospital Universitario De Jerez - Hospital/Polyclinic - [2, 2] - RPPA = 0.5 - 2024.03.005_00', 'Hospital Universitario De Jerez - Hospital/Polyclinic - [2, 2] - RPPA = 0.5 - 2024.06.000.00', 'Plaza Río 2 Shopping Center - Shopping Center - [2, 2] - RPPA = 0.5 - 2024.06.000.00']...
+2024-12-20 15:14:26,154 INFO:10.8.86.40 - - [20/Dec/2024 15:14:26] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=2%20RPs%20Reference,%202%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:14:30,851 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Hospital Universitario De Jerez - Hospital/Polyclinic - [2, 2] - RPPA = 0.5 - 2024.03.005_00
+2024-12-20 15:14:30,851 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:30,890 INFO:Name to index mapping created for POIs.
+2024-12-20 15:14:30,897 INFO:Map generated for POI: Hospital Universitario De Jerez
+2024-12-20 15:14:30,897 INFO:10.8.86.40 - - [20/Dec/2024 15:14:30] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:14:30,905 INFO:10.8.86.40 - - [20/Dec/2024 15:14:30] "GET /static/images/legend.png HTTP/1.1" 200 -
+2024-12-20 15:14:39,569 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=5 RPs Reference, 1 RPs Provider
+2024-12-20 15:14:39,570 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:39,571 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:39,575 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:14:39,578 INFO:Filtered data by routing_points_count: 5 RPs Reference, 1 RPs Provider
+2024-12-20 15:14:39,580 INFO:Prepared POI options: ['Goya - Railway Station - [5, 1] - RPPA = 1.0 - 24480.000 ON', 'Las Canteras Beach - Beach - [5, 1] - RPPA = 1.0 - 24090.000 ON', 'Las Canteras Beach - Beach - [5, 1] - RPPA = 1.0 - 2024.03.005_00', 'Las Canteras Beach - Beach - [5, 1] - RPPA = 1.0 - 2024.06.000.00', 'Las Canteras Beach - Beach - [5, 1] - RPPA = 1.0 - 24230.000 ON']...
+2024-12-20 15:14:39,580 INFO:10.8.86.40 - - [20/Dec/2024 15:14:39] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=5%20RPs%20Reference,%201%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:14:40,624 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Las Canteras Beach - Beach - [5, 1] - RPPA = 1.0 - 2024.03.005_00
+2024-12-20 15:14:40,624 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:40,648 INFO:Name to index mapping created for POIs.
+2024-12-20 15:14:40,653 INFO:Map generated for POI: Las Canteras Beach
+2024-12-20 15:14:40,654 INFO:10.8.86.40 - - [20/Dec/2024 15:14:40] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:14:53,154 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=2 RPs Reference, 6 RPs Provider
+2024-12-20 15:14:53,154 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:53,158 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:14:53,162 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:14:53,164 INFO:Filtered data by routing_points_count: 2 RPs Reference, 6 RPs Provider
+2024-12-20 15:14:53,165 INFO:Prepared POI options: ['Adolfo Suárez Madrid–Barajas - Airport - [2, 6] - RPPA = 1.0 - 2024.03.005_00', 'Adolfo Suárez Madrid–Barajas - Airport - [2, 6] - RPPA = 1.0 - 2024.06.000.00']...
+2024-12-20 15:14:53,166 INFO:10.8.86.40 - - [20/Dec/2024 15:14:53] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=2%20RPs%20Reference,%206%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:14:54,382 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Adolfo Suárez Madrid–Barajas - Airport - [2, 6] - RPPA = 1.0 - 2024.06.000.00
+2024-12-20 15:14:54,383 INFO:Loaded data from cache for Spain
+2024-12-20 15:14:54,419 INFO:Name to index mapping created for POIs.
+2024-12-20 15:14:54,428 INFO:Map generated for POI: Adolfo Suárez Madrid–Barajas
+2024-12-20 15:14:54,428 INFO:10.8.86.40 - - [20/Dec/2024 15:14:54] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:15:13,711 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=1.0, routing_points_count=2 RPs Reference, 6 RPs Provider
+2024-12-20 15:15:13,711 INFO:Loaded data from cache for Spain
+2024-12-20 15:15:13,712 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:15:13,716 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:15:13,721 INFO:Filtered data by routing_points_count: 2 RPs Reference, 6 RPs Provider
+2024-12-20 15:15:13,721 INFO:Filtering RPPA for value: 1.0
+2024-12-20 15:15:13,721 INFO:Number of POIs after RPPA filtering: 2
+2024-12-20 15:15:13,722 INFO:Prepared POI options: ['Adolfo Suárez Madrid–Barajas - Airport - [2, 6] - RPPA = 1.0 - 2024.03.005_00', 'Adolfo Suárez Madrid–Barajas - Airport - [2, 6] - RPPA = 1.0 - 2024.06.000.00']...
+2024-12-20 15:15:13,723 INFO:10.8.86.40 - - [20/Dec/2024 15:15:13] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=1.0&routing_points_count=2%20RPs%20Reference,%206%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:15:16,994 INFO:Received /update_pois request with country=Spain, release_version=All, category=Amusement Park, selected_rppa=1.0, routing_points_count=2 RPs Reference, 6 RPs Provider
+2024-12-20 15:15:16,994 INFO:Loaded data from cache for Spain
+2024-12-20 15:15:16,995 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:15:16,999 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:15:17,002 INFO:Filtered data by category: Amusement Park
+2024-12-20 15:15:17,002 INFO:Filtered data by routing_points_count: 2 RPs Reference, 6 RPs Provider
+2024-12-20 15:15:17,003 INFO:Filtering RPPA for value: 1.0
+2024-12-20 15:15:17,003 INFO:Number of POIs after RPPA filtering: 0
+2024-12-20 15:15:17,005 INFO:Prepared POI options: []...
+2024-12-20 15:15:17,005 INFO:10.8.86.40 - - [20/Dec/2024 15:15:17] "GET /update_pois?country=Spain&release_version=All&category=Amusement%20Park&selected_rppa=1.0&routing_points_count=2%20RPs%20Reference,%206%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:16:39,639 INFO:Loaded data from cache for Spain
+2024-12-20 15:16:39,640 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:39,644 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:39,648 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 15:16:39,679 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:16:39,708 INFO:10.8.86.40 - - [20/Dec/2024 15:16:39] "GET / HTTP/1.1" 200 -
+2024-12-20 15:16:39,729 INFO:10.8.86.40 - - [20/Dec/2024 15:16:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 15:16:39,936 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=All
+2024-12-20 15:16:39,936 INFO:Loaded data from cache for Spain
+2024-12-20 15:16:39,937 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:39,940 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:39,983 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:16:39,988 INFO:10.8.86.40 - - [20/Dec/2024 15:16:39] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=All HTTP/1.1" 200 -
+2024-12-20 15:16:47,333 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 15:16:47,333 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 15:16:52,762 INFO:Data loaded and cached for Spain
+2024-12-20 15:16:52,762 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:52,763 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:52,763 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 15:16:52,781 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:16:52,816 INFO:10.8.86.40 - - [20/Dec/2024 15:16:52] "GET / HTTP/1.1" 200 -
+2024-12-20 15:16:52,844 INFO:10.8.86.40 - - [20/Dec/2024 15:16:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 15:16:53,043 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=All
+2024-12-20 15:16:53,044 INFO:Loaded data from cache for Spain
+2024-12-20 15:16:53,044 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:53,050 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:53,076 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 15:16:53,080 INFO:10.8.86.40 - - [20/Dec/2024 15:16:53] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=All HTTP/1.1" 200 -
+2024-12-20 15:16:54,924 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Reference, 2 RPs Provider
+2024-12-20 15:16:54,924 INFO:Loaded data from cache for Spain
+2024-12-20 15:16:54,926 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:54,929 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:54,933 INFO:Filtered data by routing_points_count: 1 RPs Reference, 2 RPs Provider
+2024-12-20 15:16:54,935 INFO:Prepared POI options: ['Hospital Juaneda Miramar - Hospital/Polyclinic - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Praia Das Furnas - Beach - [1, 2] - RPPA = 1.0 - 2024.03.005_00', 'Estación de Servicio Repsol - Petrol Station - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Lanzarote - Airport - [1, 2] - RPPA = 1.0 - 2024.03.005_00', 'Cerdanyola del Vallès - Railway Station - [1, 2] - RPPA = 1.0 - 2024.03.005_00']...
+2024-12-20 15:16:54,935 INFO:10.8.86.40 - - [20/Dec/2024 15:16:54] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Reference,%202%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:16:57,007 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=0.0, routing_points_count=1 RPs Reference, 2 RPs Provider
+2024-12-20 15:16:57,008 INFO:Loaded data from cache for Spain
+2024-12-20 15:16:57,009 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:16:57,013 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:16:57,016 INFO:Filtered data by routing_points_count: 1 RPs Reference, 2 RPs Provider
+2024-12-20 15:16:57,016 INFO:Filtering RPPA for value: 0.0
+2024-12-20 15:16:57,016 INFO:Number of POIs after RPPA filtering: 29
+2024-12-20 15:16:57,018 INFO:Prepared POI options: ['Hospital Juaneda Miramar - Hospital/Polyclinic - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Estación de Servicio Repsol - Petrol Station - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Utrillas Plaza Shopping Mall - Shopping Center - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Fuente de las Batallas - Important Tourist Attraction - [1, 2] - RPPA = 0.0 - 2024.03.005_00', 'Ferrari Land - Amusement Park - [1, 2] - RPPA = 0.0 - 2024.03.005_00']...
+2024-12-20 15:16:57,018 INFO:10.8.86.40 - - [20/Dec/2024 15:16:57] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=0.0&routing_points_count=1%20RPs%20Reference,%202%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:17:06,662 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=0.0, routing_points_count=1 RPs Reference, 5 RPs Provider
+2024-12-20 15:17:06,663 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:06,664 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:17:06,672 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:17:06,674 INFO:Filtered data by routing_points_count: 1 RPs Reference, 5 RPs Provider
+2024-12-20 15:17:06,674 INFO:Filtering RPPA for value: 0.0
+2024-12-20 15:17:06,674 INFO:Number of POIs after RPPA filtering: 0
+2024-12-20 15:17:06,675 INFO:Prepared POI options: []...
+2024-12-20 15:17:06,676 INFO:10.8.86.40 - - [20/Dec/2024 15:17:06] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=0.0&routing_points_count=1%20RPs%20Reference,%205%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:17:09,847 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Reference, 5 RPs Provider
+2024-12-20 15:17:09,848 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:09,849 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 15:17:09,853 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '4 RPs Reference, 1 RPs Provider', '5 RPs Reference, 1 RPs Provider']
+2024-12-20 15:17:09,857 INFO:Filtered data by routing_points_count: 1 RPs Reference, 5 RPs Provider
+2024-12-20 15:17:09,858 INFO:Prepared POI options: ['Alicante–Elche - Airport - [1, 5] - RPPA = 1.0 - 2024.03.005_00', 'La Fe University and Polytechnic Hospital - Hospital/Polyclinic - [1, 5] - RPPA = 1.0 - 2024.03.005_00', 'Alicante–Elche - Airport - [1, 5] - RPPA = 1.0 - 2024.06.000.00', 'La Fe University and Polytechnic Hospital - Hospital/Polyclinic - [1, 5] - RPPA = 1.0 - 2024.06.000.00']...
+2024-12-20 15:17:09,859 INFO:10.8.86.40 - - [20/Dec/2024 15:17:09] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Reference,%205%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:17:10,776 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Alicante–Elche - Airport - [1, 5] - RPPA = 1.0 - 2024.03.005_00
+2024-12-20 15:17:10,776 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:10,815 INFO:Name to index mapping created for POIs.
+2024-12-20 15:17:10,823 INFO:Map generated for POI: Alicante–Elche
+2024-12-20 15:17:10,824 INFO:10.8.86.40 - - [20/Dec/2024 15:17:10] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:17:10,833 INFO:10.8.86.40 - - [20/Dec/2024 15:17:10] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:17:18,400 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Alicante–Elche - Airport - [1, 5] - RPPA = 1.0 - 2024.06.000.00
+2024-12-20 15:17:18,401 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:18,439 INFO:Name to index mapping created for POIs.
+2024-12-20 15:17:18,447 INFO:Map generated for POI: Alicante–Elche
+2024-12-20 15:17:18,448 INFO:10.8.86.40 - - [20/Dec/2024 15:17:18] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:17:18,456 INFO:10.8.86.40 - - [20/Dec/2024 15:17:18] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:17:20,894 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=La Fe University and Polytechnic Hospital - Hospital/Polyclinic - [1, 5] - RPPA = 1.0 - 2024.03.005_00
+2024-12-20 15:17:20,895 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:20,932 INFO:Name to index mapping created for POIs.
+2024-12-20 15:17:20,940 INFO:Map generated for POI: La Fe University and Polytechnic Hospital
+2024-12-20 15:17:20,940 INFO:10.8.86.40 - - [20/Dec/2024 15:17:20] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:17:20,946 INFO:10.8.86.40 - - [20/Dec/2024 15:17:20] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:17:56,082 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Alicante–Elche - Airport - [1, 5] - RPPA = 1.0 - 2024.06.000.00
+2024-12-20 15:17:56,082 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:56,118 INFO:Name to index mapping created for POIs.
+2024-12-20 15:17:56,124 INFO:Map generated for POI: Alicante–Elche
+2024-12-20 15:17:56,125 INFO:10.8.86.40 - - [20/Dec/2024 15:17:56] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:17:56,134 INFO:10.8.86.40 - - [20/Dec/2024 15:17:56] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:17:59,184 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=La Fe University and Polytechnic Hospital - Hospital/Polyclinic - [1, 5] - RPPA = 1.0 - 2024.06.000.00
+2024-12-20 15:17:59,185 INFO:Loaded data from cache for Spain
+2024-12-20 15:17:59,221 INFO:Name to index mapping created for POIs.
+2024-12-20 15:17:59,230 INFO:Map generated for POI: La Fe University and Polytechnic Hospital
+2024-12-20 15:17:59,230 INFO:10.8.86.40 - - [20/Dec/2024 15:17:59] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:17:59,238 INFO:10.8.86.40 - - [20/Dec/2024 15:17:59] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:18:07,766 INFO:Received /update_pois request with country=Great Britain, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Reference, 5 RPs Provider
+2024-12-20 15:18:07,979 INFO:Data loaded and cached for Great Britain
+2024-12-20 15:18:07,980 INFO:Extracted RPPA list: [1.0, 0.0, 0.5, 0.6666666666666666]
+2024-12-20 15:18:07,981 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '1 RPs Reference, 7 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 5 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 2 RPs Provider', '3 RPs Reference, 4 RPs Provider', '3 RPs Reference, 5 RPs Provider', '4 RPs Reference, 1 RPs Provider', '4 RPs Reference, 2 RPs Provider', '5 RPs Reference, 1 RPs Provider', '6 RPs Reference, 1 RPs Provider', '7 RPs Reference, 1 RPs Provider']
+2024-12-20 15:18:07,982 INFO:Filtered data by routing_points_count: 1 RPs Reference, 5 RPs Provider
+2024-12-20 15:18:07,982 INFO:Prepared POI options: ['Trinity Leeds - Shopping Center - [1, 5] - RPPA = 0.0 - 2024.09.001_00', 'Trinity Leeds - Shopping Center - [1, 5] - RPPA = 0.0 - 2024.03.005_00', 'Trinity Leeds - Shopping Center - [1, 5] - RPPA = 0.0 - 2024.06.000.00']...
+2024-12-20 15:18:07,982 INFO:10.8.86.40 - - [20/Dec/2024 15:18:07] "GET /update_pois?country=Great%20Britain&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Reference,%205%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:18:11,269 INFO:Received /update_pois request with country=Great Britain, release_version=All, category=All, selected_rppa=All, routing_points_count=7 RPs Reference, 1 RPs Provider
+2024-12-20 15:18:11,270 INFO:Loaded data from cache for Great Britain
+2024-12-20 15:18:11,272 INFO:Extracted RPPA list: [1.0, 0.0, 0.5, 0.6666666666666666]
+2024-12-20 15:18:11,277 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '1 RPs Reference, 7 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 5 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 2 RPs Provider', '3 RPs Reference, 4 RPs Provider', '3 RPs Reference, 5 RPs Provider', '4 RPs Reference, 1 RPs Provider', '4 RPs Reference, 2 RPs Provider', '5 RPs Reference, 1 RPs Provider', '6 RPs Reference, 1 RPs Provider', '7 RPs Reference, 1 RPs Provider']
+2024-12-20 15:18:11,279 INFO:Filtered data by routing_points_count: 7 RPs Reference, 1 RPs Provider
+2024-12-20 15:18:11,280 INFO:Prepared POI options: ['Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 1.0 - 2024.03.005_00', 'Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 0.0 - 24090.000 ON', 'Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 1.0 - 2024.06.000.00', 'Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 0.0 - 24210.000 ON', 'Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 0.0 - 24210.000 ON']...
+2024-12-20 15:18:11,281 INFO:10.8.86.40 - - [20/Dec/2024 15:18:11] "GET /update_pois?country=Great%20Britain&release_version=All&category=All&selected_rppa=All&routing_points_count=7%20RPs%20Reference,%201%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:18:12,501 INFO:Received /get_map request with country=Great Britain, rppa=All, release_version=All, category=All, poi=Crystal Palace Park - Park and Recreation Area - [7, 1] - RPPA = 0.0 - 24210.000 ON
+2024-12-20 15:18:12,501 INFO:Loaded data from cache for Great Britain
+2024-12-20 15:18:12,553 INFO:Name to index mapping created for POIs.
+2024-12-20 15:18:12,559 INFO:Map generated for POI: Crystal Palace Park
+2024-12-20 15:18:12,560 INFO:10.8.86.40 - - [20/Dec/2024 15:18:12] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:18:12,569 INFO:10.8.86.40 - - [20/Dec/2024 15:18:12] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:18:27,354 INFO:Received /update_pois request with country=Netherlands, release_version=All, category=All, selected_rppa=All, routing_points_count=7 RPs Reference, 1 RPs Provider
+2024-12-20 15:18:27,573 INFO:Data loaded and cached for Netherlands
+2024-12-20 15:18:27,573 INFO:Extracted RPPA list: [0.0, 1.0, 0.5, 0.6666666666666666]
+2024-12-20 15:18:27,574 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '1 RPs Reference, 6 RPs Provider', '1 RPs Reference, 7 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 5 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 4 RPs Provider', '4 RPs Reference, 1 RPs Provider', '6 RPs Reference, 1 RPs Provider']
+2024-12-20 15:18:27,575 INFO:Filtered data by routing_points_count: 7 RPs Reference, 1 RPs Provider
+2024-12-20 15:18:27,575 INFO:Prepared POI options: []...
+2024-12-20 15:18:27,575 INFO:10.8.86.40 - - [20/Dec/2024 15:18:27] "GET /update_pois?country=Netherlands&release_version=All&category=All&selected_rppa=All&routing_points_count=7%20RPs%20Reference,%201%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:18:35,742 INFO:Received /update_pois request with country=Netherlands, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Reference, 7 RPs Provider
+2024-12-20 15:18:35,742 INFO:Loaded data from cache for Netherlands
+2024-12-20 15:18:35,744 INFO:Extracted RPPA list: [0.0, 1.0, 0.5, 0.6666666666666666]
+2024-12-20 15:18:35,753 INFO:Extracted Routing Points Counts: ['1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '1 RPs Reference, 5 RPs Provider', '1 RPs Reference, 6 RPs Provider', '1 RPs Reference, 7 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '2 RPs Reference, 4 RPs Provider', '2 RPs Reference, 5 RPs Provider', '2 RPs Reference, 6 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 4 RPs Provider', '4 RPs Reference, 1 RPs Provider', '6 RPs Reference, 1 RPs Provider']
+2024-12-20 15:18:35,755 INFO:Filtered data by routing_points_count: 1 RPs Reference, 7 RPs Provider
+2024-12-20 15:18:35,756 INFO:Prepared POI options: ['Dieren - Railway Station - [1, 7] - RPPA = 0.0 - 2024.09.001_00', 'Dieren - Railway Station - [1, 7] - RPPA = 0.0 - 2024.09.001_00']...
+2024-12-20 15:18:35,757 INFO:10.8.86.40 - - [20/Dec/2024 15:18:35] "GET /update_pois?country=Netherlands&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Reference,%207%20RPs%20Provider HTTP/1.1" 200 -
+2024-12-20 15:18:38,224 INFO:Received /get_map request with country=Netherlands, rppa=All, release_version=All, category=All, poi=Dieren - Railway Station - [1, 7] - RPPA = 0.0 - 2024.09.001_00
+2024-12-20 15:18:38,225 INFO:Loaded data from cache for Netherlands
+2024-12-20 15:18:38,274 INFO:Name to index mapping created for POIs.
+2024-12-20 15:18:38,282 INFO:Map generated for POI: Dieren
+2024-12-20 15:18:38,283 INFO:10.8.86.40 - - [20/Dec/2024 15:18:38] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:18:38,291 INFO:10.8.86.40 - - [20/Dec/2024 15:18:38] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 15:18:47,754 INFO:Received /get_map request with country=Netherlands, rppa=All, release_version=All, category=All, poi=Dieren - Railway Station - [1, 7] - RPPA = 0.0 - 2024.09.001_00
+2024-12-20 15:18:47,755 INFO:Loaded data from cache for Netherlands
+2024-12-20 15:18:47,800 INFO:Name to index mapping created for POIs.
+2024-12-20 15:18:47,808 INFO:Map generated for POI: Dieren
+2024-12-20 15:18:47,809 INFO:10.8.86.40 - - [20/Dec/2024 15:18:47] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 15:18:47,817 INFO:10.8.86.40 - - [20/Dec/2024 15:18:47] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -

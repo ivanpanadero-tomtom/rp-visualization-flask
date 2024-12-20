@@ -27,7 +27,19 @@ def load_data(country):
         missing_rppa = df['rppa'].isnull().sum()
         if missing_rppa > 0:
             df = df[df['rppa'].notnull()]
+
+        # Create a string representation of routing_points_count
+        df['routing_points_count'] = df.apply(
+            lambda row: (len(row['reference_routing_points']), len(row['provider_routing_points'])),
+            axis=1
+        )
+        df['routing_points_count_str'] = df['routing_points_count'].apply(
+            lambda x: f"{x[0]} RPs Reference, {x[1]} RPs Provider"
+        )
         
+        # Extract unique routing_points_count_str for filtering
+        df['routing_points_count_str'] = df['routing_points_count_str'].fillna("0 RPs Reference, 0 RPs Provider")
+                
         return df
     except KeyError:
         raise ValueError(f"Unsupported country: {country}")
@@ -78,6 +90,14 @@ def extract_unique_rrpa(df_pandas):
     """
     rrpa_list = df_pandas['rppa'].dropna().unique().tolist()
     return rrpa_list
+
+def extract_unique_routing_points_counts(df_pandas):
+    """
+    Extract unique routing_points_count_str values from the DataFrame.
+    """
+    routing_counts = df_pandas['routing_points_count_str'].dropna().unique().tolist()
+    routing_counts.sort(key=lambda x: (int(x.split()[0]), int(x.split(',')[1].split()[0])))
+    return routing_counts
 
 
 def create_folium_map(reference_latlon, provider_latlon, provider_routing_points,

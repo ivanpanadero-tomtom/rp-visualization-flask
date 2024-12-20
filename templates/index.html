@@ -62,6 +62,7 @@
     <div class="container my-5">
         <h1 class="text-center mb-4">Routing Points (RP) Visualization</h1>
         <form id="myForm">
+            <!-- First Row: Country and Release Version -->
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="country" class="form-label">Select a Country:</label>
@@ -80,8 +81,10 @@
                     </select>
                 </div>
             </div>
-            <div class="row g-3">
-                <div class="col-md-6">
+
+            <!-- Second Row: RPPA, Routing Points Count, and Category -->
+            <div class="row g-3 mt-3">
+                <div class="col-md-4">
                     <label for="rppa" class="form-label">Select RPPA:</label>
                     <select name="rppa" id="rppa" class="form-select">
                         {% for rppa in rrpa_list %}
@@ -89,7 +92,16 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <label for="routing_points_count" class="form-label">Select Routing Points Count:</label>
+                    <select name="routing_points_count" id="routing_points_count" class="form-select">
+                        <option value="All">All</option>
+                        {% for rpc in routing_points_counts %}
+                        <option value="{{ rpc }}" {% if rpc == selected_routing_points_count %}selected{% endif %}>{{ rpc }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <label for="category" class="form-label">Select Category:</label>
                     <select name="category" id="category" class="form-select">
                         {% for category in categories %}
@@ -98,20 +110,24 @@
                     </select>
                 </div>
             </div>
-            <div class="mt-4">
-                <label for="poi" class="form-label">Select a POI:</label>
-                <div class="input-group mb-3">
-                    <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
-                    <button type="submit" class="btn btn-primary">Show Map</button>
+
+            <!-- Third Row: POI Selection -->
+            <div class="row g-3 mt-3">
+                <div class="col-md-12">
+                    <label for="poi" class="form-label">Select a POI:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
+                        <button type="submit" class="btn btn-primary">Show Map</button>
+                    </div>
+                    <div class="info-text">
+                        POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
+                    </div>
+                    <select name="poi" id="poi" size="10" class="form-select">
+                        {% for p in pois %}
+                        <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="info-text">
-                    POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
-                </div>
-                <select name="poi" id="poi" size="10" class="form-select">
-                    {% for p in pois %}
-                    <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
-                    {% endfor %}
-                </select>
             </div>
         </form>
     </div>
@@ -130,12 +146,18 @@
             const releaseVersion = document.getElementById('release_version').value;
             const category = document.getElementById('category').value;
             const rppa = document.getElementById('rppa').value;
+            const routingPointsCount = document.getElementById('routing_points_count').value; // New filter
 
-            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&category=${encodeURIComponent(category)}&selected_rppa=${encodeURIComponent(rppa)}`;
+            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&category=${encodeURIComponent(category)}&selected_rppa=${encodeURIComponent(rppa)}&routing_points_count=${encodeURIComponent(routingPointsCount)}`;
 
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                    if (data.error) {
+                        console.error('Error fetching POIs:', data.error);
+                        return;
+                    }
+
                     // Update POIs
                     allPois = data.pois;
                     renderPois(allPois);
@@ -151,6 +173,27 @@
                             option.selected = true; // Retain the selected value
                         }
                         rppaSelect.appendChild(option);
+                    });
+
+                    // Update Routing Points Count dropdown
+                    const rpcSelect = document.getElementById('routing_points_count');
+                    rpcSelect.innerHTML = '';
+                    const allOption = document.createElement('option');
+                    allOption.value = 'All';
+                    allOption.textContent = 'All';
+                    if (data.selected_routing_points_count === 'All') {
+                        allOption.selected = true;
+                    }
+                    rpcSelect.appendChild(allOption);
+
+                    data.routing_points_counts.forEach(rpcValue => {
+                        const option = document.createElement('option');
+                        option.value = rpcValue;
+                        option.textContent = rpcValue;
+                        if (rpcValue === data.selected_routing_points_count) {
+                            option.selected = true;
+                        }
+                        rpcSelect.appendChild(option);
                     });
                 })
                 .catch(error => console.error('Error fetching POIs:', error));
@@ -171,6 +214,7 @@
         document.getElementById('release_version').addEventListener('change', updatePois);
         document.getElementById('category').addEventListener('change', updatePois);
         document.getElementById('rppa').addEventListener('change', updatePois);
+        document.getElementById('routing_points_count').addEventListener('change', updatePois); // New event listener
 
         document.getElementById('poiSearch').addEventListener('input', function() {
             const searchQuery = document.getElementById('poiSearch').value.toLowerCase();
@@ -184,9 +228,11 @@
             event.preventDefault();
             const formData = new FormData(this);
             const rppa = document.getElementById('rppa').value;
+            const routingPointsCount = document.getElementById('routing_points_count').value; // New filter
 
-            // Add the current selected_rppa value to the form data
+            // Add the current selected_rppa and routing_points_count values to the form data
             formData.append('selected_rppa', rppa);
+            formData.append('routing_points_count', routingPointsCount);
 
             fetch('/get_map', {
                 method: 'POST',

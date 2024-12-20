@@ -1,0 +1,521 @@
+2024-12-20 14:36:08,679 WARNING: * Debugger is active!
+2024-12-20 14:36:08,684 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:36:10,097 ERROR:Data file for Spain not found.
+2024-12-20 14:36:10,106 INFO:10.8.86.40 - - [20/Dec/2024 14:36:10] "[35m[1mGET /?country=Spain&release_version=All&rppa=All&category=Park+and+Recreation+Area&routing_points_count=0+RPs+Reference,+0+RPs+Provider&poi=Playa+de+Salinetas+-+Beach+-+[2,+1]+-+RPPA+%3D+1.0 HTTP/1.1[0m" 500 -
+2024-12-20 14:36:10,119 INFO:10.8.86.40 - - [20/Dec/2024 14:36:10] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-12-20 14:36:10,120 INFO:10.8.86.40 - - [20/Dec/2024 14:36:10] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-12-20 14:36:32,031 ERROR:Data file for Spain not found.
+2024-12-20 14:36:32,042 INFO:10.8.86.40 - - [20/Dec/2024 14:36:32] "[35m[1mGET /?country=Spain&release_version=All&rppa=All&category=Park+and+Recreation+Area&routing_points_count=0+RPs+Reference,+0+RPs+Provider&poi=Playa+de+Salinetas+-+Beach+-+[2,+1]+-+RPPA+%3D+1.0 HTTP/1.1[0m" 500 -
+2024-12-20 14:36:32,057 INFO:10.8.86.40 - - [20/Dec/2024 14:36:32] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:36:32,058 INFO:10.8.86.40 - - [20/Dec/2024 14:36:32] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-12-20 14:37:45,231 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 14:37:45,572 WARNING: * Debugger is active!
+2024-12-20 14:37:45,576 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:37:47,659 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:37:47,990 WARNING: * Debugger is active!
+2024-12-20 14:37:47,995 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:37:48,528 INFO:Data loaded and cached for Spain
+2024-12-20 14:37:48,528 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:37:48,529 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:37:48,543 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:37:48,544 INFO:10.8.86.40 - - [20/Dec/2024 14:37:48] "GET /?country=Spain&release_version=All&rppa=All&category=Park+and+Recreation+Area&routing_points_count=0+RPs+Reference,+0+RPs+Provider&poi=Playa+de+Salinetas+-+Beach+-+[2,+1]+-+RPPA+%3D+1.0 HTTP/1.1" 200 -
+2024-12-20 14:38:36,206 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:38:36,550 WARNING: * Debugger is active!
+2024-12-20 14:38:36,555 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:38:38,578 INFO:Data loaded and cached for Spain
+2024-12-20 14:38:38,578 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:38:38,579 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:38:38,592 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:38:38,593 INFO:10.8.86.40 - - [20/Dec/2024 14:38:38] "GET /?country=Spain&release_version=All&rppa=All&category=Park+and+Recreation+Area&routing_points_count=0+RPs+Reference,+0+RPs+Provider&poi=Playa+de+Salinetas+-+Beach+-+[2,+1]+-+RPPA+%3D+1.0 HTTP/1.1" 200 -
+2024-12-20 14:39:17,742 INFO:Loaded data from cache for Spain
+2024-12-20 14:39:17,742 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:39:17,744 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:39:17,765 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:39:17,766 INFO:10.8.86.40 - - [20/Dec/2024 14:39:17] "GET /?country=Spain&release_version=All&rppa=All&category=Park+and+Recreation+Area&routing_points_count=0+RPs+Reference,+0+RPs+Provider&poi=Playa+de+Salinetas+-+Beach+-+[2,+1]+-+RPPA+%3D+1.0 HTTP/1.1" 200 -
+2024-12-20 14:39:22,394 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 14:39:22,394 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 14:39:22,394 INFO: * Restarting with stat
+2024-12-20 14:39:22,673 WARNING: * Debugger is active!
+2024-12-20 14:39:22,678 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:39:27,630 INFO:Data loaded and cached for Spain
+2024-12-20 14:39:27,631 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:39:27,631 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:39:27,645 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:39:27,645 INFO:10.8.86.40 - - [20/Dec/2024 14:39:27] "GET / HTTP/1.1" 200 -
+2024-12-20 14:40:02,737 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 14:40:02,796 INFO: * Restarting with stat
+2024-12-20 14:41:09,480 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 14:41:09,481 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 14:41:09,481 INFO: * Restarting with stat
+2024-12-20 14:41:09,760 WARNING: * Debugger is active!
+2024-12-20 14:41:09,766 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:41:11,685 INFO:Data loaded and cached for Spain
+2024-12-20 14:41:11,686 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:11,686 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:41:11,700 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:11,737 INFO:10.8.86.40 - - [20/Dec/2024 14:41:11] "GET / HTTP/1.1" 200 -
+2024-12-20 14:41:11,763 INFO:10.8.86.40 - - [20/Dec/2024 14:41:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:41:11,964 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:41:11,964 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:11,965 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:11,985 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:11,992 INFO:10.8.86.40 - - [20/Dec/2024 14:41:11] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:41:14,573 INFO:Received /update_pois request with country=Spain, release_version=24480.000 ON, category=All, selected_rppa=All
+2024-12-20 14:41:14,573 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:14,574 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:14,576 INFO:Filtered data by release_version: 24480.000 ON
+2024-12-20 14:41:14,582 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0']...
+2024-12-20 14:41:14,584 INFO:10.8.86.40 - - [20/Dec/2024 14:41:14] "GET /update_pois?country=Spain&release_version=24480.000%20ON&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:41:16,128 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:41:16,129 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:16,130 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:16,161 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:16,169 INFO:10.8.86.40 - - [20/Dec/2024 14:41:16] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:41:17,488 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=1.0
+2024-12-20 14:41:17,488 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:17,490 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:17,490 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:17,497 INFO:Number of POIs after RPPA filtering: 8035
+2024-12-20 14:41:17,511 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa El Roquete - Beach - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa Dos Roques - Beach - [1, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:17,515 INFO:10.8.86.40 - - [20/Dec/2024 14:41:17] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=1.0 HTTP/1.1" 200 -
+2024-12-20 14:41:21,886 INFO:Received /update_pois request with country=Spain, release_version=24280.000 ON, category=All, selected_rppa=1.0
+2024-12-20 14:41:21,887 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:21,889 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:21,897 INFO:Filtered data by release_version: 24280.000 ON
+2024-12-20 14:41:21,897 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:21,900 INFO:Number of POIs after RPPA filtering: 2743
+2024-12-20 14:41:21,904 INFO:Prepared POI options: ['Pneumatics Ciutadella - Repair Facility - [1, 1] - RPPA = 1.0', 'Camping Fontfreda S.L. - Camping Ground - [1, 1] - RPPA = 1.0', 'Aparcamiento San Martin - Parking Garage - [1, 1] - RPPA = 1.0', 'Delegación del Gobierno Oficina de Información y Atención Al Ciudadano Registro de Documentos - Government Office - [1, 1] - RPPA = 1.0', 'Farmacia Blanca Manzano, en el centro de Burgos - Pharmacy - [1, 1] - RPPA = 1.0']...
+2024-12-20 14:41:21,905 INFO:10.8.86.40 - - [20/Dec/2024 14:41:21] "GET /update_pois?country=Spain&release_version=24280.000%20ON&category=All&selected_rppa=1.0 HTTP/1.1" 200 -
+2024-12-20 14:41:25,342 INFO:Received /update_pois request with country=Spain, release_version=24280.000 ON, category=Important Tourist Attraction, selected_rppa=1.0
+2024-12-20 14:41:25,342 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:25,344 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:25,351 INFO:Filtered data by release_version: 24280.000 ON
+2024-12-20 14:41:25,353 INFO:Filtered data by category: Important Tourist Attraction
+2024-12-20 14:41:25,353 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:25,354 INFO:Number of POIs after RPPA filtering: 44
+2024-12-20 14:41:25,355 INFO:Prepared POI options: ['Fuente de Las Escaleras - Important Tourist Attraction - [1, 1] - RPPA = 1.0', 'Park Guell - main entrance for tours - Important Tourist Attraction - [1, 1] - RPPA = 1.0', 'Plaça de la Verge - Important Tourist Attraction - [1, 1] - RPPA = 1.0', 'Patio de los Naranjos - Important Tourist Attraction - [1, 1] - RPPA = 1.0', 'Pazo de San Roque - Important Tourist Attraction - [1, 1] - RPPA = 1.0']...
+2024-12-20 14:41:25,355 INFO:10.8.86.40 - - [20/Dec/2024 14:41:25] "GET /update_pois?country=Spain&release_version=24280.000%20ON&category=Important%20Tourist%20Attraction&selected_rppa=1.0 HTTP/1.1" 200 -
+2024-12-20 14:41:28,664 INFO:Received /update_pois request with country=Spain, release_version=24280.000 ON, category=Beach, selected_rppa=1.0
+2024-12-20 14:41:28,664 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:28,667 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:28,676 INFO:Filtered data by release_version: 24280.000 ON
+2024-12-20 14:41:28,678 INFO:Filtered data by category: Beach
+2024-12-20 14:41:28,678 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:28,679 INFO:Number of POIs after RPPA filtering: 96
+2024-12-20 14:41:28,680 INFO:Prepared POI options: ['Playa del Fraile - Beach - [1, 1] - RPPA = 1.0', 'Praia de Bueu - Beach - [1, 1] - RPPA = 1.0', 'Playa Carabeillo - Beach - [1, 1] - RPPA = 1.0', 'Praia de Fechiño - Beach - [1, 1] - RPPA = 1.0', 'Playa San Juan - Beach - [1, 1] - RPPA = 1.0']...
+2024-12-20 14:41:28,680 INFO:10.8.86.40 - - [20/Dec/2024 14:41:28] "GET /update_pois?country=Spain&release_version=24280.000%20ON&category=Beach&selected_rppa=1.0 HTTP/1.1" 200 -
+2024-12-20 14:41:30,306 INFO:Received /get_map request with country=Spain, rppa=1.0, release_version=24280.000 ON, category=Beach, poi=Playa de San Pedro de Alcántara - Beach - [2, 1] - RPPA = 1.0
+2024-12-20 14:41:30,306 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:30,306 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:30,312 INFO:Number of POIs after RPPA filtering: 8035
+2024-12-20 14:41:30,316 INFO:Filtered data by release_version: 24280.000 ON
+2024-12-20 14:41:30,317 INFO:Filtered data by category: Beach
+2024-12-20 14:41:30,318 INFO:Name to index mapping created for POIs.
+2024-12-20 14:41:30,325 INFO:10.8.86.40 - - [20/Dec/2024 14:41:30] "[35m[1mPOST /get_map HTTP/1.1[0m" 500 -
+2024-12-20 14:41:32,050 INFO:Received /get_map request with country=Spain, rppa=1.0, release_version=24280.000 ON, category=Beach, poi=Playa de La Muralla - Beach - [1, 1] - RPPA = 1.0
+2024-12-20 14:41:32,050 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:32,050 INFO:Filtering RPPA for value: 1.0
+2024-12-20 14:41:32,056 INFO:Number of POIs after RPPA filtering: 8035
+2024-12-20 14:41:32,059 INFO:Filtered data by release_version: 24280.000 ON
+2024-12-20 14:41:32,060 INFO:Filtered data by category: Beach
+2024-12-20 14:41:32,061 INFO:Name to index mapping created for POIs.
+2024-12-20 14:41:32,067 INFO:10.8.86.40 - - [20/Dec/2024 14:41:32] "[35m[1mPOST /get_map HTTP/1.1[0m" 500 -
+2024-12-20 14:41:56,089 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:41:56,153 INFO: * Restarting with stat
+2024-12-20 14:41:56,436 WARNING: * Debugger is active!
+2024-12-20 14:41:56,441 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:41:59,432 INFO:Data loaded and cached for Spain
+2024-12-20 14:41:59,433 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:59,434 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:41:59,447 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:59,483 INFO:10.8.86.40 - - [20/Dec/2024 14:41:59] "GET / HTTP/1.1" 200 -
+2024-12-20 14:41:59,504 INFO:10.8.86.40 - - [20/Dec/2024 14:41:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:41:59,699 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:41:59,699 INFO:Loaded data from cache for Spain
+2024-12-20 14:41:59,700 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:41:59,724 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:41:59,731 INFO:10.8.86.40 - - [20/Dec/2024 14:41:59] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:42:00,794 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:42:00,794 INFO:Loaded data from cache for Spain
+2024-12-20 14:42:00,812 INFO:Name to index mapping created for POIs.
+2024-12-20 14:42:00,816 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:42:00,817 INFO:10.8.86.40 - - [20/Dec/2024 14:42:00] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:42:00,929 INFO:10.8.86.40 - - [20/Dec/2024 14:42:00] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:43:11,442 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:43:11,509 INFO: * Restarting with stat
+2024-12-20 14:43:11,821 WARNING: * Debugger is active!
+2024-12-20 14:43:11,827 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:43:13,892 INFO:Data loaded and cached for Spain
+2024-12-20 14:43:13,892 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:43:13,893 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:43:13,907 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:43:13,944 INFO:10.8.86.40 - - [20/Dec/2024 14:43:13] "GET / HTTP/1.1" 200 -
+2024-12-20 14:43:13,974 INFO:10.8.86.40 - - [20/Dec/2024 14:43:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:43:14,198 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:43:14,198 INFO:Loaded data from cache for Spain
+2024-12-20 14:43:14,199 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:43:14,220 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:43:14,226 INFO:10.8.86.40 - - [20/Dec/2024 14:43:14] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:43:15,579 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:43:15,580 INFO:Loaded data from cache for Spain
+2024-12-20 14:43:15,600 INFO:Name to index mapping created for POIs.
+2024-12-20 14:43:15,604 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:43:15,604 INFO:10.8.86.40 - - [20/Dec/2024 14:43:15] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:43:15,727 INFO:10.8.86.40 - - [20/Dec/2024 14:43:15] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:43:39,670 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:43:39,736 INFO: * Restarting with stat
+2024-12-20 14:43:40,015 WARNING: * Debugger is active!
+2024-12-20 14:43:40,021 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:43:41,356 INFO:Data loaded and cached for Spain
+2024-12-20 14:43:41,356 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:43:41,357 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:43:41,370 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:43:41,406 INFO:10.8.86.40 - - [20/Dec/2024 14:43:41] "GET / HTTP/1.1" 200 -
+2024-12-20 14:43:41,436 INFO:10.8.86.40 - - [20/Dec/2024 14:43:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:43:41,634 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:43:41,634 INFO:Loaded data from cache for Spain
+2024-12-20 14:43:41,635 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:43:41,663 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:43:41,669 INFO:10.8.86.40 - - [20/Dec/2024 14:43:41] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:43:42,816 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:43:42,816 INFO:Loaded data from cache for Spain
+2024-12-20 14:43:42,834 INFO:Name to index mapping created for POIs.
+2024-12-20 14:43:42,838 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:43:42,838 INFO:10.8.86.40 - - [20/Dec/2024 14:43:42] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:43:42,951 INFO:10.8.86.40 - - [20/Dec/2024 14:43:42] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:44:12,920 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:44:12,988 INFO: * Restarting with stat
+2024-12-20 14:44:13,275 WARNING: * Debugger is active!
+2024-12-20 14:44:13,283 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:44:15,818 INFO:Data loaded and cached for Spain
+2024-12-20 14:44:15,818 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:44:15,819 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:44:15,833 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:44:15,869 INFO:10.8.86.40 - - [20/Dec/2024 14:44:15] "GET / HTTP/1.1" 200 -
+2024-12-20 14:44:15,900 INFO:10.8.86.40 - - [20/Dec/2024 14:44:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:44:16,085 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:44:16,086 INFO:Loaded data from cache for Spain
+2024-12-20 14:44:16,086 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:44:16,110 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:44:16,117 INFO:10.8.86.40 - - [20/Dec/2024 14:44:16] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:44:18,312 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:44:18,312 INFO:Loaded data from cache for Spain
+2024-12-20 14:44:18,332 INFO:Name to index mapping created for POIs.
+2024-12-20 14:44:18,336 INFO:Map generated for POI: Plaza Teresa de Bolívar
+2024-12-20 14:44:18,337 INFO:10.8.86.40 - - [20/Dec/2024 14:44:18] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:44:18,447 INFO:10.8.86.40 - - [20/Dec/2024 14:44:18] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:45:21,142 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:45:21,207 INFO: * Restarting with stat
+2024-12-20 14:45:21,503 WARNING: * Debugger is active!
+2024-12-20 14:45:21,508 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:45:22,557 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 14:45:22,615 INFO: * Restarting with stat
+2024-12-20 14:45:22,900 WARNING: * Debugger is active!
+2024-12-20 14:45:22,905 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:45:30,082 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 14:45:30,082 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 14:45:30,082 INFO: * Restarting with stat
+2024-12-20 14:45:30,350 WARNING: * Debugger is active!
+2024-12-20 14:45:30,355 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:45:31,836 INFO:Data loaded and cached for Spain
+2024-12-20 14:45:31,837 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:45:31,838 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:45:31,851 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:45:31,888 INFO:10.8.86.40 - - [20/Dec/2024 14:45:31] "GET / HTTP/1.1" 200 -
+2024-12-20 14:45:31,900 INFO:10.8.86.40 - - [20/Dec/2024 14:45:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:45:31,927 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:45:31,927 INFO:Loaded data from cache for Spain
+2024-12-20 14:45:31,928 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:45:31,943 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:45:31,949 INFO:10.8.86.40 - - [20/Dec/2024 14:45:31] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:45:34,858 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:45:34,859 INFO:Loaded data from cache for Spain
+2024-12-20 14:45:34,878 INFO:Name to index mapping created for POIs.
+2024-12-20 14:45:34,883 INFO:Map generated for POI: Siam Park
+2024-12-20 14:45:34,884 INFO:10.8.86.40 - - [20/Dec/2024 14:45:34] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:45:34,997 INFO:10.8.86.40 - - [20/Dec/2024 14:45:34] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:46:14,626 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:46:14,690 INFO: * Restarting with stat
+2024-12-20 14:46:31,212 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 14:46:31,212 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 14:46:31,212 INFO: * Restarting with stat
+2024-12-20 14:46:31,478 WARNING: * Debugger is active!
+2024-12-20 14:46:31,483 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:46:35,253 INFO:Data loaded and cached for Spain
+2024-12-20 14:46:35,253 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:46:35,254 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:46:35,267 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:46:35,304 INFO:10.8.86.40 - - [20/Dec/2024 14:46:35] "GET / HTTP/1.1" 200 -
+2024-12-20 14:46:35,320 INFO:10.8.86.40 - - [20/Dec/2024 14:46:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:46:35,512 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:46:35,512 INFO:Loaded data from cache for Spain
+2024-12-20 14:46:35,513 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:46:35,542 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:46:35,548 INFO:10.8.86.40 - - [20/Dec/2024 14:46:35] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:46:36,891 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:46:36,891 INFO:Loaded data from cache for Spain
+2024-12-20 14:46:36,910 INFO:Name to index mapping created for POIs.
+2024-12-20 14:46:36,914 INFO:Map generated for POI: Plaza Teresa de Bolívar
+2024-12-20 14:46:36,914 INFO:10.8.86.40 - - [20/Dec/2024 14:46:36] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:46:37,027 INFO:10.8.86.40 - - [20/Dec/2024 14:46:37] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:48:02,032 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:48:02,093 INFO: * Restarting with stat
+2024-12-20 14:48:02,490 WARNING: * Debugger is active!
+2024-12-20 14:48:02,496 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:48:05,604 INFO:Data loaded and cached for Spain
+2024-12-20 14:48:05,604 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:48:05,605 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:48:05,620 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:48:05,658 INFO:10.8.86.40 - - [20/Dec/2024 14:48:05] "GET / HTTP/1.1" 200 -
+2024-12-20 14:48:05,670 INFO:10.8.86.40 - - [20/Dec/2024 14:48:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:48:05,850 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:48:05,850 INFO:Loaded data from cache for Spain
+2024-12-20 14:48:05,851 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:48:05,871 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:48:05,876 INFO:10.8.86.40 - - [20/Dec/2024 14:48:05] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:48:07,290 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:48:07,291 INFO:Loaded data from cache for Spain
+2024-12-20 14:48:07,310 INFO:Name to index mapping created for POIs.
+2024-12-20 14:48:07,314 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:48:07,314 INFO:10.8.86.40 - - [20/Dec/2024 14:48:07] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:48:07,427 INFO:10.8.86.40 - - [20/Dec/2024 14:48:07] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:48:42,647 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:48:42,717 INFO: * Restarting with stat
+2024-12-20 14:48:43,028 WARNING: * Debugger is active!
+2024-12-20 14:48:43,033 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:48:45,060 INFO:Data loaded and cached for Spain
+2024-12-20 14:48:45,060 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:48:45,061 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:48:45,074 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:48:45,111 INFO:10.8.86.40 - - [20/Dec/2024 14:48:45] "GET / HTTP/1.1" 200 -
+2024-12-20 14:48:45,139 INFO:10.8.86.40 - - [20/Dec/2024 14:48:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:48:45,332 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:48:45,332 INFO:Loaded data from cache for Spain
+2024-12-20 14:48:45,333 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:48:45,359 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:48:45,366 INFO:10.8.86.40 - - [20/Dec/2024 14:48:45] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:48:47,877 INFO:Received /update_pois request with country=Spain, release_version=24380.000 ON, category=All, selected_rppa=All
+2024-12-20 14:48:47,877 INFO:Loaded data from cache for Spain
+2024-12-20 14:48:47,879 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:48:47,885 INFO:Filtered data by release_version: 24380.000 ON
+2024-12-20 14:48:47,890 INFO:Prepared POI options: ['Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0', 'Angry Birds Activity Park Puerto Rico Gran Canaria - Amusement Park - [2, 1] - RPPA = 0.0', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0', 'Playa de Tufia - Beach - [1, 1] - RPPA = 0.0', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0']...
+2024-12-20 14:48:47,891 INFO:10.8.86.40 - - [20/Dec/2024 14:48:47] "GET /update_pois?country=Spain&release_version=24380.000%20ON&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:48:49,066 INFO:Received /get_map request with country=Spain, rppa=All, release_version=24380.000 ON, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0
+2024-12-20 14:48:49,066 INFO:Loaded data from cache for Spain
+2024-12-20 14:48:49,069 INFO:Filtered data by release_version: 24380.000 ON
+2024-12-20 14:48:49,073 INFO:Name to index mapping created for POIs.
+2024-12-20 14:48:49,081 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:48:49,082 INFO:10.8.86.40 - - [20/Dec/2024 14:48:49] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:48:49,085 INFO:10.8.86.40 - - [20/Dec/2024 14:48:49] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:49:03,667 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:49:03,732 INFO: * Restarting with stat
+2024-12-20 14:49:04,009 WARNING: * Debugger is active!
+2024-12-20 14:49:04,016 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:49:17,577 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.40:80
+2024-12-20 14:49:17,577 INFO:[33mPress CTRL+C to quit[0m
+2024-12-20 14:49:17,577 INFO: * Restarting with stat
+2024-12-20 14:49:17,843 WARNING: * Debugger is active!
+2024-12-20 14:49:17,848 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:49:23,494 INFO:Data loaded and cached for Spain
+2024-12-20 14:49:23,494 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:49:23,495 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:49:23,508 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:49:23,550 INFO:10.8.86.40 - - [20/Dec/2024 14:49:23] "GET / HTTP/1.1" 200 -
+2024-12-20 14:49:23,575 INFO:10.8.86.40 - - [20/Dec/2024 14:49:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:49:23,770 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:49:23,770 INFO:Loaded data from cache for Spain
+2024-12-20 14:49:23,771 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:49:23,791 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:49:23,796 INFO:10.8.86.40 - - [20/Dec/2024 14:49:23] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:49:25,385 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:49:25,385 INFO:Loaded data from cache for Spain
+2024-12-20 14:49:25,406 INFO:Name to index mapping created for POIs.
+2024-12-20 14:49:25,410 INFO:Map generated for POI: Siam Park
+2024-12-20 14:49:25,411 INFO:10.8.86.40 - - [20/Dec/2024 14:49:25] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:49:25,521 INFO:10.8.86.40 - - [20/Dec/2024 14:49:25] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:50:35,107 INFO:Loaded data from cache for Spain
+2024-12-20 14:50:35,108 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:50:35,111 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:50:35,132 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:50:35,160 INFO:127.0.0.1 - - [20/Dec/2024 14:50:35] "GET / HTTP/1.1" 200 -
+2024-12-20 14:50:35,166 INFO:127.0.0.1 - - [20/Dec/2024 14:50:35] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-20 14:50:35,356 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:50:35,356 INFO:Loaded data from cache for Spain
+2024-12-20 14:50:35,357 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:50:35,376 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:50:35,381 INFO:127.0.0.1 - - [20/Dec/2024 14:50:35] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:50:36,713 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:50:36,713 INFO:Loaded data from cache for Spain
+2024-12-20 14:50:36,731 INFO:Name to index mapping created for POIs.
+2024-12-20 14:50:36,735 INFO:Map generated for POI: Siam Park
+2024-12-20 14:50:36,736 INFO:127.0.0.1 - - [20/Dec/2024 14:50:36] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:50:36,849 INFO:127.0.0.1 - - [20/Dec/2024 14:50:36] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:51:09,804 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:51:09,870 INFO: * Restarting with stat
+2024-12-20 14:51:10,149 WARNING: * Debugger is active!
+2024-12-20 14:51:10,154 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:51:12,226 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:51:12,280 INFO: * Restarting with stat
+2024-12-20 14:51:12,560 WARNING: * Debugger is active!
+2024-12-20 14:51:12,565 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:51:13,195 INFO:Data loaded and cached for Spain
+2024-12-20 14:51:13,196 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:13,197 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:51:13,209 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:13,247 INFO:127.0.0.1 - - [20/Dec/2024 14:51:13] "GET / HTTP/1.1" 200 -
+2024-12-20 14:51:13,264 INFO:127.0.0.1 - - [20/Dec/2024 14:51:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:51:13,452 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:51:13,452 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:13,453 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:13,476 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:13,483 INFO:127.0.0.1 - - [20/Dec/2024 14:51:13] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:51:14,726 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:51:14,726 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:14,744 INFO:Name to index mapping created for POIs.
+2024-12-20 14:51:14,748 INFO:Map generated for POI: Aqualand Costa Adeje
+2024-12-20 14:51:14,749 INFO:127.0.0.1 - - [20/Dec/2024 14:51:14] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:51:14,870 INFO:127.0.0.1 - - [20/Dec/2024 14:51:14] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:51:25,924 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:51:25,985 INFO: * Restarting with stat
+2024-12-20 14:51:26,271 WARNING: * Debugger is active!
+2024-12-20 14:51:26,276 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:51:30,716 INFO:Data loaded and cached for Spain
+2024-12-20 14:51:30,716 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:30,717 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:51:30,730 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:30,765 INFO:127.0.0.1 - - [20/Dec/2024 14:51:30] "GET / HTTP/1.1" 200 -
+2024-12-20 14:51:30,783 INFO:127.0.0.1 - - [20/Dec/2024 14:51:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:51:30,971 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:51:30,971 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:30,972 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:30,997 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:31,002 INFO:127.0.0.1 - - [20/Dec/2024 14:51:31] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:51:32,889 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:51:32,890 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:32,905 INFO:Name to index mapping created for POIs.
+2024-12-20 14:51:32,909 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:51:32,910 INFO:127.0.0.1 - - [20/Dec/2024 14:51:32] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:51:33,031 INFO:127.0.0.1 - - [20/Dec/2024 14:51:33] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:51:44,731 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:51:44,791 INFO: * Restarting with stat
+2024-12-20 14:51:45,069 WARNING: * Debugger is active!
+2024-12-20 14:51:45,074 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:51:46,563 INFO:Data loaded and cached for Spain
+2024-12-20 14:51:46,564 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:46,564 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:51:46,577 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:46,614 INFO:127.0.0.1 - - [20/Dec/2024 14:51:46] "GET / HTTP/1.1" 200 -
+2024-12-20 14:51:46,628 INFO:127.0.0.1 - - [20/Dec/2024 14:51:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:51:46,819 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:51:46,819 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:46,820 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:51:46,847 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:51:46,853 INFO:127.0.0.1 - - [20/Dec/2024 14:51:46] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:51:47,987 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:51:47,987 INFO:Loaded data from cache for Spain
+2024-12-20 14:51:48,005 INFO:Name to index mapping created for POIs.
+2024-12-20 14:51:48,009 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:51:48,009 INFO:127.0.0.1 - - [20/Dec/2024 14:51:48] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:51:48,123 INFO:127.0.0.1 - - [20/Dec/2024 14:51:48] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:52:00,504 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:52:00,570 INFO: * Restarting with stat
+2024-12-20 14:52:00,854 WARNING: * Debugger is active!
+2024-12-20 14:52:00,859 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:52:02,112 INFO:Data loaded and cached for Spain
+2024-12-20 14:52:02,113 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:52:02,113 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:52:02,126 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:52:02,164 INFO:127.0.0.1 - - [20/Dec/2024 14:52:02] "GET / HTTP/1.1" 200 -
+2024-12-20 14:52:02,178 INFO:127.0.0.1 - - [20/Dec/2024 14:52:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:52:02,366 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:52:02,366 INFO:Loaded data from cache for Spain
+2024-12-20 14:52:02,367 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:52:02,388 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:52:02,396 INFO:127.0.0.1 - - [20/Dec/2024 14:52:02] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:52:03,528 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON
+2024-12-20 14:52:03,528 INFO:Loaded data from cache for Spain
+2024-12-20 14:52:03,546 INFO:Name to index mapping created for POIs.
+2024-12-20 14:52:03,550 INFO:Map generated for POI: Plaza Teresa de Bolívar
+2024-12-20 14:52:03,550 INFO:127.0.0.1 - - [20/Dec/2024 14:52:03] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:52:03,664 INFO:127.0.0.1 - - [20/Dec/2024 14:52:03] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:52:12,153 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:52:12,216 INFO: * Restarting with stat
+2024-12-20 14:52:12,494 WARNING: * Debugger is active!
+2024-12-20 14:52:12,500 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:54:10,552 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:54:10,608 INFO: * Restarting with stat
+2024-12-20 14:54:11,026 WARNING: * Debugger is active!
+2024-12-20 14:54:11,032 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:54:13,282 INFO:Data loaded and cached for Spain
+2024-12-20 14:54:13,283 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:54:13,283 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:54:13,296 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:54:13,333 INFO:127.0.0.1 - - [20/Dec/2024 14:54:13] "GET / HTTP/1.1" 200 -
+2024-12-20 14:54:13,362 INFO:127.0.0.1 - - [20/Dec/2024 14:54:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:54:13,550 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:54:13,550 INFO:Loaded data from cache for Spain
+2024-12-20 14:54:13,551 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:54:13,576 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:54:13,583 INFO:127.0.0.1 - - [20/Dec/2024 14:54:13] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:54:14,913 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa de la Laja - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:54:14,913 INFO:Loaded data from cache for Spain
+2024-12-20 14:54:14,932 INFO:Name to index mapping created for POIs.
+2024-12-20 14:54:14,936 INFO:Map generated for POI: Playa de la Laja
+2024-12-20 14:54:14,936 INFO:127.0.0.1 - - [20/Dec/2024 14:54:14] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:54:15,048 INFO:127.0.0.1 - - [20/Dec/2024 14:54:15] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:56:41,565 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 14:56:41,628 INFO: * Restarting with stat
+2024-12-20 14:56:41,916 WARNING: * Debugger is active!
+2024-12-20 14:56:41,922 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:57:39,417 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/app.py', reloading
+2024-12-20 14:57:39,470 INFO: * Restarting with stat
+2024-12-20 14:57:39,752 WARNING: * Debugger is active!
+2024-12-20 14:57:39,757 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:57:43,860 INFO: * Detected change in '/Users/ivan.panadero/Codes/rp-visualization-flask/utils.py', reloading
+2024-12-20 14:57:43,912 INFO: * Restarting with stat
+2024-12-20 14:57:44,199 WARNING: * Debugger is active!
+2024-12-20 14:57:44,204 INFO: * Debugger PIN: 996-351-733
+2024-12-20 14:57:55,486 INFO:Data loaded and cached for Spain
+2024-12-20 14:57:55,486 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:57:55,487 INFO:Extracted categories: ['All', 'Amusement Park', 'Beach', 'Important Tourist Attraction', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Hotel/Motel', 'Government Office', 'Airport', 'Place of Worship', 'Shopping Center', 'Parking Garage', 'School', 'Repair Facility', 'Petrol Station', 'Automotive Dealer', 'Pharmacy', 'Post Office', 'Restaurant', 'Museum', 'Market', 'Camping Ground', 'Café/Pub', 'Sports Center', 'Railway Station', 'Cash Dispenser', 'Shop', 'Bank', 'Car Wash']
+2024-12-20 14:57:55,501 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:57:55,537 INFO:127.0.0.1 - - [20/Dec/2024 14:57:55] "GET / HTTP/1.1" 200 -
+2024-12-20 14:57:55,548 INFO:127.0.0.1 - - [20/Dec/2024 14:57:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-20 14:57:55,731 INFO:Received /update_pois request with country=Spain, release_version=All, category=All, selected_rppa=All
+2024-12-20 14:57:55,731 INFO:Loaded data from cache for Spain
+2024-12-20 14:57:55,732 INFO:Extracted RPPA list: [1.0, 0.0, 0.5]
+2024-12-20 14:57:55,749 INFO:Prepared POI options: ['Siam Park - Amusement Park - [2, 1] - RPPA = 1.0 - 24480.000 ON', 'Aqualand Costa Adeje - Amusement Park - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON', 'Plaza Teresa de Bolívar - Important Tourist Attraction - [1, 1] - RPPA = 1.0 - 24480.000 ON', 'Playa de Salinetas - Beach - [2, 1] - RPPA = 1.0 - 24480.000 ON']...
+2024-12-20 14:57:55,753 INFO:127.0.0.1 - - [20/Dec/2024 14:57:55] "GET /update_pois?country=Spain&release_version=All&category=All&selected_rppa=All HTTP/1.1" 200 -
+2024-12-20 14:57:57,411 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa Punta Gorda - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:57:57,411 INFO:Loaded data from cache for Spain
+2024-12-20 14:57:57,430 INFO:Name to index mapping created for POIs.
+2024-12-20 14:57:57,434 INFO:Map generated for POI: Playa Punta Gorda
+2024-12-20 14:57:57,434 INFO:127.0.0.1 - - [20/Dec/2024 14:57:57] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:57:57,559 INFO:127.0.0.1 - - [20/Dec/2024 14:57:57] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:58:00,252 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa de las Barqueras - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:58:00,252 INFO:Loaded data from cache for Spain
+2024-12-20 14:58:00,284 INFO:Name to index mapping created for POIs.
+2024-12-20 14:58:00,289 INFO:Map generated for POI: Playa de las Barqueras
+2024-12-20 14:58:00,290 INFO:127.0.0.1 - - [20/Dec/2024 14:58:00] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:58:00,298 INFO:127.0.0.1 - - [20/Dec/2024 14:58:00] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2024-12-20 14:58:09,835 INFO:Received /get_map request with country=Spain, rppa=All, release_version=All, category=All, poi=Playa de las Barqueras - Beach - [1, 1] - RPPA = 0.0 - 24480.000 ON
+2024-12-20 14:58:09,835 INFO:Loaded data from cache for Spain
+2024-12-20 14:58:09,854 INFO:Name to index mapping created for POIs.
+2024-12-20 14:58:09,857 INFO:Map generated for POI: Playa de las Barqueras
+2024-12-20 14:58:09,858 INFO:127.0.0.1 - - [20/Dec/2024 14:58:09] "POST /get_map HTTP/1.1" 200 -
+2024-12-20 14:58:09,981 INFO:127.0.0.1 - - [20/Dec/2024 14:58:09] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -

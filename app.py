@@ -9,11 +9,14 @@ app = Flask(__name__)
 # Replace these paths with your actual parquet data files
 def load_data(country):
     if country == 'Spain':
-        return pd.read_parquet('data/data_esp')
+        df =  pd.read_parquet('data/data_esp')
     elif country == 'Netherlands':
-        return pd.read_parquet('data/data_nld')
+        df =  pd.read_parquet('data/data_nld')
     elif country == 'Great Britain':
-        return pd.read_parquet('data/data_gbr')
+        df =  pd.read_parquet('data/data_gbr')
+    non_null_query_lat = df[df["query_lat"].notnull()]
+    return non_null_query_lat
+
 
 def provider_latlon_(res):
     try:
@@ -143,7 +146,7 @@ def get_map():
     poi_characteristic_distance = row['rpav_matching']['fields']['poi_characteristic_distance']
     assignation = row['rpav_matching']['fields']['assignation']
     reference_latlon = (float(row['ref_lat']), float(row['ref_lon']))
-    provider_latlon = provider_latlon_(json.loads(row['provider_response']))
+    provider_latlon = (float(row['query_lat']), float(row['query_lon']))
     poi_name = row['name']
     poi_category = row['category_name']
 
@@ -187,4 +190,4 @@ def get_map():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)

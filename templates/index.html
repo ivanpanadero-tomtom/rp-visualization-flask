@@ -84,6 +84,27 @@
                     </select>
                 </div>
             </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="rppa" class="form-label">Select RPPA:</label>
+                    <select name="rppa" id="rppa" class="form-select">
+                        <option value="All">All</option>
+                        <option value="0-0.5">0 - 0.5</option>
+                        <option value="0.5-0.7">0.5 - 0.7</option>
+                        <option value="0.7-0.9">0.7 - 0.9</option>
+                        <option value="0.9-1">0.9 - 1</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="category" class="form-label">Select Category:</label>
+                    <select name="category" id="category" class="form-select">
+                        <option value="All">All</option>
+                        {% for category in categories %}
+                        <option value="{{ category }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
             <div class="mt-4">
                 <label for="poi" class="form-label">Select a POI:</label>
                 <div class="input-group mb-3">
@@ -91,7 +112,7 @@
                     <button type="submit" class="btn btn-primary">Show Map</button>
                 </div>
                 
-                <!-- Información adicional insertada aquí -->
+                <!-- Informational text -->
                 <div class="info-text">
                     POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
                 </div>
@@ -121,7 +142,9 @@
         function updatePois() {
             const country = document.getElementById('country').value;
             const releaseVersion = document.getElementById('release_version').value;
-            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}`;
+            const rppa = document.getElementById('rppa').value;
+            const category = document.getElementById('category').value;
+            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&rppa=${encodeURIComponent(rppa)}&category=${encodeURIComponent(category)}`;
 
             fetch(url)
                 .then(response => response.json())
@@ -156,6 +179,8 @@
         // Event listeners for country and release version changes
         document.getElementById('country').addEventListener('change', updatePois);
         document.getElementById('release_version').addEventListener('change', updatePois);
+        document.getElementById('rppa').addEventListener('change', updatePois);
+        document.getElementById('category').addEventListener('change', updatePois);
 
         // Event listener for the search input
         document.getElementById('poiSearch').addEventListener('input', filterPois);
@@ -198,6 +223,12 @@
                 `;
             })
             .catch(error => console.error('Error:', error));
+        });
+
+        // Event listener for double-clicking on POI options
+        document.getElementById('poi').addEventListener('dblclick', function() {
+            // Trigger the form submission programmatically
+            document.getElementById('myForm').dispatchEvent(new Event('submit'));
         });
     </script>
 </body>

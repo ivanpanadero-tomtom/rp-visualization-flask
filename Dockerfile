@@ -19,9 +19,9 @@ ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
 # Expose the port your app runs on
-EXPOSE 8080
+EXPOSE 80
 
 # Command to run the Flask app
 # If you use something like gunicorn, you can adapt accordingly:
 # e.g., RUN pip install gunicorn and CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]

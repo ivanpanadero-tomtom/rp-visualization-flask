@@ -15,6 +15,8 @@ def load_data(country):
     elif country == 'Great Britain':
         df =  pd.read_parquet('data/data_gbr')
     non_null_query_lat = df[df["query_lat"].notnull()]
+
+    
     return non_null_query_lat
 
 
@@ -56,27 +58,35 @@ def index():
     selected_country = countries[0]
     df_pandas = load_data(selected_country)
 
-    # Filter out rows where 'rppa' is NaN
-    df_pandas = df_pandas.dropna(subset=['rpav_matching'])
-    df_pandas = df_pandas[df_pandas['rpav_matching'].apply(
-        lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
-    ).notna()]
+    # Extract unique RPPA values
+    try:
+        rrpa_list = df_pandas['rpav_matching'].apply(
+            lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
+        ).dropna().unique().tolist()
+    except KeyError as e:
+        print(f"KeyError: {e}")
+        rrpa_list = []  # Fallback in case of error
 
+    # Convert numeric values to strings for consistent handling
+    rrpa_list = [str(rppa) for rppa in rrpa_list]
+    rrpa_list.insert(0, 'All')  # Add 'All' as the first option
+    selected_rppa = rrpa_list[0]  # Default to 'All'
+
+    # Extract unique release versions
     release_versions = df_pandas['release_version'].unique().tolist()
     release_versions.insert(0, 'All')  # Add 'All' as the first option
     selected_version = release_versions[0]  # Default to 'All'
 
-    selected_version = release_versions[0] if release_versions else None
     if selected_version != 'All':
         df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
 
-    # Filter the DataFrame if a specific version is selected
-    include_release_version = False
-    if selected_version != 'All':
-        df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
-    else:
-        include_release_version = True
+    # Extract unique categories
+    categories = df_pandas['category_name'].unique().tolist()
+    categories.insert(0, 'All')  # Add 'All' as the first option
 
+
+    # Prepare POI options
+    include_release_version = selected_version == 'All'
     pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
 
     return render_template(
@@ -85,47 +95,102 @@ def index():
         selected_country=selected_country,
         release_versions=release_versions,
         selected_version=selected_version,
+        categories=categories,
         pois=pois,
-        selected_poi=None
+        selected_poi=None,
+        rrpa_list=rrpa_list,
+        selected_rppa=selected_rppa,
     )
+
+
 
 @app.route('/update_pois', methods=['GET'])
 def update_pois():
     country = request.args.get('country')
     release_version = request.args.get('release_version')
+    category = request.args.get('category')
+    selected_rppa = request.args.get('selected_rppa')  # Get selected RPPA value
+    selected_count = request.args.get('selected_count')  # Get the selected count value
 
+    # Load data for the selected country
     df_pandas = load_data(country)
-    df_pandas = df_pandas.dropna(subset=['rpav_matching'])
-    df_pandas = df_pandas[df_pandas['rpav_matching'].apply(
-        lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
-    ).notna()]
 
+    # Extract unique RPPA values
+    try:
+        rrpa_list = df_pandas['rpav_matching'].apply(
+            lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
+        ).dropna().unique().tolist()
+    except KeyError as e:
+        print(f"KeyError: {e}")
+        rrpa_list = []  # Fallback in case of error
+
+
+    # Convert numeric values to strings for consistent handling
+    rrpa_list = [str(rppa) for rppa in rrpa_list]
+    rrpa_list.insert(0, 'All')  # Add 'All' as the first option
+
+    # Apply filters for release version and category
     if release_version and release_version != 'All':
         df_pandas = df_pandas[df_pandas['release_version'] == release_version]
 
-    # Filter the DataFrame if a specific version is selected
-    include_release_version = False
-    if release_version != 'All':
-        df_pandas = df_pandas[df_pandas['release_version'] == release_version]
-    else:
-        include_release_version = True
+    if category and category != 'All':
+        df_pandas = df_pandas[df_pandas['category_name'] == category]
 
-    pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
 
-    return jsonify({'pois': pois})
+    # Apply RPPA filter to the DataFrame (but do not modify the RPPA list)
+    if selected_rppa != 'All':
+    # Check if selected_rppa contains a split character
+        if '-' in selected_rppa:
+            rppa_range = selected_rppa.split('-')
+            min_rppa = float(rppa_range[0])
+            max_rppa = float(rppa_range[1]) if len(rppa_range) > 1 else 1.0
+        else:
+            # If it's a single value like '0.9'
+            min_rppa = max_rppa = float(selected_rppa)
+
+        # Extract 'rppa' values into a new column
+        df_pandas['rppa'] = df_pandas['rpav_matching'].apply(
+            lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
+        )
+        # Filter the DataFrame based on the extracted 'rppa'
+        df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
+
+
+    # Prepare POI options
+    pois = prepare_poi_options(df_pandas, include_release_version=(release_version == 'All'))
+
+    return jsonify({'pois': pois, 'rrpa_list': rrpa_list, 'selected_rppa': selected_rppa})
+
+
 
 @app.route('/get_map', methods=['POST'])
 def get_map():
     data = request.form
     selected_country = data.get('country')
-    selected_version = data.get('release_version')
+    selected_rppa = data.get('rppa')
+    selected_version = data.get('release_version', 'All')
+    selected_category = data.get('category', 'All')
     selected_poi = data.get('poi')
 
     df_pandas = load_data(selected_country)
-    df_pandas = df_pandas.dropna(subset=['rpav_matching'])
-    df_pandas = df_pandas[df_pandas['rpav_matching'].apply(
-        lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
-    ).notna()]
+
+    # Filter based on selected RPPA
+    if selected_rppa != 'All':
+        # Check if selected_rppa contains a split character
+        if '-' in selected_rppa:
+            rppa_range = selected_rppa.split('-')
+            min_rppa = float(rppa_range[0])
+            max_rppa = float(rppa_range[1]) if len(rppa_range) > 1 else 1.0
+        else:
+            # If it's a single value like '0.9'
+            min_rppa = max_rppa = float(selected_rppa)
+
+        # Extract 'rppa' values into a new column
+        df_pandas['rppa'] = df_pandas['rpav_matching'].apply(
+            lambda x: x['fields']['rppa'] if isinstance(x, dict) and 'fields' in x and 'rppa' in x['fields'] else None
+        )
+        # Filter the DataFrame based on the extracted 'rppa'
+        df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
 
     include_release_version = False
     if selected_version and selected_version != 'All':
@@ -178,7 +243,7 @@ def get_map():
         m.fit_bounds(bounds)
 
     map_html = m._repr_html_()
-    rppa_color = f"rgb({int(255 * (1 - rppa))}, {int(rppa * 255)}, 0)"
+    rppa_color = f"rgb({int(255 * (1 - rppa))}, {int(rppa * 200)}, 0)"
 
     return jsonify({
         'map_html': map_html,

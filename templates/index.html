@@ -30,19 +30,17 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items horizontally */
-            padding: 20px; /* Optional padding */
-            background-color: #f8f9fa; /* Optional background color */
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
         }
 
-        /* Style the map to be responsive */
         .map-iframe {
             width: 100%;
-            height: 600px; /* Adjust height as needed */
+            height: 600px;
             border: none;
         }
 
-        /* Responsive adjustments for smaller devices */
         @media (max-width: 768px) {
             .rppa-box, .legend-container {
                 width: 100%;
@@ -53,16 +51,14 @@
             }
         }
 
-        /* Style for the informational text */
         .info-text {
             font-size: 1.1rem;
             margin-bottom: 15px;
-            color: #343a40; /* Dark gray color */
+            color: #343a40;
         }
     </style>
 </head>
 <body>
-    <!-- Container for the Form -->
     <div class="container my-5">
         <h1 class="text-center mb-4">Routing Points (RP) Visualization</h1>
         <form id="myForm">
@@ -88,19 +84,16 @@
                 <div class="col-md-6">
                     <label for="rppa" class="form-label">Select RPPA:</label>
                     <select name="rppa" id="rppa" class="form-select">
-                        <option value="All">All</option>
-                        <option value="0-0.5">0 - 0.5</option>
-                        <option value="0.5-0.7">0.5 - 0.7</option>
-                        <option value="0.7-0.9">0.7 - 0.9</option>
-                        <option value="0.9-1">0.9 - 1</option>
+                        {% for rppa in rrpa_list %}
+                        <option value="{{ rppa }}" {% if rppa == selected_rppa %}selected{% endif %}>{{ rppa }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="category" class="form-label">Select Category:</label>
                     <select name="category" id="category" class="form-select">
-                        <option value="All">All</option>
                         {% for category in categories %}
-                        <option value="{{ category }}">{{ category }}</option>
+                        <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -111,12 +104,9 @@
                     <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
                     <button type="submit" class="btn btn-primary">Show Map</button>
                 </div>
-                
-                <!-- Informational text -->
                 <div class="info-text">
                     POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
                 </div>
-
                 <select name="poi" id="poi" size="10" class="form-select">
                     {% for p in pois %}
                     <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
@@ -126,38 +116,46 @@
         </form>
     </div>
 
-    <!-- Full-width Container for the Map and Legend -->
     <div class="container-fluid p-0">
         <div id="mapContainer" class="map-container">
-            <!-- The map and legend will be injected here -->
         </div>
     </div>
 
-    <!-- Integrate Bootstrap JS and dependencies from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let allPois = []; // Will store all POIs fetched from the server
+        let allPois = [];
 
-        // Update POI options when country or release_version changes
         function updatePois() {
             const country = document.getElementById('country').value;
             const releaseVersion = document.getElementById('release_version').value;
-            const rppa = document.getElementById('rppa').value;
             const category = document.getElementById('category').value;
-            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&rppa=${encodeURIComponent(rppa)}&category=${encodeURIComponent(category)}`;
+            const rppa = document.getElementById('rppa').value;
+
+            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&category=${encodeURIComponent(category)}&selected_rppa=${encodeURIComponent(rppa)}`;
 
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    // Store all the POIs in an array
+                    // Update POIs
                     allPois = data.pois;
-                    // Initially display all POIs
                     renderPois(allPois);
+
+                    // Update RPPA dropdown
+                    const rppaSelect = document.getElementById('rppa');
+                    rppaSelect.innerHTML = '';
+                    data.rrpa_list.forEach(rrpaValue => {
+                        const option = document.createElement('option');
+                        option.value = rrpaValue;
+                        option.textContent = rrpaValue;
+                        if (rrpaValue === data.selected_rppa) {
+                            option.selected = true; // Retain the selected value
+                        }
+                        rppaSelect.appendChild(option);
+                    });
                 })
                 .catch(error => console.error('Error fetching POIs:', error));
         }
 
-        // Render POIs into the select element
         function renderPois(pois) {
             const poiSelect = document.getElementById('poi');
             poiSelect.innerHTML = '';
@@ -169,65 +167,57 @@
             });
         }
 
-        // Filter POIs based on the search input
-        function filterPois() {
+        document.getElementById('country').addEventListener('change', updatePois);
+        document.getElementById('release_version').addEventListener('change', updatePois);
+        document.getElementById('category').addEventListener('change', updatePois);
+        document.getElementById('rppa').addEventListener('change', updatePois);
+
+        document.getElementById('poiSearch').addEventListener('input', function() {
             const searchQuery = document.getElementById('poiSearch').value.toLowerCase();
             const filtered = allPois.filter(p => p.toLowerCase().includes(searchQuery));
             renderPois(filtered);
-        }
-
-        // Event listeners for country and release version changes
-        document.getElementById('country').addEventListener('change', updatePois);
-        document.getElementById('release_version').addEventListener('change', updatePois);
-        document.getElementById('rppa').addEventListener('change', updatePois);
-        document.getElementById('category').addEventListener('change', updatePois);
-
-        // Event listener for the search input
-        document.getElementById('poiSearch').addEventListener('input', filterPois);
-
-        // Call updatePois() on page load to ensure allPois is populated immediately
-        document.addEventListener('DOMContentLoaded', () => {
-            updatePois();
         });
 
-        // Handle form submission via AJAX to show the map
-        document.getElementById('myForm').addEventListener('submit', function(event){
+        document.addEventListener('DOMContentLoaded', updatePois);
+
+        document.getElementById('myForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const formData = new FormData(this);
+            const rppa = document.getElementById('rppa').value;
+
+            // Add the current selected_rppa value to the form data
+            formData.append('selected_rppa', rppa);
 
             fetch('/get_map', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                const mapContainer = document.getElementById('mapContainer');
-                if (data.error) {
-                    mapContainer.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-                    return;
-                }
+                .then(response => response.json())
+                .then(data => {
+                    const mapContainer = document.getElementById('mapContainer');
+                    if (data.error) {
+                        mapContainer.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                        return;
+                    }
 
-                // Create a container to hold the RPPA box and the map
-                mapContainer.innerHTML = `
-                    <div class="map-container">
-                        <div class="rppa-box" style="background-color: ${data.rppa_color};">
-                           ${data.poi_name} - ${data.poi_category} - RPPA: ${data.rppa}
+                    mapContainer.innerHTML = `
+                        <div class="map-container">
+                            <div class="rppa-box" style="background-color: ${data.rppa_color};">
+                                ${data.poi_name} - ${data.poi_category} - RPPA: ${data.rppa}
+                            </div>
+                            <div class="map-wrapper w-100 mb-3">
+                                ${data.map_html}
+                            </div>
+                            <div class="legend-container">
+                                <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend">
+                            </div>
                         </div>
-                        <div class="map-wrapper w-100 mb-3">
-                            ${data.map_html}
-                        </div>
-                        <div class="legend-container">
-                            <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend" width="400">
-                        </div>
-                    </div>
-                `;
-            })
-            .catch(error => console.error('Error:', error));
+                    `;
+                })
+                .catch(error => console.error('Error:', error));
         });
 
-        // Event listener for double-clicking on POI options
         document.getElementById('poi').addEventListener('dblclick', function() {
-            // Trigger the form submission programmatically
             document.getElementById('myForm').dispatchEvent(new Event('submit'));
         });
     </script>

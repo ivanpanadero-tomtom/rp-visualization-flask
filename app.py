@@ -6,9 +6,12 @@ from utils import (
     prepare_poi_options,
     extract_unique_rrpa,
     extract_unique_routing_points_counts,
-    create_folium_map
+    create_folium_map,
+    filter_df
 )
 import logging
+
+
 
 app = Flask(__name__)
 
@@ -27,7 +30,105 @@ data_cache = {}
 
 @app.route('/')
 def index():
-    countries = ['Spain', 'Netherlands', 'Great Britain']
+    countries  = [
+        'Spain',                    # ESP
+        'Latvia',                   # LVA
+        'Poland',                   # POL
+        'Brazil',                   # BRA
+        'Jordan',                   # JOR
+        'France',                   # FRA
+        'Brunei Darussalam',        # BRN
+        'Uruguay',                  # URY
+        'Gibraltar',                # GIB
+        'Vatican City',             # VAT
+        'Italy',                    # ITA
+        'Ukraine',                  # UKR
+        'French Guiana',            # GUF
+        'Croatia',                  # HRV
+        'Kosovo',                   # XKS (Non-standard code)
+        'Qatar',                    # QAT
+        'Great Britain',            # GBR
+        'United Arab Emirates',     # ARE
+        'Australia',                # AUS
+        'Malta',                    # MLT
+        'Mexico',                   # MEX
+        'Belarus',                  # BLR
+        'Slovakia',                 # SVK
+        'Hungary',                  # HUN
+        'Réunion',                  # REU
+        'New Zealand',              # NZL
+        'Saint Martin (French part)',# MAF
+        'Thailand',                 # THA
+        'Norway',                   # NOR
+        'Venezuela',                # VEN
+        'Finland',                  # FIN
+        'Saudi Arabia',             # SAU
+        'Albania',                  # ALB
+        'Bahrain',                  # BHR
+        'Bosnia and Herzegovina',   # BIH
+        'Kuwait',                   # KWT
+        'Andorra',                  # AND
+        'Peru',                     # PER
+        'Netherlands',              # NLD
+        'Luxembourg',               # LUX
+        'Turkey',                   # TUR
+        'Montenegro',               # MNE
+        'Austria',                  # AUT
+        'USA',                      # USA
+        'Morocco',                  # MAR
+        'Oman',                     # OMN
+        'Vietnam',                  # VNM
+        'Liechtenstein',            # LIE
+        'Lesotho',                  # LSO
+        'South Africa',             # ZAF
+        'Israel',                   # ISR
+        'Portugal',                 # PRT
+        'Tunisia',                  # TUN
+        'San Marino',               # SMR
+        'Lithuania',                # LTU
+        'Cyprus',                   # CYP
+        'Taiwan',                   # TWN
+        'Malaysia',                 # MYS
+        'Chile',                    # CHL
+        'Macau',                    # MAC
+        'Canada',                   # CAN
+        'Colombia',                 # COL
+        'Russian Federation',       # RUS
+        'Romania',                  # ROU
+        'Argentina',                # ARG
+        'Denmark',                  # DNK
+        'Eswatini',                 # SWZ (formerly Swaziland)
+        'Kenya',                    # KEN
+        'Mayotte',                  # MYT
+        'Estonia',                  # EST
+        'Lebanon',                  # LBN
+        'Ireland',                  # IRL
+        'Sweden',                   # SWE
+        'Nigeria',                  # NGA
+        'Slovenia',                 # SVN
+        'Guadeloupe',               # GLP
+        'Martinique',               # MTQ
+        'Greece',                   # GRC
+        'Singapore',                # SGP
+        'India',                    # IND
+        'Kazakhstan',               # KAZ
+        'Hong Kong',                # HKG
+        'Belgium',                  # BEL
+        'North Macedonia',          # MKD
+        'Indonesia',                # IDN
+        'Germany',                  # DEU
+        'Algeria',                  # DZA
+        'Bulgaria',                 # BGR
+        'Monaco',                   # MCO
+        'Serbia',                   # SRB
+        'Switzerland',              # CHE
+        'Czech Republic',           # CZE
+        'Philippines',              # PHL
+        'Egypt',                    # EGY
+        'Iceland'                   # ISL
+    ]
+
+    #countries = sorted(countries)
     selected_country = countries[0]
 
     # Load data with caching
@@ -49,6 +150,8 @@ def index():
 
     # Extract unique Routing Points Counts
     routing_points_counts = extract_unique_routing_points_counts(df_pandas)
+    routing_points_counts.insert(0, 'All')
+    selected_routing_points_count = routing_points_counts[0]   
     logging.info(f"Extracted Routing Points Counts: {routing_points_counts}")
 
     # Convert numeric RPPA values to strings for consistent handling
@@ -61,14 +164,13 @@ def index():
     release_versions.insert(0, 'All')  # Add 'All' as the first option
     selected_version = release_versions[0]  # Default to 'All'
 
-    if selected_version != 'All':
-        df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
-        logging.info(f"Filtered data by release_version: {selected_version}")
-
     # Extract unique categories
     categories = df_pandas['category_name'].unique().tolist()
     categories.insert(0, 'All')  # Add 'All' as the first option
     logging.info(f"Extracted categories: {categories}")
+    print(routing_points_counts[0])
+    
+    df_pandas = filter_df(df_pandas, selected_version, categories[0], selected_rppa, selected_routing_points_count)
 
     # Prepare POI options
     include_release_version = selected_version == 'All'
@@ -87,7 +189,7 @@ def index():
         rrpa_list=rrpa_list,
         selected_rppa=selected_rppa,
         routing_points_counts=routing_points_counts,
-        selected_routing_points_count='All'  # Default to 'All'
+        selected_routing_points_count=selected_routing_points_count # Default to 'All'
     )
 
 @app.route('/update_pois', methods=['GET'])
@@ -125,44 +227,7 @@ def update_pois():
     rrpa_list = [str(rppa) for rppa in rrpa_list]
     rrpa_list.insert(0, 'All')  # Add 'All' as the first option
 
-    # Apply filters for release version and category
-    if release_version and release_version != 'All':
-        df_pandas = df_pandas[df_pandas['release_version'] == release_version]
-        logging.info(f"Filtered data by release_version: {release_version}")
-
-    if category and category != 'All':
-        df_pandas = df_pandas[df_pandas['category_name'] == category]
-        logging.info(f"Filtered data by category: {category}")
-
-    # Apply Routing Points Count filter
-    if selected_routing_points_count and selected_routing_points_count != 'All':
-        df_pandas = df_pandas[df_pandas['routing_points_count_str'] == selected_routing_points_count]
-        logging.info(f"Filtered data by routing_points_count: {selected_routing_points_count}")
-
-    # Apply RPPA filter to the DataFrame using the 'rppa' column
-    if selected_rppa and selected_rppa != 'All':
-        # Check if selected_rppa contains a split character
-        if '-' in selected_rppa:
-            rppa_range = selected_rppa.split('-')
-            try:
-                min_rppa = float(rppa_range[0])
-                max_rppa = float(rppa_range[1]) if len(rppa_range) > 1 else 1.0
-                logging.info(f"Filtering RPPA in range: {min_rppa} - {max_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA range format.")
-                return jsonify({'error': 'Invalid RPPA range format.'}), 400
-        else:
-            # If it's a single value like '0.9'
-            try:
-                min_rppa = max_rppa = float(selected_rppa)
-                logging.info(f"Filtering RPPA for value: {min_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA value.")
-                return jsonify({'error': 'Invalid RPPA value.'}), 400
-
-        # Filter the DataFrame based on the 'rppa' column
-        df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
-        logging.info(f"Number of POIs after RPPA filtering: {len(df_pandas)}")
+    df_pandas = filter_df(df_pandas, release_version, category, selected_rppa, selected_routing_points_count)
 
     # Prepare POI options
     pois = prepare_poi_options(df_pandas, include_release_version=(release_version == 'All'))
@@ -256,8 +321,8 @@ def get_map():
     reference_routing_points = row["reference_routing_points"]
     provider_routing_points = row["provider_routing_points"]
     try:
-        poi_characteristic_distance = row['rpav_matching']['fields']['poi_characteristic_distance']
-        assignation = row['rpav_matching']['fields']['assignation']
+        poi_characteristic_distance = row['poi_characteristic_distance']
+        assignation = row['assignation']
     except (KeyError, TypeError) as e:
         logging.error(f"Error extracting fields from selected POI: {e}")
         return jsonify({'error': 'Selected POI does not contain required fields.'}), 400

@@ -10,8 +10,7 @@ from utils import (
     filter_df
 )
 import logging
-
-
+import time
 
 app = Flask(__name__)
 
@@ -171,9 +170,13 @@ def index():
     print(routing_points_counts[0])
     
     df_pandas = filter_df(df_pandas, selected_version, categories[0], selected_rppa, selected_routing_points_count)
-
+    len_df_pandas = len(df_pandas)
+    size = [3, 10]
+    #df_pandas = df_pandas.iloc[i_min:i_max]
     # Prepare POI options
     include_release_version = selected_version == 'All'
+    df_pandas = df_pandas.iloc[size[0]:size[1]]
+
     pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
     logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
 
@@ -189,7 +192,8 @@ def index():
         rrpa_list=rrpa_list,
         selected_rppa=selected_rppa,
         routing_points_counts=routing_points_counts,
-        selected_routing_points_count=selected_routing_points_count # Default to 'All'
+        selected_routing_points_count=selected_routing_points_count,
+        len_df_pandas=len_df_pandas  # <- pass the length to the template
     )
 
 @app.route('/update_pois', methods=['GET'])
@@ -199,6 +203,10 @@ def update_pois():
     category = request.args.get('category')
     selected_rppa = request.args.get('selected_rppa')  # Get selected RPPA value
     selected_routing_points_count = request.args.get('routing_points_count')  # Get selected Routing Points Count
+    start_index_str = request.args.get('start_index', '0')
+    end_index_str = request.args.get('end_index', '10')
+    start_index = int(start_index_str)
+    end_index = int(end_index_str)
 
     logging.info(f"Received /update_pois request with country={country}, release_version={release_version}, category={category}, selected_rppa={selected_rppa}, routing_points_count={selected_routing_points_count}")
 
@@ -229,7 +237,17 @@ def update_pois():
 
     df_pandas = filter_df(df_pandas, release_version, category, selected_rppa, selected_routing_points_count)
 
+    end_index = min(end_index, len(df_pandas))
+    if start_index < 0:
+        start_index = 0
+    if start_index > end_index:
+        start_index = 0
+
+    size = [start_index - 1, end_index]
+
     # Prepare POI options
+    df_pandas = df_pandas.iloc[size[0]:size[1]]
+
     pois = prepare_poi_options(df_pandas, include_release_version=(release_version == 'All'))
     logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
 
@@ -243,12 +261,17 @@ def update_pois():
 
 @app.route('/get_map', methods=['POST'])
 def get_map():
+    start_time = time.time()
+
     data = request.form
     selected_country = data.get('country')
     selected_rppa = data.get('rppa')
     selected_version = data.get('release_version', 'All')
     selected_category = data.get('category', 'All')
     selected_poi = data.get('poi')
+    selected_routing_points_count = request.args.get('routing_points_count')  # Get selected Routing Points Count
+    start_index = int(data.get('start_index', '0'))
+    end_index = int(data.get('end_index', '10'))
 
     logging.info(f"Received /get_map request with country={selected_country}, rppa={selected_rppa}, release_version={selected_version}, category={selected_category}, poi={selected_poi}")
 
@@ -265,44 +288,23 @@ def get_map():
             logging.error(e)
             return jsonify({'error': str(e)}), 400
 
-    # Apply filters based on RPPA
-    if selected_rppa and selected_rppa != 'All':
-        if '-' in selected_rppa:
-            rppa_range = selected_rppa.split('-')
-            try:
-                min_rppa = float(rppa_range[0])
-                max_rppa = float(rppa_range[1]) if len(rppa_range) > 1 else 1.0
-                logging.info(f"Filtering RPPA in range: {min_rppa} - {max_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA range format.")
-                return jsonify({'error': 'Invalid RPPA range format.'}), 400
-        else:
-            try:
-                min_rppa = max_rppa = float(selected_rppa)
-                logging.info(f"Filtering RPPA for value: {min_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA value.")
-                return jsonify({'error': 'Invalid RPPA value.'}), 400
-
-        # Filter the DataFrame based on the 'rppa' column
-        df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
-        logging.info(f"Number of POIs after RPPA filtering: {len(df_pandas)}")
-
-    # Apply release version filter
-    if selected_version and selected_version != 'All':
-        df_pandas = df_pandas[df_pandas['release_version'] == selected_version]
-        include_release_version = False
-        logging.info(f"Filtered data by release_version: {selected_version}")
-    else:
-        include_release_version = True
-
-    # Apply category filter
-    if selected_category and selected_category != 'All':
-        df_pandas = df_pandas[df_pandas['category_name'] == selected_category]
-        logging.info(f"Filtered data by category: {selected_category}")
-
+    
+    df_pandas = filter_df(df_pandas, selected_version, selected_category, selected_rppa, selected_routing_points_count)
+    after_load_filter = time.time()
     # Prepare POI options
-    names_with_info = prepare_poi_options(df_pandas, include_release_version=include_release_version)
+    include_release_version = selected_version == 'All'
+
+    end_index = min(end_index, len(df_pandas))
+    if start_index < 0:
+        start_index = 0
+    if start_index > end_index:
+        start_index = 0
+
+    size = [start_index - 1, end_index]
+    df_pandas = df_pandas.iloc[size[0]:size[1]]
+    names_with_info = prepare_poi_options(df_pandas, include_release_version = include_release_version)
+
+
     name_to_index = {info: idx for idx, info in enumerate(names_with_info)}
     logging.info(f"Name to index mapping created for POIs.")
 
@@ -336,6 +338,7 @@ def get_map():
 
     poi_name = row['name']
     poi_category = row['category_name']
+    after_prepare_poi = time.time()
 
     # Create the map
     try:
@@ -357,6 +360,14 @@ def get_map():
 
     rppa_color = f"rgb({int(255 * (1 - rppa))}, {int(rppa * 200)}, 0)"
     logging.info(f"Map generated for POI: {poi_name}")
+    after_map = time.time()
+
+    total_time = time.time() - start_time
+
+    logging.info(f"Time after loading/filtering: {after_load_filter - start_time:.4f} seconds")
+    logging.info(f"Time after prepare_poi_options: {after_prepare_poi - after_load_filter:.4f} seconds")
+    logging.info(f"Time after map creation: {after_map - after_prepare_poi:.4f} seconds")
+    logging.info(f"Total time for /get_map: {total_time:.4f} seconds")
 
     return jsonify({
         'map_html': map_html,

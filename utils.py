@@ -3,6 +3,7 @@ import pandas as pd
 from geopy.distance import geodesic
 import folium
 import logging
+from flask import jsonify
 
 def load_data(country_name):
     """
@@ -92,9 +93,11 @@ def load_data(country_name):
     'Kosovo': 'data-branch/data_xks',  # Non-standard ISO code
     }
 
-
     df = pd.read_parquet(data_paths[country_name])
-    df = df.iloc[5:20000]
+
+    df['num_reference_routing_points'] = df["reference_routing_points"].apply(len)
+    df['num_provider_routing_points'] = df["provider_routing_points"].apply(len)
+    
     return df
 
 def max_distance(centroid, markers):
@@ -113,27 +116,104 @@ def calculate_bounds(lat, lon, distance_meters):
     lon_offset = distance_meters / (40008000 * (1 / 360)) * (1 / (111320 * 2))
     return [[lat - lat_offset, lon - lon_offset], [lat + lat_offset, lon + lon_offset]]
 
-def prepare_poi_options(data, include_release_version=False):
+from tabulate import tabulate
+
+def prepare_poi_options(data, size, include_release_version=False):
     """
-    Prepare Point of Interest (POI) options with additional information.
+    Prepare Point of Interest (POI) options with aligned table-like output.
     """
-    data = data.copy()  # Avoid modifying the original DataFrame
+
+    # 1. Make sure the required columns exist
+    required_cols = [
+        "name", 
+        "category_name", 
+        "rppa", 
+        "reference_routing_points", 
+        "provider_routing_points"
+    ]
+    if include_release_version:
+        required_cols.append("release_version")
+        
+    missing_cols = set(required_cols) - set(data.columns)
+    if missing_cols:
+        raise ValueError(f"Missing required columns in DataFrame: {missing_cols}")
+
+    # 2. Copy the DataFrame to avoid mutating the original
+    data = data.copy()
+
+    # 3. Compute needed columns for the numeric references
     data['num_reference_routing_points'] = data["reference_routing_points"].apply(len)
     data['num_provider_routing_points'] = data["provider_routing_points"].apply(len)
 
-    names_with_info = [
-        f"{name} - {category} - [{num_ref}, {num_provider}] - RPPA = {rppa}" +
-        (f" - {release_version}" if include_release_version else "")
-        for name, category, num_ref, num_provider, rppa, release_version in zip(
-            data["name"], 
-            data["category_name"], 
-            data["num_reference_routing_points"], 
-            data["num_provider_routing_points"], 
-            data["rppa"],
-            data["release_version"]
+    # 4. Compute the maximum string lengths for alignment
+    # (convert to str to avoid errors in case of non-string entries)
+    max_name_length = 40 #data['name'].astype(str).str.len().max()
+    max_category_length = data['category_name'].astype(str).str.len().max()
+
+    # 5. Build the output lines
+    names_with_info = []
+    for _, row in data.iterrows():
+        name = str(row['name'])  # Ensure it's a string
+        category = str(row['category_name'])
+        num_ref = row['num_reference_routing_points']
+        num_provider = row['num_provider_routing_points']
+        rppa = row['rppa']
+
+        if len(name) > max_name_length:
+            # For example, keep 27 chars + '...'
+            name = name[: (max_name_length - 3)] + '...'
+
+        line = (
+            f"{name:<{max_name_length}} - "    # Left-align within max_name_length
+            f"{category:<{max_category_length}} - "
+            f"[{num_ref}, {num_provider}] - "
+            f"RPPA = {rppa}"
         )
-    ]
-    return names_with_info
+        
+        if include_release_version:
+            release_version = row['release_version']
+            line += f" - {release_version}"
+
+        line = line.replace(" ", "\u00A0")
+
+        names_with_info.append(line)
+
+    return names_with_info[size[0]:size[1]]
+
+def prepare_poi_options(data, include_release_version=False):
+    # Precompute columns
+    data = data.copy()
+
+    # Precompute truncated name
+    max_name_length = 40
+    data['trunc_name'] = data['name'].astype(str).apply(
+        lambda x: x[:max_name_length - 3] + '...' if len(x) > max_name_length else x
+    )
+
+    # Find max lengths if you’re doing alignment (or skip alignment)
+    max_category_length = data['category_name'].astype(str).str.len().max()
+
+    # Build the lines using .apply(...) in one pass
+    def build_line(row):
+        category = str(row['category_name'])
+        line = (
+            f"{row['trunc_name']:<{max_name_length}} - "
+            f"{category:<{max_category_length}} - "
+            f"[{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - "
+            f"RPPA = {row['rppa']}"
+        )
+        if include_release_version and 'release_version' in row:
+            line += f" - {row['release_version']}"
+        return line
+
+    lines = data.apply(build_line, axis=1)
+
+    # Convert spaces to non-breaking spaces in one vectorized step
+    # .str.replace(' ', '\u00A0') is much faster than pythonic for-loop
+    lines = lines.str.replace(' ', '\u00A0', regex=False)
+    return lines.tolist()
+
+
 
 def extract_unique_rrpa(df_pandas):
     """

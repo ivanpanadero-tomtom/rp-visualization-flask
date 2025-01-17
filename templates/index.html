@@ -56,6 +56,12 @@
             margin-bottom: 15px;
             color: #343a40;
         }
+
+        .monospace-select, 
+        .monospace-select option {
+            font-family: monospace;
+            white-space: pre; /* preserve the spacing */
+        }
     </style>
 </head>
 <body>
@@ -122,20 +128,52 @@
                     <div class="info-text">
                         POI name - POI Category - [#RPs Reference, #RPs Provider] - RPPA = X:
                     </div>
-                    <select name="poi" id="poi" size="10" class="form-select">
+                    <select name="poi" id="poi" size="10" class="form-select monospace-select">
                         {% for p in pois %}
                         <option value="{{ p }}" {% if p == selected_poi %}selected{% endif %}>{{ p }}</option>
                         {% endfor %}
                     </select>
                 </div>
             </div>
+
+             <!-- Fourth Row: Start/End Index -->
+             <div class="row g-3 mt-3">
+                <div class="col-md-6">
+                    <label for="start_index" class="form-label">Start Index:</label>
+                    <input 
+                        type="number" 
+                        id="start_index" 
+                        name="start_index" 
+                        class="form-control"
+                        value="3"            
+                        min="1" 
+                        max="{{ len_df_pandas }}"
+                    >
+                </div>
+                <div class="col-md-6">
+                    <label for="end_index" class="form-label">End Index:</label>
+                    <input 
+                        type="number" 
+                        id="end_index" 
+                        name="end_index" 
+                        class="form-control"
+                        value="10"           
+                        min="1" 
+                        max="{{ len_df_pandas }}"
+                    >
+                </div>
+            </div>
         </form>
     </div>
+
+  
 
     <div class="container-fluid p-0">
         <div id="mapContainer" class="map-container">
         </div>
     </div>
+
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -147,8 +185,16 @@
             const category = document.getElementById('category').value;
             const rppa = document.getElementById('rppa').value;
             const routingPointsCount = document.getElementById('routing_points_count').value; // New filter
+            const startIndex = document.getElementById('start_index').value;
+            const endIndex = document.getElementById('end_index').value;
 
-            const url = `/update_pois?country=${encodeURIComponent(country)}&release_version=${encodeURIComponent(releaseVersion)}&category=${encodeURIComponent(category)}&selected_rppa=${encodeURIComponent(rppa)}&routing_points_count=${encodeURIComponent(routingPointsCount)}`;
+            const url = `/update_pois?country=${encodeURIComponent(country)}`
+                + `&release_version=${encodeURIComponent(releaseVersion)}`
+                + `&category=${encodeURIComponent(category)}`
+                + `&selected_rppa=${encodeURIComponent(rppa)}`
+                + `&routing_points_count=${encodeURIComponent(routingPointsCount)}`
+                + `&start_index=${encodeURIComponent(startIndex)}`
+                + `&end_index=${encodeURIComponent(endIndex)}`;
 
             fetch(url)
                 .then(response => response.json())
@@ -227,10 +273,17 @@
         document.getElementById('myForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const formData = new FormData(this);
-            const rppa = document.getElementById('rppa').value;
-            const routingPointsCount = document.getElementById('routing_points_count').value; // New filter
 
-            // Add the current selected_rppa and routing_points_count values to the form data
+            // You also need to read the DOM values for start/end indices here:
+            const startIndex = document.getElementById('start_index').value;
+            const endIndex = document.getElementById('end_index').value;
+
+            // Then append them to the form data
+            formData.append('start_index', startIndex);
+            formData.append('end_index', endIndex);
+
+            const rppa = document.getElementById('rppa').value;
+            const routingPointsCount = document.getElementById('routing_points_count').value;
             formData.append('selected_rppa', rppa);
             formData.append('routing_points_count', routingPointsCount);
 
@@ -238,30 +291,32 @@
                 method: 'POST',
                 body: formData
             })
-                .then(response => response.json())
-                .then(data => {
-                    const mapContainer = document.getElementById('mapContainer');
-                    if (data.error) {
-                        mapContainer.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
-                        return;
-                    }
+            .then(response => response.json())
+            .then(data => {
+                const mapContainer = document.getElementById('mapContainer');
+                if (data.error) {
+                    mapContainer.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                    return;
+                }
 
-                    mapContainer.innerHTML = `
-                        <div class="map-container">
-                            <div class="rppa-box" style="background-color: ${data.rppa_color};">
-                                ${data.poi_name} - ${data.poi_category} - RPPA: ${data.rppa}
-                            </div>
-                            <div class="map-wrapper w-100 mb-3">
-                                ${data.map_html}
-                            </div>
-                            <div class="legend-container">
-                                <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend">
-                            </div>
+                mapContainer.innerHTML = `
+                    <div class="map-container">
+                        <div class="rppa-box" style="background-color: ${data.rppa_color};">
+                            ${data.poi_name} - ${data.poi_category} - RPPA: ${data.rppa}
                         </div>
-                    `;
-                })
-                .catch(error => console.error('Error:', error));
+                        <div class="map-wrapper w-100 mb-3">
+                            ${data.map_html}
+                        </div>
+                        <div class="legend-container">
+                            <img src="{{ url_for('static', filename='images/legend.png') }}" alt="Legend">
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => console.error('Error:', error));
         });
+
+
 
         document.getElementById('poi').addEventListener('dblclick', function() {
             document.getElementById('myForm').dispatchEvent(new Event('submit'));

@@ -4,100 +4,25 @@ from geopy.distance import geodesic
 import folium
 import logging
 from flask import jsonify
-
+from data_info import data_paths_dict
 def load_data(country_name):
     """
     Load parquet data based on the country and extract 'rppa' into a separate column.
     """
-    data_paths = {
-    'Albania': 'data-branch/data_alb',
-    'Algeria': 'data-branch/data_dza',
-    'Andorra': 'data-branch/data_and',
-    'Argentina': 'data-branch/data_arg',
-    'Australia': 'data-branch/data_aus',
-    'Austria': 'data-branch/data_aut',
-    'Bahrain': 'data-branch/data_bhr',
-    'Belarus': 'data-branch/data_blr',
-    'Belgium': 'data-branch/data_bel',
-    'Bosnia and Herzegovina': 'data-branch/data_bih',
-    'Brazil': 'data-branch/data_bra',
-    'Brunei Darussalam': 'data-branch/data_brn',
-    'Bulgaria': 'data-branch/data_bgr',
-    'Canada': 'data-branch/data_can',
-    'Chile': 'data-branch/data_chl',
-    'Colombia': 'data-branch/data_col',
-    'Croatia': 'data-branch/data_hrv',
-    'Cyprus': 'data-branch/data_cyp',
-    'Czech Republic': 'data-branch/data_cze',
-    'Denmark': 'data-branch/data_dnk',
-    'Egypt': 'data-branch/data_egy',
-    'Eswatini': 'data-branch/data_swz',  # Formerly Swaziland
-    'Estonia': 'data-branch/data_est',
-    'Finland': 'data-branch/data_fin',
-    'France': 'data-branch/data_fra',
-    'Germany': 'data-branch/data_deu',
-    'Gibraltar': 'data-branch/data_gib',
-    'Greece': 'data-branch/data_grc',
-    'Great Britain': 'data-branch/data_gbr',
-    'Guadeloupe': 'data-branch/data_glp',
-    'Hong Kong': 'data-branch/data_hkg',
-    'Hungary': 'data-branch/data_hun',
-    'Iceland': 'data-branch/data_isl',
-    'India': 'data-branch/data_ind',
-    'Indonesia': 'data-branch/data_idn',
-    'Ireland': 'data-branch/data_irl',
-    'Israel': 'data-branch/data_isr',
-    'Italy': 'data-branch/data_ita',
-    'Kazakhstan': 'data-branch/data_kaz',
-    'Kuwait': 'data-branch/data_kwt',
-    'Latvia': 'data-branch/data_lva',
-    'Liechtenstein': 'data-branch/data_lie',
-    'Lithuania': 'data-branch/data_ltu',
-    'Luxembourg': 'data-branch/data_lux',
-    'Macau': 'data-branch/data_mac',
-    'Malta': 'data-branch/data_mlt',
-    'Martinique': 'data-branch/data_mtq',
-    'Mayotte': 'data-branch/data_myt',
-    'Mexico': 'data-branch/data_mex',
-    'Montenegro': 'data-branch/data_mne',
-    'Morocco': 'data-branch/data_mar',
-    'Netherlands': 'data-branch/data_nld',
-    'New Zealand': 'data-branch/data_nzl',
-    'North Macedonia': 'data-branch/data_mkd',
-    'Norway': 'data-branch/data_nor',
-    'Oman': 'data-branch/data_omn',
-    'Peru': 'data-branch/data_per',
-    'Philippines': 'data-branch/data_phl',
-    'Poland': 'data-branch/data_pol',
-    'Portugal': 'data-branch/data_prt',
-    'Qatar': 'data-branch/data_qat',
-    'Réunion': 'data-branch/data_reu',
-    'Russian Federation': 'data-branch/data_rus',
-    'San Marino': 'data-branch/data_smr',
-    'Serbia': 'data-branch/data_srb',
-    'Slovakia': 'data-branch/data_svk',
-    'Slovenia': 'data-branch/data_svn',
-    'South Africa': 'data-branch/data_zaf',
-    'Spain': 'data-branch/data_esp',
-    'Sweden': 'data-branch/data_swe',
-    'Switzerland': 'data-branch/data_che',
-    'Taiwan': 'data-branch/data_twn',
-    'Thailand': 'data-branch/data_tha',
-    'Turkey': 'data-branch/data_tur',
-    'Ukraine': 'data-branch/data_ukr',
-    'United Arab Emirates': 'data-branch/data_are',
-    'USA': 'data-branch/data_usa',
-    'Vatican City': 'data-branch/data_vat',
-    'Venezuela': 'data-branch/data_ven',
-    'Vietnam': 'data-branch/data_vnm',
-    'Kosovo': 'data-branch/data_xks',  # Non-standard ISO code
-    }
+    data_paths = data_paths_dict()
 
     df = pd.read_parquet(data_paths[country_name])
 
     df['num_reference_routing_points'] = df["reference_routing_points"].apply(len)
     df['num_provider_routing_points'] = df["provider_routing_points"].apply(len)
-    
+    df = df.dropna(subset=["rppa"])
+
+    df = df.reset_index(drop=True)    # ensure a clean 0..n numeric index
+    df['poi_id'] = df.index          # use the row index as unique ID
+    # Log the assignment for verification
+    logging.info(f"POI ID column type: {df['poi_id'].dtype}")
+    logging.info(f"First few POI IDs:\n{df[['poi_id', 'name']].head()}")
+
     return df
 
 def max_distance(centroid, markers):
@@ -118,102 +43,38 @@ def calculate_bounds(lat, lon, distance_meters):
 
 from tabulate import tabulate
 
-def prepare_poi_options(data, size, include_release_version=False):
-    """
-    Prepare Point of Interest (POI) options with aligned table-like output.
-    """
-
-    # 1. Make sure the required columns exist
-    required_cols = [
-        "name", 
-        "category_name", 
-        "rppa", 
-        "reference_routing_points", 
-        "provider_routing_points"
-    ]
-    if include_release_version:
-        required_cols.append("release_version")
-        
-    missing_cols = set(required_cols) - set(data.columns)
-    if missing_cols:
-        raise ValueError(f"Missing required columns in DataFrame: {missing_cols}")
-
-    # 2. Copy the DataFrame to avoid mutating the original
-    data = data.copy()
-
-    # 3. Compute needed columns for the numeric references
-    data['num_reference_routing_points'] = data["reference_routing_points"].apply(len)
-    data['num_provider_routing_points'] = data["provider_routing_points"].apply(len)
-
-    # 4. Compute the maximum string lengths for alignment
-    # (convert to str to avoid errors in case of non-string entries)
-    max_name_length = 40 #data['name'].astype(str).str.len().max()
-    max_category_length = data['category_name'].astype(str).str.len().max()
-
-    # 5. Build the output lines
-    names_with_info = []
-    for _, row in data.iterrows():
-        name = str(row['name'])  # Ensure it's a string
-        category = str(row['category_name'])
-        num_ref = row['num_reference_routing_points']
-        num_provider = row['num_provider_routing_points']
-        rppa = row['rppa']
-
-        if len(name) > max_name_length:
-            # For example, keep 27 chars + '...'
-            name = name[: (max_name_length - 3)] + '...'
-
-        line = (
-            f"{name:<{max_name_length}} - "    # Left-align within max_name_length
-            f"{category:<{max_category_length}} - "
-            f"[{num_ref}, {num_provider}] - "
-            f"RPPA = {rppa}"
-        )
-        
-        if include_release_version:
-            release_version = row['release_version']
-            line += f" - {release_version}"
-
-        line = line.replace(" ", "\u00A0")
-
-        names_with_info.append(line)
-
-    return names_with_info[size[0]:size[1]]
-
 def prepare_poi_options(data, include_release_version=False):
-    # Precompute columns
     data = data.copy()
 
-    # Precompute truncated name
-    max_name_length = 40
+    # 1) Precompute truncated name
+    max_name_length = min(40, data['name'].str.len().max())
     data['trunc_name'] = data['name'].astype(str).apply(
         lambda x: x[:max_name_length - 3] + '...' if len(x) > max_name_length else x
     )
 
-    # Find max lengths if you’re doing alignment (or skip alignment)
+    # 2) Optionally compute max_category_length for alignment
     max_category_length = data['category_name'].astype(str).str.len().max()
 
-    # Build the lines using .apply(...) in one pass
-    def build_line(row):
-        category = str(row['category_name'])
-        line = (
-            f"{row['trunc_name']:<{max_name_length}} - "
-            f"{category:<{max_category_length}} - "
-            f"[{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - "
-            f"RPPA = {row['rppa']}"
-        )
+    # 3) Build the line for each row
+    def build_label(row):
+        label = f"{row['trunc_name']:<{max_name_length}} - {row['category_name']:<{max_category_length}} - [{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - RPPA = {row['rppa']}"
         if include_release_version and 'release_version' in row:
-            line += f" - {row['release_version']}"
-        return line
+            label += f" - {row['release_version']}"
+        return label.replace(' ', '\u00A0')  # Replace spaces with non-breaking spaces
 
-    lines = data.apply(build_line, axis=1)
+    # 4) Build a list of {id, label} dictionaries
+    pois = []
+    for _, row in data.iterrows():
+        label = build_label(row)
+        pois.append({
+            'id': row['poi_id'],   # Unique ID
+            'label': label
+        })
 
-    # Convert spaces to non-breaking spaces in one vectorized step
-    # .str.replace(' ', '\u00A0') is much faster than pythonic for-loop
-    lines = lines.str.replace(' ', '\u00A0', regex=False)
-    return lines.tolist()
+    # 5) Remove the non-breaking spaces replacement
+    # lines = lines.str.replace(' ', '\u00A0', regex=False)  # <-- Remove or comment out this line
 
-
+    return pois  # Return list of dictionaries instead of list of strings
 
 def extract_unique_rrpa(df_pandas):
     """

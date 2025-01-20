@@ -10,9 +10,14 @@ from utils import (
     filter_df
 )
 import logging
-import time
+from data_info import country_list
+import re
 
 app = Flask(__name__)
+
+# Constants for pagination
+DEFAULT_START_INDEX = 0
+DEFAULT_END_INDEX = 10
 
 # Set up logging
 logging.basicConfig(
@@ -27,355 +32,233 @@ logging.basicConfig(
 # Simple in-memory cache for loaded data
 data_cache = {}
 
+def get_cached_data(country):
+    """
+    Retrieve data from cache or load it if not present.
+    """
+    if country in data_cache:
+        logging.info(f"Loaded data from cache for {country}")
+        return data_cache[country]
+    try:
+        df = load_data(country)
+        data_cache[country] = df
+        logging.info(f"Data loaded and cached for {country}")
+        return df
+    except (ValueError, FileNotFoundError) as e:
+        logging.error(e)
+        raise e
+
+def extract_filter_options(df, selected_version, selected_category, selected_rppa, selected_routing_points_count):
+    """
+    Extract and prepare filter options from the dataframe.
+    """
+    rrpa_list = ['All'] + [str(rppa) for rppa in extract_unique_rrpa(df)]
+    routing_points_counts = ['All'] + extract_unique_routing_points_counts(df)
+    release_versions = ['All'] + df['release_version'].unique().tolist()
+    categories = ['All'] + df['category_name'].unique().tolist()
+
+    logging.info(f"Extracted RPPA list: {rrpa_list}")
+    logging.info(f"Extracted Routing Points Counts: {routing_points_counts}")
+    logging.info(f"Extracted categories: {categories}")
+
+    return {
+        'rrpa_list': rrpa_list,
+        'routing_points_counts': routing_points_counts,
+        'release_versions': release_versions,
+        'categories': categories
+    }
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    """
+    Global error handler.
+    """
+    logging.error(f"Unhandled exception: {e}")
+    return render_template('error.html', message=str(e)), 500
+
 @app.route('/')
 def index():
-    countries  = [
-        'Spain',                    # ESP
-        'Latvia',                   # LVA
-        'Poland',                   # POL
-        'Brazil',                   # BRA
-        'Jordan',                   # JOR
-        'France',                   # FRA
-        'Brunei Darussalam',        # BRN
-        'Uruguay',                  # URY
-        'Gibraltar',                # GIB
-        'Vatican City',             # VAT
-        'Italy',                    # ITA
-        'Ukraine',                  # UKR
-        'French Guiana',            # GUF
-        'Croatia',                  # HRV
-        'Kosovo',                   # XKS (Non-standard code)
-        'Qatar',                    # QAT
-        'Great Britain',            # GBR
-        'United Arab Emirates',     # ARE
-        'Australia',                # AUS
-        'Malta',                    # MLT
-        'Mexico',                   # MEX
-        'Belarus',                  # BLR
-        'Slovakia',                 # SVK
-        'Hungary',                  # HUN
-        'Réunion',                  # REU
-        'New Zealand',              # NZL
-        'Saint Martin (French part)',# MAF
-        'Thailand',                 # THA
-        'Norway',                   # NOR
-        'Venezuela',                # VEN
-        'Finland',                  # FIN
-        'Saudi Arabia',             # SAU
-        'Albania',                  # ALB
-        'Bahrain',                  # BHR
-        'Bosnia and Herzegovina',   # BIH
-        'Kuwait',                   # KWT
-        'Andorra',                  # AND
-        'Peru',                     # PER
-        'Netherlands',              # NLD
-        'Luxembourg',               # LUX
-        'Turkey',                   # TUR
-        'Montenegro',               # MNE
-        'Austria',                  # AUT
-        'USA',                      # USA
-        'Morocco',                  # MAR
-        'Oman',                     # OMN
-        'Vietnam',                  # VNM
-        'Liechtenstein',            # LIE
-        'Lesotho',                  # LSO
-        'South Africa',             # ZAF
-        'Israel',                   # ISR
-        'Portugal',                 # PRT
-        'Tunisia',                  # TUN
-        'San Marino',               # SMR
-        'Lithuania',                # LTU
-        'Cyprus',                   # CYP
-        'Taiwan',                   # TWN
-        'Malaysia',                 # MYS
-        'Chile',                    # CHL
-        'Macau',                    # MAC
-        'Canada',                   # CAN
-        'Colombia',                 # COL
-        'Russian Federation',       # RUS
-        'Romania',                  # ROU
-        'Argentina',                # ARG
-        'Denmark',                  # DNK
-        'Eswatini',                 # SWZ (formerly Swaziland)
-        'Kenya',                    # KEN
-        'Mayotte',                  # MYT
-        'Estonia',                  # EST
-        'Lebanon',                  # LBN
-        'Ireland',                  # IRL
-        'Sweden',                   # SWE
-        'Nigeria',                  # NGA
-        'Slovenia',                 # SVN
-        'Guadeloupe',               # GLP
-        'Martinique',               # MTQ
-        'Greece',                   # GRC
-        'Singapore',                # SGP
-        'India',                    # IND
-        'Kazakhstan',               # KAZ
-        'Hong Kong',                # HKG
-        'Belgium',                  # BEL
-        'North Macedonia',          # MKD
-        'Indonesia',                # IDN
-        'Germany',                  # DEU
-        'Algeria',                  # DZA
-        'Bulgaria',                 # BGR
-        'Monaco',                   # MCO
-        'Serbia',                   # SRB
-        'Switzerland',              # CHE
-        'Czech Republic',           # CZE
-        'Philippines',              # PHL
-        'Egypt',                    # EGY
-        'Iceland'                   # ISL
-    ]
+    try:
+        countries = sorted(country_list())
+        selected_country = countries[0]
 
-    #countries = sorted(countries)
-    selected_country = countries[0]
+        df = get_cached_data(selected_country)
 
-    # Load data with caching
-    if selected_country in data_cache:
-        df_pandas = data_cache[selected_country]
-        logging.info(f"Loaded data from cache for {selected_country}")
-    else:
-        try:
-            df_pandas = load_data(selected_country)
-            data_cache[selected_country] = df_pandas
-            logging.info(f"Data loaded and cached for {selected_country}")
-        except (ValueError, FileNotFoundError) as e:
-            logging.error(e)
-            return render_template('error.html', message=str(e)), 400
+        filter_options = extract_filter_options(df, 'All', 'All', 'All', 'All')
 
-    # Extract unique RPPA values
-    rrpa_list = extract_unique_rrpa(df_pandas)
-    logging.info(f"Extracted RPPA list: {rrpa_list}")
+        # Apply default filters
+        filtered_df = filter_df(
+            df,
+            release_version='All',
+            category='All',
+            selected_rppa='All',
+            selected_routing_points_count='All'
+        )
 
-    # Extract unique Routing Points Counts
-    routing_points_counts = extract_unique_routing_points_counts(df_pandas)
-    routing_points_counts.insert(0, 'All')
-    selected_routing_points_count = routing_points_counts[0]   
-    logging.info(f"Extracted Routing Points Counts: {routing_points_counts}")
+        len_df = len(filtered_df)
+        paginated_df = filtered_df.iloc[DEFAULT_START_INDEX:DEFAULT_END_INDEX]
 
-    # Convert numeric RPPA values to strings for consistent handling
-    rrpa_list = [str(rppa) for rppa in rrpa_list]
-    rrpa_list.insert(0, 'All')  # Add 'All' as the first option
-    selected_rppa = rrpa_list[0]  # Default to 'All'
+        pois = prepare_poi_options(paginated_df, include_release_version=True)
+        logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
 
-    # Extract unique release versions
-    release_versions = df_pandas['release_version'].unique().tolist()
-    release_versions.insert(0, 'All')  # Add 'All' as the first option
-    selected_version = release_versions[0]  # Default to 'All'
-
-    # Extract unique categories
-    categories = df_pandas['category_name'].unique().tolist()
-    categories.insert(0, 'All')  # Add 'All' as the first option
-    logging.info(f"Extracted categories: {categories}")
-    print(routing_points_counts[0])
-    
-    df_pandas = filter_df(df_pandas, selected_version, categories[0], selected_rppa, selected_routing_points_count)
-    len_df_pandas = len(df_pandas)
-    size = [3, 10]
-    #df_pandas = df_pandas.iloc[i_min:i_max]
-    # Prepare POI options
-    include_release_version = selected_version == 'All'
-    df_pandas = df_pandas.iloc[size[0]:size[1]]
-
-    pois = prepare_poi_options(df_pandas, include_release_version=include_release_version)
-    logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
-
-    return render_template(
-        'index.html',
-        countries=countries,
-        selected_country=selected_country,
-        release_versions=release_versions,
-        selected_version=selected_version,
-        categories=categories,
-        pois=pois,
-        selected_poi=None,
-        rrpa_list=rrpa_list,
-        selected_rppa=selected_rppa,
-        routing_points_counts=routing_points_counts,
-        selected_routing_points_count=selected_routing_points_count,
-        len_df_pandas=len_df_pandas  # <- pass the length to the template
-    )
+        return render_template(
+            'index.html',
+            countries=countries,
+            selected_country=selected_country,
+            release_versions=filter_options['release_versions'],
+            selected_version='All',
+            categories=filter_options['categories'],
+            pois=pois,
+            selected_poi=None,
+            rrpa_list=filter_options['rrpa_list'],
+            selected_rppa='All',
+            routing_points_counts=filter_options['routing_points_counts'],
+            selected_routing_points_count='All',
+            len_df_pandas=len_df
+        )
+    except Exception as e:
+        return render_template('error.html', message=str(e)), 500
 
 @app.route('/update_pois', methods=['GET'])
 def update_pois():
-    country = request.args.get('country')
-    release_version = request.args.get('release_version')
-    category = request.args.get('category')
-    selected_rppa = request.args.get('selected_rppa')  # Get selected RPPA value
-    selected_routing_points_count = request.args.get('routing_points_count')  # Get selected Routing Points Count
-    start_index_str = request.args.get('start_index', '0')
-    end_index_str = request.args.get('end_index', '10')
-    start_index = int(start_index_str)
-    end_index = int(end_index_str)
+    try:
+        # Retrieve query parameters with defaults
+        country = request.args.get('country')
+        release_version = request.args.get('release_version', 'All')
+        category = request.args.get('category', 'All')
+        selected_rppa = request.args.get('selected_rppa', 'All')
+        selected_routing_points_count = request.args.get('routing_points_count', 'All')
+        start_index = int(request.args.get('start_index', DEFAULT_START_INDEX))
+        end_index = int(request.args.get('end_index', DEFAULT_END_INDEX))
+        search_query = request.args.get('search', '')
 
-    logging.info(f"Received /update_pois request with country={country}, release_version={release_version}, category={category}, selected_rppa={selected_rppa}, routing_points_count={selected_routing_points_count}")
+        logging.info(
+            f"Received /update_pois request with country={country}, release_version={release_version}, "
+            f"category={category}, selected_rppa={selected_rppa}, routing_points_count={selected_routing_points_count}, "
+            f"start_index={start_index}, end_index={end_index}, search_query='{search_query}'"
+        )
 
-    # Load data with caching
-    if country in data_cache:
-        df_pandas = data_cache[country]
-        logging.info(f"Loaded data from cache for {country}")
-    else:
-        try:
-            df_pandas = load_data(country)
-            data_cache[country] = df_pandas
-            logging.info(f"Data loaded and cached for {country}")
-        except (ValueError, FileNotFoundError) as e:
-            logging.error(e)
-            return jsonify({'error': str(e)}), 400
+        df = get_cached_data(country)
 
-    # Extract unique RPPA values
-    rrpa_list = extract_unique_rrpa(df_pandas)
-    logging.info(f"Extracted RPPA list: {rrpa_list}")
+        filter_options = extract_filter_options(df, release_version, category, selected_rppa, selected_routing_points_count)
 
-    # Extract unique Routing Points Counts
-    routing_points_counts = extract_unique_routing_points_counts(df_pandas)
-    logging.info(f"Extracted Routing Points Counts: {routing_points_counts}")
+        # Apply filters
+        filtered_df = filter_df(df, release_version, category, selected_rppa, selected_routing_points_count)
 
-    # Convert numeric RPPA values to strings for consistent handling
-    rrpa_list = [str(rppa) for rppa in rrpa_list]
-    rrpa_list.insert(0, 'All')  # Add 'All' as the first option
+        # Apply search if provided
+        if search_query:
+            filtered_df = filtered_df[
+                filtered_df['name'].str.contains(re.escape(search_query), case=False, na=False)
+            ]
+            logging.info(f"Applied search filter with query: '{search_query}'")
 
-    df_pandas = filter_df(df_pandas, release_version, category, selected_rppa, selected_routing_points_count)
+        # Apply pagination
+        total_length = len(filtered_df)
+        end_index = min(end_index, total_length)
+        start_index = max(start_index, 0)
+        if start_index > end_index:
+            start_index = 0
+        paginated_df = filtered_df.iloc[start_index:end_index]
 
-    end_index = min(end_index, len(df_pandas))
-    if start_index < 0:
-        start_index = 0
-    if start_index > end_index:
-        start_index = 0
+        pois = prepare_poi_options(paginated_df, include_release_version=(release_version == 'All'))
+        logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
 
-    size = [start_index - 1, end_index]
-
-    # Prepare POI options
-    df_pandas = df_pandas.iloc[size[0]:size[1]]
-
-    pois = prepare_poi_options(df_pandas, include_release_version=(release_version == 'All'))
-    logging.info(f"Prepared POI options: {pois[:5]}...")  # Log first 5 for brevity
-
-    return jsonify({
-        'pois': pois,
-        'rrpa_list': rrpa_list,
-        'selected_rppa': selected_rppa,
-        'routing_points_counts': routing_points_counts,
-        'selected_routing_points_count': selected_routing_points_count
-    })
+        return jsonify({
+            'pois': pois,
+            'rrpa_list': filter_options['rrpa_list'],
+            'selected_rppa': selected_rppa,
+            'routing_points_counts': filter_options['routing_points_counts'],
+            'selected_routing_points_count': selected_routing_points_count,
+            'total_length': total_length
+        })
+    except Exception as e:
+        logging.error(f"Error in /update_pois: {e}")
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/get_map', methods=['POST'])
 def get_map():
-    start_time = time.time()
-
-    data = request.form
-    selected_country = data.get('country')
-    selected_rppa = data.get('rppa')
-    selected_version = data.get('release_version', 'All')
-    selected_category = data.get('category', 'All')
-    selected_poi = data.get('poi')
-    selected_routing_points_count = request.args.get('routing_points_count')  # Get selected Routing Points Count
-    start_index = int(data.get('start_index', '0'))
-    end_index = int(data.get('end_index', '10'))
-
-    logging.info(f"Received /get_map request with country={selected_country}, rppa={selected_rppa}, release_version={selected_version}, category={selected_category}, poi={selected_poi}")
-
-    # Load data with caching
-    if selected_country in data_cache:
-        df_pandas = data_cache[selected_country]
-        logging.info(f"Loaded data from cache for {selected_country}")
-    else:
-        try:
-            df_pandas = load_data(selected_country)
-            data_cache[selected_country] = df_pandas
-            logging.info(f"Data loaded and cached for {selected_country}")
-        except (ValueError, FileNotFoundError) as e:
-            logging.error(e)
-            return jsonify({'error': str(e)}), 400
-
-    
-    df_pandas = filter_df(df_pandas, selected_version, selected_category, selected_rppa, selected_routing_points_count)
-    after_load_filter = time.time()
-    # Prepare POI options
-    include_release_version = selected_version == 'All'
-
-    end_index = min(end_index, len(df_pandas))
-    if start_index < 0:
-        start_index = 0
-    if start_index > end_index:
-        start_index = 0
-
-    size = [start_index - 1, end_index]
-    df_pandas = df_pandas.iloc[size[0]:size[1]]
-    names_with_info = prepare_poi_options(df_pandas, include_release_version = include_release_version)
-
-
-    name_to_index = {info: idx for idx, info in enumerate(names_with_info)}
-    logging.info(f"Name to index mapping created for POIs.")
-
-    if selected_poi not in name_to_index:
-        logging.error(f"POI not found: {selected_poi}")
-        return jsonify({'error': 'POI not found'}), 400
-
-    # Retrieve the selected POI row
-    row = df_pandas.iloc[name_to_index[selected_poi]]
     try:
-        rppa = row['rppa']
-    except KeyError as e:
-        logging.error(f"Error extracting 'rppa' from selected POI: {e}")
-        return jsonify({'error': 'Selected POI does not contain valid RPPA information.'}), 400
+        data = request.form
+        selected_country = data.get('country')
+        selected_rppa = data.get('rppa', 'All')
+        selected_version = data.get('release_version', 'All')
+        selected_category = data.get('category', 'All')
+        selected_poi_id = data.get('poi')
+        selected_routing_points_count = data.get('routing_points_count', 'All')
+        search_query = data.get('search', '')
 
-    reference_routing_points = row["reference_routing_points"]
-    provider_routing_points = row["provider_routing_points"]
-    try:
-        poi_characteristic_distance = row['poi_characteristic_distance']
-        assignation = row['assignation']
-    except (KeyError, TypeError) as e:
-        logging.error(f"Error extracting fields from selected POI: {e}")
-        return jsonify({'error': 'Selected POI does not contain required fields.'}), 400
-
-    try:
-        reference_latlon = (float(row['ref_lat']), float(row['ref_lon']))
-        provider_latlon = (float(row['query_lat']), float(row['query_lon']))
-    except (ValueError, TypeError) as e:
-        logging.error(f"Error extracting lat/lon from selected POI: {e}")
-        return jsonify({'error': 'Selected POI has invalid latitude or longitude.'}), 400
-
-    poi_name = row['name']
-    poi_category = row['category_name']
-    after_prepare_poi = time.time()
-
-    # Create the map
-    try:
-        m = create_folium_map(
-            reference_latlon=reference_latlon,
-            provider_latlon=provider_latlon,
-            provider_routing_points=provider_routing_points,
-            reference_routing_points=reference_routing_points,
-            poi_characteristic_distance=poi_characteristic_distance,
-            assignation=assignation,
-            rppa=rppa
+        logging.info(
+            f"Received /get_map request with country={selected_country}, rppa={selected_rppa}, "
+            f"release_version={selected_version}, category={selected_category}, poi_id={selected_poi_id}, "
+            f"routing_points_count={selected_routing_points_count}, search_query='{search_query}'"
         )
+
+        df = get_cached_data(selected_country)
+        logging.info(f"First rows of the loaded DataFrame:\n{df.head()}")
+        logging.info(f"LEN:\n{len(df)}")
+
+        selected_poi_id = int(selected_poi_id)
+        # Find the POI by unique ID
+        # Find the POI by unique ID
+        matching_rows = df[df['poi_id'] == selected_poi_id]
+        if matching_rows.empty:
+            logging.error(f"No POI found with id: {selected_poi_id}")
+            return jsonify({'error': 'POI not found'}), 404
+
+        row = matching_rows.iloc[0]
+
+        # Extract necessary fields with error handling
+        try:
+            rppa = row['rppa']
+            reference_routing_points = row["reference_routing_points"]
+            provider_routing_points = row["provider_routing_points"]
+            poi_characteristic_distance = row['poi_characteristic_distance']
+            assignation = row['assignation']
+            reference_latlon = (float(row['ref_lat']), float(row['ref_lon']))
+            provider_latlon = (float(row['query_lat']), float(row['query_lon']))
+            poi_name = row['name']
+            poi_category = row['category_name']
+        except (KeyError, TypeError, ValueError) as e:
+            logging.error(f"Error extracting fields from POI: {e}")
+            return jsonify({'error': 'Selected POI does not contain required fields.'}), 400
+
+        # Create the map
+        try:
+            m = create_folium_map(
+                reference_latlon=reference_latlon,
+                provider_latlon=provider_latlon,
+                provider_routing_points=provider_routing_points,
+                reference_routing_points=reference_routing_points,
+                poi_characteristic_distance=poi_characteristic_distance,
+                assignation=assignation,
+                rppa=rppa
+            )
+        except Exception as e:
+            logging.error(f"Failed to create map: {e}")
+            return jsonify({'error': 'Failed to create map.'}), 500
+
+        # Convert the Folium map to HTML
+        map_html = m._repr_html_()
+
+        # Generate color based on RPPA
+        try:
+            rppa_float = float(rppa)
+            rppa_color = f"rgb({int(255 * (1 - rppa_float))}, {int(rppa_float * 200)}, 0)"
+        except ValueError:
+            rppa_color = "rgb(0, 0, 0)"  # Default color if conversion fails
+
+        logging.info(f"Map generated for POI: {poi_name}")
+
+        return jsonify({
+            'map_html': map_html,
+            'rppa': rppa,
+            'rppa_color': rppa_color,
+            'poi_name': poi_name,
+            'poi_category': poi_category
+        })
     except Exception as e:
-        logging.error(f"Failed to create map: {e}")
-        return jsonify({'error': 'Failed to create map.'}), 500
-
-    # Convert the Folium map to HTML
-    map_html = m._repr_html_()
-
-    rppa_color = f"rgb({int(255 * (1 - rppa))}, {int(rppa * 200)}, 0)"
-    logging.info(f"Map generated for POI: {poi_name}")
-    after_map = time.time()
-
-    total_time = time.time() - start_time
-
-    logging.info(f"Time after loading/filtering: {after_load_filter - start_time:.4f} seconds")
-    logging.info(f"Time after prepare_poi_options: {after_prepare_poi - after_load_filter:.4f} seconds")
-    logging.info(f"Time after map creation: {after_map - after_prepare_poi:.4f} seconds")
-    logging.info(f"Total time for /get_map: {total_time:.4f} seconds")
-
-    return jsonify({
-        'map_html': map_html,
-        'rppa': rppa,
-        'rppa_color': rppa_color,
-        'poi_name': poi_name,
-        'poi_category': poi_category
-    })
+        logging.error(f"Error in /get_map: {e}")
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=False)  # Ensure debug=False in production

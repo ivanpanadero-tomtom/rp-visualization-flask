@@ -1,6 +1,7 @@
 # utils.py
 import pandas as pd
 from geopy.distance import geodesic
+from folium import Element
 import folium
 import logging
 from flask import jsonify
@@ -16,7 +17,11 @@ def load_data(country_name):
     df['num_reference_routing_points'] = df["reference_routing_points"].apply(len)
     df['num_provider_routing_points'] = df["provider_routing_points"].apply(len)
     df = df.dropna(subset=["rppa"])
-
+    df['routing_points_count_str'] = (
+        df['routing_points_count_str']
+        .str.replace('Reference', 'Google', case=False)
+        .str.replace('Provider', 'Orbis', case=False)
+)   
     df = df.reset_index(drop=True)    # ensure a clean 0..n numeric index
     df['poi_id'] = df.index          # use the row index as unique ID
     # Log the assignment for verification
@@ -186,6 +191,35 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
         # Calculate and set map bounds
         bounds = calculate_bounds(reference_latlon[0], reference_latlon[1], 1.5 * max_distance(reference_latlon, markers))
         m.fit_bounds(bounds)
+
+             # Create the top-left box with reference POI details
+        reference_lat, reference_lon = reference_latlon
+        icon_color = 'black'
+        icon_name = 'info-sign'  # Update based on actual icon used
+
+        # HTML template for the info box
+        info_html = f"""
+        <div style="
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            padding: 10px;
+            background-color: white;
+            border: 2px solid grey;
+            border-radius: 5px;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            z-index: 9999;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        ">
+            <h4>Google POI:</h4>
+            <p>({reference_lat:.6f}, {reference_lon:.6f})</p>
+        </div>
+        """
+
+        # Add the HTML to the map
+        m.get_root().html.add_child(Element(info_html))
 
         return m
     except Exception as e:

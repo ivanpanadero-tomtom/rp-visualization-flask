@@ -15809,3 +15809,572 @@ TypeError: unhashable type: 'dict'
 2025-01-20 16:37:33,605 INFO:Map generated for POI: Plazhi i Golemit
 2025-01-20 16:37:33,605 INFO:192.168.1.30 - - [20/Jan/2025 16:37:33] "POST /get_map HTTP/1.1" 200 -
 2025-01-20 16:37:33,614 INFO:192.168.1.30 - - [20/Jan/2025 16:37:33] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:09:42,884 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:09:42,884 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:09:44,796 INFO:POI ID column type: int64
+2025-01-20 18:09:44,798 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:09:44,798 INFO:Data loaded and cached for Albania
+2025-01-20 18:09:44,800 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:09:44,800 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:09:44,800 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:09:44,800 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:09:44,805 INFO:192.168.1.30 - - [20/Jan/2025 18:09:44] "GET / HTTP/1.1" 200 -
+2025-01-20 18:09:44,832 INFO:192.168.1.30 - - [20/Jan/2025 18:09:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:09:44,843 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:09:44,843 INFO:Loaded data from cache for Albania
+2025-01-20 18:09:44,845 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:09:44,845 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:09:44,845 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:09:44,846 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:09:44,846 INFO:192.168.1.30 - - [20/Jan/2025 18:09:44] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:09:46,585 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=6, routing_points_count=All, search_query=''
+2025-01-20 18:09:46,585 INFO:Loaded data from cache for Albania
+2025-01-20 18:09:46,600 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:09:46,600 INFO:LEN:
+11219
+2025-01-20 18:09:46,607 INFO:Map generated for POI: Big Market
+2025-01-20 18:09:46,607 INFO:192.168.1.30 - - [20/Jan/2025 18:09:46] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:09:46,618 INFO:192.168.1.30 - - [20/Jan/2025 18:09:46] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:11:38,542 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:11:38,542 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:11:41,398 INFO:POI ID column type: int64
+2025-01-20 18:11:41,400 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:11:41,400 INFO:Data loaded and cached for Albania
+2025-01-20 18:11:41,402 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:11:41,402 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:11:41,402 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:11:41,402 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:11:41,407 INFO:192.168.1.30 - - [20/Jan/2025 18:11:41] "GET / HTTP/1.1" 200 -
+2025-01-20 18:11:41,431 INFO:192.168.1.30 - - [20/Jan/2025 18:11:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:11:41,442 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:11:41,442 INFO:Loaded data from cache for Albania
+2025-01-20 18:11:41,443 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:11:41,443 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:11:41,443 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:11:41,444 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:11:41,445 INFO:192.168.1.30 - - [20/Jan/2025 18:11:41] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:11:42,801 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=8, routing_points_count=All, search_query=''
+2025-01-20 18:11:42,801 INFO:Loaded data from cache for Albania
+2025-01-20 18:11:42,813 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:11:42,813 INFO:LEN:
+11219
+2025-01-20 18:11:42,820 INFO:Map generated for POI: Plazhi i Vjeter
+2025-01-20 18:11:42,821 INFO:192.168.1.30 - - [20/Jan/2025 18:11:42] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:11:42,833 INFO:192.168.1.30 - - [20/Jan/2025 18:11:42] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:13:09,881 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:13:09,881 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:13:11,681 INFO:POI ID column type: int64
+2025-01-20 18:13:11,683 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:13:11,683 INFO:Data loaded and cached for Albania
+2025-01-20 18:13:11,684 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:13:11,684 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:13:11,684 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:13:11,685 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:13:11,690 INFO:192.168.1.30 - - [20/Jan/2025 18:13:11] "GET / HTTP/1.1" 200 -
+2025-01-20 18:13:11,714 INFO:192.168.1.30 - - [20/Jan/2025 18:13:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:13:11,719 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:13:11,719 INFO:Loaded data from cache for Albania
+2025-01-20 18:13:11,721 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:13:11,721 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:13:11,721 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:13:11,722 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:13:11,722 INFO:192.168.1.30 - - [20/Jan/2025 18:13:11] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:13:12,748 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=7, routing_points_count=All, search_query=''
+2025-01-20 18:13:12,749 INFO:Loaded data from cache for Albania
+2025-01-20 18:13:12,763 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:13:12,763 INFO:LEN:
+11219
+2025-01-20 18:13:12,771 INFO:Map generated for POI: Plazhi Vjetër Beach
+2025-01-20 18:13:12,771 INFO:192.168.1.30 - - [20/Jan/2025 18:13:12] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:13:12,783 INFO:192.168.1.30 - - [20/Jan/2025 18:13:12] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:13:46,468 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:13:46,468 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:13:49,529 INFO:POI ID column type: int64
+2025-01-20 18:13:49,531 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:13:49,531 INFO:Data loaded and cached for Albania
+2025-01-20 18:13:49,532 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:13:49,532 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:13:49,533 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:13:49,533 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:13:49,538 INFO:192.168.1.30 - - [20/Jan/2025 18:13:49] "GET / HTTP/1.1" 200 -
+2025-01-20 18:13:49,563 INFO:192.168.1.30 - - [20/Jan/2025 18:13:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:13:49,569 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:13:49,569 INFO:Loaded data from cache for Albania
+2025-01-20 18:13:49,571 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:13:49,571 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:13:49,571 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:13:49,572 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:13:49,572 INFO:192.168.1.30 - - [20/Jan/2025 18:13:49] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:13:50,913 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=4, routing_points_count=All, search_query=''
+2025-01-20 18:13:50,914 INFO:Loaded data from cache for Albania
+2025-01-20 18:13:50,928 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:13:50,928 INFO:LEN:
+11219
+2025-01-20 18:13:50,936 INFO:Map generated for POI: Big Bunker
+2025-01-20 18:13:50,936 INFO:192.168.1.30 - - [20/Jan/2025 18:13:50] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:13:50,948 INFO:192.168.1.30 - - [20/Jan/2025 18:13:50] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:14:27,298 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:14:27,299 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:14:28,629 INFO:POI ID column type: int64
+2025-01-20 18:14:28,630 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:14:28,630 INFO:Data loaded and cached for Albania
+2025-01-20 18:14:28,632 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:14:28,632 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:14:28,632 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:14:28,632 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:14:28,637 INFO:192.168.1.30 - - [20/Jan/2025 18:14:28] "GET / HTTP/1.1" 200 -
+2025-01-20 18:14:28,648 INFO:192.168.1.30 - - [20/Jan/2025 18:14:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:14:28,652 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:14:28,652 INFO:Loaded data from cache for Albania
+2025-01-20 18:14:28,653 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:14:28,654 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:14:28,654 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:14:28,655 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:14:28,655 INFO:192.168.1.30 - - [20/Jan/2025 18:14:28] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:14:29,987 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=6, routing_points_count=All, search_query=''
+2025-01-20 18:14:29,988 INFO:Loaded data from cache for Albania
+2025-01-20 18:14:29,999 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:14:29,999 INFO:LEN:
+11219
+2025-01-20 18:14:30,006 INFO:Map generated for POI: Big Market
+2025-01-20 18:14:30,006 INFO:192.168.1.30 - - [20/Jan/2025 18:14:30] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:14:30,016 INFO:192.168.1.30 - - [20/Jan/2025 18:14:30] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:14:37,775 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=8, routing_points_count=All, search_query=''
+2025-01-20 18:14:37,775 INFO:Loaded data from cache for Albania
+2025-01-20 18:14:37,787 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:14:37,787 INFO:LEN:
+11219
+2025-01-20 18:14:37,796 INFO:Map generated for POI: Plazhi i Vjeter
+2025-01-20 18:14:37,796 INFO:192.168.1.30 - - [20/Jan/2025 18:14:37] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:14:37,807 INFO:192.168.1.30 - - [20/Jan/2025 18:14:37] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:14:40,904 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=4, routing_points_count=All, search_query=''
+2025-01-20 18:14:40,905 INFO:Loaded data from cache for Albania
+2025-01-20 18:14:40,928 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:14:40,928 INFO:LEN:
+11219
+2025-01-20 18:14:40,934 INFO:Map generated for POI: Big Bunker
+2025-01-20 18:14:40,934 INFO:192.168.1.30 - - [20/Jan/2025 18:14:40] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:14:40,949 INFO:192.168.1.30 - - [20/Jan/2025 18:14:40] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:27:45,649 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=2 RPs Reference, 1 RPs Provider, start_index=3, end_index=10, search_query=''
+2025-01-20 18:27:45,650 INFO:Loaded data from cache for Albania
+2025-01-20 18:27:45,655 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:27:45,655 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:27:45,655 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:27:45,659 INFO:Filtered data by routing_points_count: 2 RPs Reference, 1 RPs Provider
+2025-01-20 18:27:45,661 INFO:Prepared POI options: [{'id': 572, 'label': 'HANI\xa0i\xa0Pazarit\xa0“Boutique\xa0Hotel”\xa0-\xa0Hotel/Motel\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 794, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024480.000\xa0ON'}, {'id': 980, 'label': 'Plazhi\xa0i\xa0Golemit\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024480.000\xa0ON'}, {'id': 1132, 'label': 'Friendship\xa0Monument\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Park\xa0and\xa0Recreation\xa0Area\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024480.000\xa0ON'}, {'id': 1361, 'label': 'HANI\xa0i\xa0Pazarit\xa0“Boutique\xa0Hotel”\xa0-\xa0Hotel/Motel\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024480.000\xa0ON'}]...
+2025-01-20 18:27:45,662 INFO:192.168.1.30 - - [20/Jan/2025 18:27:45] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=2%20RPs%20Reference,%201%20RPs%20Provider&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:27:53,127 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:27:53,127 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:27:54,753 INFO:POI ID column type: int64
+2025-01-20 18:27:54,755 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:27:54,755 INFO:Data loaded and cached for Albania
+2025-01-20 18:27:54,756 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:27:54,756 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:27:54,756 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:27:54,757 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:27:54,761 INFO:192.168.1.30 - - [20/Jan/2025 18:27:54] "GET / HTTP/1.1" 200 -
+2025-01-20 18:27:54,778 INFO:192.168.1.30 - - [20/Jan/2025 18:27:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:27:54,789 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:27:54,789 INFO:Loaded data from cache for Albania
+2025-01-20 18:27:54,790 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:27:54,790 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider']
+2025-01-20 18:27:54,790 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:27:54,791 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:27:54,792 INFO:192.168.1.30 - - [20/Jan/2025 18:27:54] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:32:33,688 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=8, routing_points_count=All, search_query=''
+2025-01-20 18:32:33,688 INFO:Loaded data from cache for Albania
+2025-01-20 18:32:33,705 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:32:33,705 INFO:LEN:
+11219
+2025-01-20 18:32:33,714 INFO:Map generated for POI: Plazhi i Vjeter
+2025-01-20 18:32:33,714 INFO:192.168.1.30 - - [20/Jan/2025 18:32:33] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:32:33,718 INFO:192.168.1.30 - - [20/Jan/2025 18:32:33] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:32:36,536 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=4, routing_points_count=All, search_query=''
+2025-01-20 18:32:36,536 INFO:Loaded data from cache for Albania
+2025-01-20 18:32:36,550 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:32:36,550 INFO:LEN:
+11219
+2025-01-20 18:32:36,558 INFO:Map generated for POI: Big Bunker
+2025-01-20 18:32:36,558 INFO:192.168.1.30 - - [20/Jan/2025 18:32:36] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:32:36,567 INFO:192.168.1.30 - - [20/Jan/2025 18:32:36] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:32:37,420 INFO:Received /get_map request with country=Albania, rppa=All, release_version=All, category=All, poi_id=6, routing_points_count=All, search_query=''
+2025-01-20 18:32:37,420 INFO:Loaded data from cache for Albania
+2025-01-20 18:32:37,449 INFO:First rows of the loaded DataFrame:
+                            name                 category_name  ...  num_provider_routing_points poi_id
+0  The Sea Turtle Camping Dhërmi                Camping Ground  ...                            1      0
+1                 Market Martino                        Market  ...                            1      1
+2                  Alpet, Dhermi                Petrol Station  ...                            1      2
+3               Plazhi i Palasës                         Beach  ...                            1      3
+4                     Big Bunker  Important Tourist Attraction  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:32:37,450 INFO:LEN:
+11219
+2025-01-20 18:32:37,455 INFO:Map generated for POI: Big Market
+2025-01-20 18:32:37,456 INFO:192.168.1.30 - - [20/Jan/2025 18:32:37] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:32:37,466 INFO:192.168.1.30 - - [20/Jan/2025 18:32:37] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:32:54,373 INFO:Received /update_pois request with country=Argentina, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=1000, end_index=3000, search_query=''
+2025-01-20 18:32:54,429 INFO:POI ID column type: int64
+2025-01-20 18:32:54,430 INFO:First few POI IDs:
+   poi_id                                    name
+0       0  Correo Argentino - Sucursal Santo Pipo
+1       1                                    BBVA
+2       2      Olivia Coffee Shop - Food & Drinks
+3       3                        Hidden House B&B
+4       4                         Bapro Municipal
+2025-01-20 18:32:54,430 INFO:Data loaded and cached for Argentina
+2025-01-20 18:32:54,433 INFO:Extracted RPPA list: ['All', '0.0', '1.0', '0.5', '0.6666666666666666']
+2025-01-20 18:32:54,433 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 2 RPs Provider', '3 RPs Reference, 3 RPs Provider', '4 RPs Reference, 1 RPs Provider']
+2025-01-20 18:32:54,433 INFO:Extracted categories: ['All', 'Post Office', 'Bank', 'Café/Pub', 'Hotel/Motel', 'Museum', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Shop', 'Parking Garage', 'Market', 'Sports Center', 'Automotive Dealer', 'Cash Dispenser', 'Important Tourist Attraction', 'Shopping Center', 'Government Office', 'Amusement Park', 'Beach', 'School', 'Place of Worship', 'Petrol Station', 'Repair Facility', 'Railway Station', 'Camping Ground', 'Pharmacy', 'Airport', 'Restaurant']
+2025-01-20 18:32:54,472 INFO:Prepared POI options: [{'id': 1000, 'label': 'Cajero\xa0Link\xa0(\xa0Bco\xa0Provincia\xa0Bs\xa0As\xa0)\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Cash\xa0Dispenser\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa02024.09.006'}, {'id': 1001, 'label': 'Alto\xa0Rosario\xa0Shopping\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Shopping\xa0Center\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[3,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa02024.09.006'}, {'id': 1002, 'label': 'Rapi\xa0Gas\xa0Sa\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}, {'id': 1003, 'label': 'Cajero\xa0Automático\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Cash\xa0Dispenser\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}, {'id': 1004, 'label': 'Vea\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}]...
+2025-01-20 18:32:54,474 INFO:192.168.1.30 - - [20/Jan/2025 18:32:54] "GET /update_pois?country=Argentina&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=1000&end_index=3000&search= HTTP/1.1" 200 -
+2025-01-20 18:32:56,132 INFO:Received /get_map request with country=Argentina, rppa=All, release_version=All, category=All, poi_id=1129, routing_points_count=All, search_query=''
+2025-01-20 18:32:56,132 INFO:Loaded data from cache for Argentina
+2025-01-20 18:32:56,145 INFO:First rows of the loaded DataFrame:
+                                     name category_name  ...  num_provider_routing_points poi_id
+0  Correo Argentino - Sucursal Santo Pipo   Post Office  ...                            1      0
+1                                    BBVA          Bank  ...                            1      1
+2      Olivia Coffee Shop - Food & Drinks      Café/Pub  ...                            1      2
+3                        Hidden House B&B   Hotel/Motel  ...                            1      3
+4                         Bapro Municipal          Bank  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:32:56,145 INFO:LEN:
+30207
+2025-01-20 18:32:56,153 INFO:Map generated for POI: Farmacia Xamin
+2025-01-20 18:32:56,154 INFO:192.168.1.30 - - [20/Jan/2025 18:32:56] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:32:56,158 INFO:192.168.1.30 - - [20/Jan/2025 18:32:56] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:32:57,650 INFO:Received /get_map request with country=Argentina, rppa=All, release_version=All, category=All, poi_id=1235, routing_points_count=All, search_query=''
+2025-01-20 18:32:57,650 INFO:Loaded data from cache for Argentina
+2025-01-20 18:32:57,664 INFO:First rows of the loaded DataFrame:
+                                     name category_name  ...  num_provider_routing_points poi_id
+0  Correo Argentino - Sucursal Santo Pipo   Post Office  ...                            1      0
+1                                    BBVA          Bank  ...                            1      1
+2      Olivia Coffee Shop - Food & Drinks      Café/Pub  ...                            1      2
+3                        Hidden House B&B   Hotel/Motel  ...                            1      3
+4                         Bapro Municipal          Bank  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:32:57,664 INFO:LEN:
+30207
+2025-01-20 18:32:57,672 INFO:Map generated for POI: Héctor
+2025-01-20 18:32:57,672 INFO:192.168.1.30 - - [20/Jan/2025 18:32:57] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:32:57,680 INFO:192.168.1.30 - - [20/Jan/2025 18:32:57] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:33:01,474 INFO:Received /get_map request with country=Argentina, rppa=All, release_version=All, category=All, poi_id=1291, routing_points_count=All, search_query=''
+2025-01-20 18:33:01,475 INFO:Loaded data from cache for Argentina
+2025-01-20 18:33:01,488 INFO:First rows of the loaded DataFrame:
+                                     name category_name  ...  num_provider_routing_points poi_id
+0  Correo Argentino - Sucursal Santo Pipo   Post Office  ...                            1      0
+1                                    BBVA          Bank  ...                            1      1
+2      Olivia Coffee Shop - Food & Drinks      Café/Pub  ...                            1      2
+3                        Hidden House B&B   Hotel/Motel  ...                            1      3
+4                         Bapro Municipal          Bank  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:33:01,488 INFO:LEN:
+30207
+2025-01-20 18:33:01,496 INFO:Map generated for POI: Hospedaje Alva Suar
+2025-01-20 18:33:01,496 INFO:192.168.1.30 - - [20/Jan/2025 18:33:01] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:33:01,509 INFO:192.168.1.30 - - [20/Jan/2025 18:33:01] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:33:05,052 INFO:Received /get_map request with country=Argentina, rppa=All, release_version=All, category=All, poi_id=1332, routing_points_count=All, search_query=''
+2025-01-20 18:33:05,052 INFO:Loaded data from cache for Argentina
+2025-01-20 18:33:05,066 INFO:First rows of the loaded DataFrame:
+                                     name category_name  ...  num_provider_routing_points poi_id
+0  Correo Argentino - Sucursal Santo Pipo   Post Office  ...                            1      0
+1                                    BBVA          Bank  ...                            1      1
+2      Olivia Coffee Shop - Food & Drinks      Café/Pub  ...                            1      2
+3                        Hidden House B&B   Hotel/Motel  ...                            1      3
+4                         Bapro Municipal          Bank  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:33:05,066 INFO:LEN:
+30207
+2025-01-20 18:33:05,073 INFO:Map generated for POI: Villa El Libertador Municipal Hospital Principe de Asturias
+2025-01-20 18:33:05,074 INFO:192.168.1.30 - - [20/Jan/2025 18:33:05] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:33:05,084 INFO:192.168.1.30 - - [20/Jan/2025 18:33:05] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:33:08,821 INFO:Received /update_pois request with country=Argentina, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Reference, 4 RPs Provider, start_index=1000, end_index=3000, search_query=''
+2025-01-20 18:33:08,821 INFO:Loaded data from cache for Argentina
+2025-01-20 18:33:08,832 INFO:Extracted RPPA list: ['All', '0.0', '1.0', '0.5', '0.6666666666666666']
+2025-01-20 18:33:08,833 INFO:Extracted Routing Points Counts: ['All', '1 RPs Reference, 1 RPs Provider', '1 RPs Reference, 2 RPs Provider', '1 RPs Reference, 3 RPs Provider', '1 RPs Reference, 4 RPs Provider', '2 RPs Reference, 1 RPs Provider', '2 RPs Reference, 2 RPs Provider', '2 RPs Reference, 3 RPs Provider', '3 RPs Reference, 1 RPs Provider', '3 RPs Reference, 2 RPs Provider', '3 RPs Reference, 3 RPs Provider', '4 RPs Reference, 1 RPs Provider']
+2025-01-20 18:33:08,833 INFO:Extracted categories: ['All', 'Post Office', 'Bank', 'Café/Pub', 'Hotel/Motel', 'Museum', 'Park and Recreation Area', 'Hospital/Polyclinic', 'Shop', 'Parking Garage', 'Market', 'Sports Center', 'Automotive Dealer', 'Cash Dispenser', 'Important Tourist Attraction', 'Shopping Center', 'Government Office', 'Amusement Park', 'Beach', 'School', 'Place of Worship', 'Petrol Station', 'Repair Facility', 'Railway Station', 'Camping Ground', 'Pharmacy', 'Airport', 'Restaurant']
+2025-01-20 18:33:08,835 INFO:Filtered data by routing_points_count: 1 RPs Reference, 4 RPs Provider
+2025-01-20 18:33:08,836 INFO:Prepared POI options: [{'id': 111, 'label': 'El\xa0Libertador\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Railway\xa0Station\xa0-\xa0[1,\xa04]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}, {'id': 1897, 'label': 'Piedras\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Railway\xa0Station\xa0-\xa0[1,\xa04]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}, {'id': 2267, 'label': 'Ministro\xa0Pistarini\xa0-\xa0Airport\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa04]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}]...
+2025-01-20 18:33:08,836 INFO:192.168.1.30 - - [20/Jan/2025 18:33:08] "GET /update_pois?country=Argentina&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Reference,%204%20RPs%20Provider&start_index=1000&end_index=3000&search= HTTP/1.1" 200 -
+2025-01-20 18:33:09,706 INFO:Received /get_map request with country=Argentina, rppa=All, release_version=All, category=All, poi_id=1897, routing_points_count=1 RPs Reference, 4 RPs Provider, search_query=''
+2025-01-20 18:33:09,707 INFO:Loaded data from cache for Argentina
+2025-01-20 18:33:09,720 INFO:First rows of the loaded DataFrame:
+                                     name category_name  ...  num_provider_routing_points poi_id
+0  Correo Argentino - Sucursal Santo Pipo   Post Office  ...                            1      0
+1                                    BBVA          Bank  ...                            1      1
+2      Olivia Coffee Shop - Food & Drinks      Café/Pub  ...                            1      2
+3                        Hidden House B&B   Hotel/Motel  ...                            1      3
+4                         Bapro Municipal          Bank  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:33:09,720 INFO:LEN:
+30207
+2025-01-20 18:33:09,731 INFO:Map generated for POI: Piedras
+2025-01-20 18:33:09,731 INFO:192.168.1.30 - - [20/Jan/2025 18:33:09] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:33:09,743 INFO:192.168.1.30 - - [20/Jan/2025 18:33:09] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:36:31,198 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://10.8.86.19:80
+2025-01-20 18:36:31,198 INFO:[33mPress CTRL+C to quit[0m
+2025-01-20 18:36:35,991 INFO:POI ID column type: int64
+2025-01-20 18:36:35,993 INFO:First few POI IDs:
+   poi_id                           name
+0       0  The Sea Turtle Camping Dhërmi
+1       1                 Market Martino
+2       2                  Alpet, Dhermi
+3       3               Plazhi i Palasës
+4       4                     Big Bunker
+2025-01-20 18:36:35,993 INFO:Data loaded and cached for Albania
+2025-01-20 18:36:35,994 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:36:35,994 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '2 RPs Google, 2 RPs Orbis']
+2025-01-20 18:36:35,994 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:36:35,995 INFO:Prepared POI options: [{'id': 0, 'label': 'The\xa0Sea\xa0Turtle\xa0Camping\xa0Dhërmi\xa0\xa0\xa0-\xa0Camping\xa0Ground\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 1, 'label': 'Market\xa0Martino\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 2, 'label': 'Alpet,\xa0Dhermi\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:36:35,999 INFO:192.168.1.30 - - [20/Jan/2025 18:36:35] "GET / HTTP/1.1" 200 -
+2025-01-20 18:36:36,017 INFO:192.168.1.30 - - [20/Jan/2025 18:36:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-01-20 18:36:36,022 INFO:Received /update_pois request with country=Albania, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:36:36,022 INFO:Loaded data from cache for Albania
+2025-01-20 18:36:36,024 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:36:36,025 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '2 RPs Google, 2 RPs Orbis']
+2025-01-20 18:36:36,025 INFO:Extracted categories: ['All', 'Camping Ground', 'Market', 'Petrol Station', 'Beach', 'Important Tourist Attraction', 'Post Office', 'Museum', 'Bank', 'Shopping Center', 'Cash Dispenser', 'Pharmacy', 'School', 'Hospital/Polyclinic', 'Café/Pub', 'Restaurant', 'Place of Worship', 'Park and Recreation Area', 'Sports Center', 'Hotel/Motel', 'Government Office', 'Parking Garage', 'Automotive Dealer', 'Repair Facility', 'Railway Station', 'Airport']
+2025-01-20 18:36:36,026 INFO:Prepared POI options: [{'id': 3, 'label': 'Plazhi\xa0i\xa0Palasës\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[2,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Big\xa0Bunker\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Posta\xa0Shqiptare\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Post\xa0Office\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Big\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Market\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Plazhi\xa0Vjetër\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:36:36,026 INFO:192.168.1.30 - - [20/Jan/2025 18:36:36] "GET /update_pois?country=Albania&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:36:50,304 INFO:Received /update_pois request with country=Belarus, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:36:50,342 INFO:POI ID column type: int64
+2025-01-20 18:36:50,344 INFO:First few POI IDs:
+   poi_id                                               name
+0       0                         Спортивный клуб "City Gym"
+1       1                                    Aquapark Kobryn
+2       2                               Symon Budny Monument
+3       3  Памятник воинам-интернационалистам «Черный тюл...
+4       4                       Monument to David Gorodensky
+2025-01-20 18:36:50,344 INFO:Data loaded and cached for Belarus
+2025-01-20 18:36:50,345 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:36:50,345 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '2 RPs Google, 1 RPs Orbis']
+2025-01-20 18:36:50,345 INFO:Extracted categories: ['All', 'Sports Center', 'Amusement Park', 'Important Tourist Attraction', 'Hospital/Polyclinic', 'Shopping Center', 'Beach', 'Park and Recreation Area', 'Government Office', 'Hotel/Motel', 'Market', 'Museum', 'Café/Pub', 'Restaurant', 'Bank', 'Pharmacy', 'Petrol Station', 'Repair Facility', 'Automotive Dealer', 'Cash Dispenser', 'Railway Station', 'Place of Worship', 'Post Office', 'Airport', 'Shop']
+2025-01-20 18:36:50,346 INFO:Prepared POI options: [{'id': 3, 'label': 'Памятник\xa0воинам-интернационалистам\xa0«Ч...\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Monument\xa0to\xa0David\xa0Gorodensky\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Guz\xa0"Gokkvd"\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Hospital/Polyclinic\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Гарадскi\xa0парк\xa0культуры\xa0i\xa0адпачынку\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Tts\xa0Raduga\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Shopping\xa0Center\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:36:50,346 INFO:192.168.1.30 - - [20/Jan/2025 18:36:50] "GET /update_pois?country=Belarus&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:36:54,088 INFO:Received /update_pois request with country=Gibraltar, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:36:54,101 INFO:POI ID column type: int64
+2025-01-20 18:36:54,103 INFO:First few POI IDs:
+   poi_id                 name
+0       0       Moorish Castle
+1       1         A.M. Capurro
+2       2    Commonwealth Park
+3       3  Camp Bay, Gibraltar
+4       4        North Bastion
+2025-01-20 18:36:54,103 INFO:Data loaded and cached for Gibraltar
+2025-01-20 18:36:54,104 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:36:54,104 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '2 RPs Google, 1 RPs Orbis']
+2025-01-20 18:36:54,104 INFO:Extracted categories: ['All', 'Important Tourist Attraction', 'Automotive Dealer', 'Park and Recreation Area', 'Beach', 'Museum', 'Petrol Station', 'Government Office']
+2025-01-20 18:36:54,105 INFO:Prepared POI options: [{'id': 3, 'label': 'Camp\xa0Bay,\xa0Gibraltar\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Beach\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024490.001\xa0ON'}, {'id': 4, 'label': 'North\xa0Bastion\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024490.001\xa0ON'}, {'id': 5, 'label': 'The\xa0Gibraltar\xa0National\xa0Museum\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Important\xa0Tourist\xa0Attraction\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024490.001\xa0ON'}, {'id': 6, 'label': '100\xa0Ton\xa0Gun\xa0Napier\xa0of\xa0Magdala\xa0Battery\xa0-\xa0Museum\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024490.001\xa0ON'}, {'id': 7, 'label': 'Morrisons\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa024490.001\xa0ON'}]...
+2025-01-20 18:36:54,105 INFO:192.168.1.30 - - [20/Jan/2025 18:36:54] "GET /update_pois?country=Gibraltar&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:36:57,758 INFO:Received /update_pois request with country=Latvia, release_version=All, category=All, selected_rppa=All, routing_points_count=All, start_index=3, end_index=10, search_query=''
+2025-01-20 18:36:57,808 INFO:POI ID column type: int64
+2025-01-20 18:36:57,810 INFO:First few POI IDs:
+   poi_id                      name
+0       0             Dubrovin Park
+1       1                 TC DITTON
+2       2       Daugavpils Fortress
+3       3  Aglonas Katoļu ģimnāzija
+4       4         Dagdas vidusskola
+2025-01-20 18:36:57,810 INFO:Data loaded and cached for Latvia
+2025-01-20 18:36:57,812 INFO:Extracted RPPA list: ['All', '1.0', '0.0']
+2025-01-20 18:36:57,812 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '1 RPs Google, 3 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '2 RPs Google, 2 RPs Orbis']
+2025-01-20 18:36:57,812 INFO:Extracted categories: ['All', 'Park and Recreation Area', 'Shopping Center', 'Important Tourist Attraction', 'School', 'Post Office', 'Beach', 'Amusement Park', 'Shop', 'Repair Facility', 'Government Office', 'Café/Pub', 'Museum', 'Pharmacy', 'Hotel/Motel', 'Bank', 'Market', 'Cash Dispenser', 'Automotive Dealer', 'Petrol Station', 'Hospital/Polyclinic', 'Place of Worship', 'Parking Garage', 'Camping Ground', 'Restaurant', 'Sports Center', 'Railway Station', 'Airport']
+2025-01-20 18:36:57,813 INFO:Prepared POI options: [{'id': 3, 'label': 'Aglonas\xa0Katoļu\xa0ģimnāzija\xa0\xa0\xa0\xa0\xa0-\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 4, 'label': 'Dagdas\xa0vidusskola\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 5, 'label': 'Liepājas\xa0Liedaga\xa0vidusskola\xa0\xa0-\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 6, 'label': 'Liepajas\xa08\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}, {'id': 7, 'label': 'Liepājas\xa0Raiņa\xa06.\xa0vidusskola\xa0-\xa0School\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0[1,\xa01]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa024470.000\xa0ON'}]...
+2025-01-20 18:36:57,813 INFO:192.168.1.30 - - [20/Jan/2025 18:36:57] "GET /update_pois?country=Latvia&release_version=All&category=All&selected_rppa=All&routing_points_count=All&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:36:59,815 INFO:Received /update_pois request with country=Latvia, release_version=All, category=All, selected_rppa=All, routing_points_count=2 RPs Google, 2 RPs Orbis, start_index=3, end_index=10, search_query=''
+2025-01-20 18:36:59,816 INFO:Loaded data from cache for Latvia
+2025-01-20 18:36:59,824 INFO:Extracted RPPA list: ['All', '1.0', '0.0']
+2025-01-20 18:36:59,824 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '1 RPs Google, 3 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '2 RPs Google, 2 RPs Orbis']
+2025-01-20 18:36:59,824 INFO:Extracted categories: ['All', 'Park and Recreation Area', 'Shopping Center', 'Important Tourist Attraction', 'School', 'Post Office', 'Beach', 'Amusement Park', 'Shop', 'Repair Facility', 'Government Office', 'Café/Pub', 'Museum', 'Pharmacy', 'Hotel/Motel', 'Bank', 'Market', 'Cash Dispenser', 'Automotive Dealer', 'Petrol Station', 'Hospital/Polyclinic', 'Place of Worship', 'Parking Garage', 'Camping Ground', 'Restaurant', 'Sports Center', 'Railway Station', 'Airport']
+2025-01-20 18:36:59,826 INFO:Filtered data by routing_points_count: 2 RPs Google, 2 RPs Orbis
+2025-01-20 18:36:59,827 INFO:Prepared POI options: [{'id': 4789, 'label': 'Latvijas\xa0Pasts\xa0-\xa0Post\xa0Office\xa0-\xa0[2,\xa02]\xa0-\xa0RPPA\xa0=\xa01.0\xa0-\xa02024.09.006'}]...
+2025-01-20 18:36:59,827 INFO:192.168.1.30 - - [20/Jan/2025 18:36:59] "GET /update_pois?country=Latvia&release_version=All&category=All&selected_rppa=All&routing_points_count=2%20RPs%20Google,%202%20RPs%20Orbis&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:37:00,885 INFO:Received /get_map request with country=Latvia, rppa=All, release_version=All, category=All, poi_id=4789, routing_points_count=2 RPs Google, 2 RPs Orbis, search_query=''
+2025-01-20 18:37:00,885 INFO:Loaded data from cache for Latvia
+2025-01-20 18:37:00,898 INFO:First rows of the loaded DataFrame:
+                       name                 category_name  ...  num_provider_routing_points poi_id
+0             Dubrovin Park      Park and Recreation Area  ...                            1      0
+1                 TC DITTON               Shopping Center  ...                            1      1
+2       Daugavpils Fortress  Important Tourist Attraction  ...                            1      2
+3  Aglonas Katoļu ģimnāzija                        School  ...                            1      3
+4         Dagdas vidusskola                        School  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:37:00,898 INFO:LEN:
+19442
+2025-01-20 18:37:00,909 INFO:Map generated for POI: Latvijas Pasts
+2025-01-20 18:37:00,910 INFO:192.168.1.30 - - [20/Jan/2025 18:37:00] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:37:00,925 INFO:192.168.1.30 - - [20/Jan/2025 18:37:00] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -
+2025-01-20 18:37:05,561 INFO:Received /update_pois request with country=Qatar, release_version=All, category=All, selected_rppa=All, routing_points_count=2 RPs Google, 2 RPs Orbis, start_index=3, end_index=10, search_query=''
+2025-01-20 18:37:05,596 INFO:POI ID column type: int64
+2025-01-20 18:37:05,597 INFO:First few POI IDs:
+   poi_id                                               name
+0       0                                        Car Control
+1       1                                  Bin Thamer Garage
+2       2     Toyota | Lexus Abu Hamour Quick Service Center
+3       3  Al Naseem Trading & Auto repair/ ALN Trading &...
+4       4                     Al Dosari Zoo and Game Reserve
+2025-01-20 18:37:05,597 INFO:Data loaded and cached for Qatar
+2025-01-20 18:37:05,599 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:37:05,599 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '1 RPs Google, 3 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '3 RPs Google, 1 RPs Orbis']
+2025-01-20 18:37:05,599 INFO:Extracted categories: ['All', 'Repair Facility', 'Park and Recreation Area', 'Petrol Station', 'Hotel/Motel', 'School', 'Railway Station', 'Place of Worship', 'Important Tourist Attraction', 'Hospital/Polyclinic', 'Cash Dispenser', 'Museum', 'Shopping Center', 'Sports Center', 'Post Office', 'Amusement Park', 'Pharmacy', 'Automotive Dealer', 'Market', 'Bank', 'Beach', 'Café/Pub', 'Restaurant', 'Shop', 'Government Office', 'Parking Garage', 'Airport']
+2025-01-20 18:37:05,599 INFO:Filtered data by routing_points_count: 2 RPs Google, 2 RPs Orbis
+2025-01-20 18:37:05,612 INFO:Prepared POI options: []...
+2025-01-20 18:37:05,612 INFO:192.168.1.30 - - [20/Jan/2025 18:37:05] "GET /update_pois?country=Qatar&release_version=All&category=All&selected_rppa=All&routing_points_count=2%20RPs%20Google,%202%20RPs%20Orbis&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:37:07,322 INFO:Received /update_pois request with country=Qatar, release_version=All, category=All, selected_rppa=All, routing_points_count=1 RPs Google, 3 RPs Orbis, start_index=3, end_index=10, search_query=''
+2025-01-20 18:37:07,322 INFO:Loaded data from cache for Qatar
+2025-01-20 18:37:07,326 INFO:Extracted RPPA list: ['All', '0.0', '1.0']
+2025-01-20 18:37:07,326 INFO:Extracted Routing Points Counts: ['All', '1 RPs Google, 1 RPs Orbis', '1 RPs Google, 2 RPs Orbis', '1 RPs Google, 3 RPs Orbis', '2 RPs Google, 1 RPs Orbis', '3 RPs Google, 1 RPs Orbis']
+2025-01-20 18:37:07,326 INFO:Extracted categories: ['All', 'Repair Facility', 'Park and Recreation Area', 'Petrol Station', 'Hotel/Motel', 'School', 'Railway Station', 'Place of Worship', 'Important Tourist Attraction', 'Hospital/Polyclinic', 'Cash Dispenser', 'Museum', 'Shopping Center', 'Sports Center', 'Post Office', 'Amusement Park', 'Pharmacy', 'Automotive Dealer', 'Market', 'Bank', 'Beach', 'Café/Pub', 'Restaurant', 'Shop', 'Government Office', 'Parking Garage', 'Airport']
+2025-01-20 18:37:07,329 INFO:Filtered data by routing_points_count: 1 RPs Google, 3 RPs Orbis
+2025-01-20 18:37:07,331 INFO:Prepared POI options: [{'id': 506, 'label': 'University\xa0Petrol\xa0Temporary\xa0Gas\xa0Station\xa0-\xa0Petrol\xa0Station\xa0-\xa0[1,\xa03]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa02024.09.006'}, {'id': 536, 'label': 'Salwa\xa0Petrol\xa0Station\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0-\xa0Petrol\xa0Station\xa0-\xa0[1,\xa03]\xa0-\xa0RPPA\xa0=\xa00.0\xa0-\xa02024.09.006'}]...
+2025-01-20 18:37:07,331 INFO:192.168.1.30 - - [20/Jan/2025 18:37:07] "GET /update_pois?country=Qatar&release_version=All&category=All&selected_rppa=All&routing_points_count=1%20RPs%20Google,%203%20RPs%20Orbis&start_index=3&end_index=10&search= HTTP/1.1" 200 -
+2025-01-20 18:37:09,174 INFO:Received /get_map request with country=Qatar, rppa=All, release_version=All, category=All, poi_id=506, routing_points_count=1 RPs Google, 3 RPs Orbis, search_query=''
+2025-01-20 18:37:09,174 INFO:Loaded data from cache for Qatar
+2025-01-20 18:37:09,188 INFO:First rows of the loaded DataFrame:
+                                                name             category_name  ...  num_provider_routing_points poi_id
+0                                        Car Control           Repair Facility  ...                            1      0
+1                                  Bin Thamer Garage           Repair Facility  ...                            1      1
+2     Toyota | Lexus Abu Hamour Quick Service Center           Repair Facility  ...                            1      2
+3  Al Naseem Trading & Auto repair/ ALN Trading &...           Repair Facility  ...                            1      3
+4                     Al Dosari Zoo and Game Reserve  Park and Recreation Area  ...                            1      4
+
+[5 rows x 16 columns]
+2025-01-20 18:37:09,188 INFO:LEN:
+7329
+2025-01-20 18:37:09,197 INFO:Map generated for POI: University Petrol Temporary Gas Station
+2025-01-20 18:37:09,198 INFO:192.168.1.30 - - [20/Jan/2025 18:37:09] "POST /get_map HTTP/1.1" 200 -
+2025-01-20 18:37:09,210 INFO:192.168.1.30 - - [20/Jan/2025 18:37:09] "[36mGET /static/images/legend.png HTTP/1.1[0m" 304 -

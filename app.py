@@ -92,7 +92,9 @@ def index():
             release_version='All',
             category='All',
             selected_rppa='All',
-            selected_routing_points_count='All'
+            selected_routing_points_count='All',
+            min_characteristic_distance= 0,
+            max_characteristic_distance= df['poi_characteristic_distance'].max()
         )
 
         len_df = len(filtered_df)
@@ -131,6 +133,9 @@ def update_pois():
         start_index = int(request.args.get('start_index', DEFAULT_START_INDEX))
         end_index = int(request.args.get('end_index', DEFAULT_END_INDEX))
         search_query = request.args.get('search', '')
+        min_characteristic_distance = request.args.get('min_characteristic_distance', type=float)
+        max_characteristic_distance = request.args.get('max_characteristic_distance', type=float)
+
         
         start_index = start_index - 1
         logging.info(
@@ -144,7 +149,7 @@ def update_pois():
         filter_options = extract_filter_options(df, release_version, category, selected_rppa, selected_routing_points_count)
 
         # Apply filters
-        filtered_df = filter_df(df, release_version, category, selected_rppa, selected_routing_points_count)
+        filtered_df = filter_df(df, release_version, category, selected_rppa, selected_routing_points_count, min_characteristic_distance, max_characteristic_distance)
 
         # Apply search if provided
         if search_query:
@@ -187,6 +192,8 @@ def get_map():
         selected_poi_id = data.get('poi')
         selected_routing_points_count = data.get('routing_points_count', 'All')
         search_query = data.get('search', '')
+
+
 
         logging.info(
             f"Received /get_map request with country={selected_country}, rppa={selected_rppa}, "

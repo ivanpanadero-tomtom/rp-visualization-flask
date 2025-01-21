@@ -62,11 +62,12 @@ def prepare_poi_options(data, include_release_version=False):
 
     # 3) Build the line for each row
     def build_label(row):
-        label = f"{row['trunc_name']:<{max_name_length}} - {row['category_name']:<{max_category_length}} - [{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - RPPA = {row['rppa']}"
+        label = f"{row['trunc_name']:<{max_name_length}} - {row['category_name']:<{max_category_length}} - [{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - {row['rppa']}"
         if include_release_version and 'release_version' in row:
             label += f" - {row['release_version']}"
+        label += f" - {row['poi_characteristic_distance']:8.2f} m"
         return label.replace(' ', '\u00A0')  # Replace spaces with non-breaking spaces
-
+    
     # 4) Build a list of {id, label} dictionaries
     pois = []
     for _, row in data.iterrows():
@@ -76,9 +77,10 @@ def prepare_poi_options(data, include_release_version=False):
             'label': label
         })
 
-    # 5) Remove the non-breaking spaces replacement
-    # lines = lines.str.replace(' ', '\u00A0', regex=False)  # <-- Remove or comment out this line
-
+    
+    #title = f"-- POI Name {' ' * max_name_length} -- {' ' * max_category_length} - "
+    #title.replace(' ', '\u00A0')
+    #pois = [{{'id': -1,   'label': title}}] + pois
     return pois  # Return list of dictionaries instead of list of strings
 
 def extract_unique_rrpa(df_pandas):
@@ -202,7 +204,7 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
         <div style="
             position: fixed;
             top: 10px;
-            left: 10px;
+            right: 10px;
             width: 200px;
             padding: 10px;
             background-color: white;
@@ -226,7 +228,7 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
         logging.error(f"Error creating Folium map: {e}")
         raise e
     
-def filter_df(df_pandas, release_version, category, selected_rppa, selected_routing_points_count):
+def filter_df(df_pandas, release_version, category, selected_rppa, selected_routing_points_count, min_characteristic_distance, max_characteristic_distance):
     
     # Apply filters for release version and category
     if release_version and release_version != 'All':
@@ -267,5 +269,14 @@ def filter_df(df_pandas, release_version, category, selected_rppa, selected_rout
         # Filter the DataFrame based on the 'rppa' column
         df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
         logging.info(f"Number of POIs after RPPA filtering: {len(df_pandas)}")
+
+    # Apply Characteristic Distance Filtering outside RPPA condition
+    if min_characteristic_distance is not None:
+        df_pandas = df_pandas[df_pandas['poi_characteristic_distance'] >= min_characteristic_distance]
+        logging.info(f"Filtered POIs with characteristic_distance >= {min_characteristic_distance}")
+
+    if max_characteristic_distance is not None:
+        df_pandas = df_pandas[df_pandas['poi_characteristic_distance'] <= max_characteristic_distance]
+        logging.info(f"Filtered POIs with characteristic_distance <= {max_characteristic_distance}")
 
     return df_pandas

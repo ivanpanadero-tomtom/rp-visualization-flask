@@ -72,25 +72,49 @@
     <div class="container my-5">
         <h1 class="text-center mb-4">Routing Points (RP) Visualization</h1>
         <form id="myForm">
-            <!-- First Row: Country and Release Version -->
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="country" class="form-label">Select a Country:</label>
-                    <select name="country" id="country" class="form-select">
-                        {% for country in countries %}
-                        <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="release_version" class="form-label">Select Release Version:</label>
-                    <select name="release_version" id="release_version" class="form-select">
-                        {% for rv in release_versions %}
-                        <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <!-- First Row: Country, Release Version, and Characteristic Distance -->
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="country" class="form-label">Select a Country:</label>
+                <select name="country" id="country" class="form-select">
+                    {% for country in countries %}
+                    <option value="{{ country }}" {% if country == selected_country %}selected{% endif %}>{{ country }}</option>
+                    {% endfor %}
+                </select>
             </div>
+            <div class="col-md-3">
+                <label for="release_version" class="form-label">Select Release Version:</label>
+                <select name="release_version" id="release_version" class="form-select">
+                    {% for rv in release_versions %}
+                    <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- New Minimum Characteristic Distance Input -->
+            <div class="col-md-3">
+                <label for="min_characteristic_distance" class="form-label">Min Characteristic Distance (meters):</label>
+                <input 
+                    type="number" 
+                    id="min_characteristic_distance" 
+                    name="min_characteristic_distance" 
+                    class="form-control" 
+                    placeholder="e.g., 100"
+                    min="0"
+                >
+            </div>
+            <!-- New Maximum Characteristic Distance Input -->
+            <div class="col-md-3">
+                <label for="max_characteristic_distance" class="form-label">Max Characteristic Distance (meters):</label>
+                <input 
+                    type="number" 
+                    id="max_characteristic_distance" 
+                    name="max_characteristic_distance" 
+                    class="form-control" 
+                    placeholder="e.g., 1000"
+                    min="0"
+                >
+            </div>
+        </div>
 
             <!-- Second Row: RPPA, Routing Points Count, and Category -->
             <div class="row g-3 mt-3">
@@ -167,7 +191,7 @@
             <!-- Fourth Row: POI List -->
             <div class="row g-3 mt-3">
                 <div class="col-md-12">
-                    <select name="poi" id="poi-dropdown" class="form-select monospace-select" size="10">
+                    <select name="poi" id="poi-dropdown" class="form-select monospace-select" size="10" required>
                         <option value="">-- Select a POI --</option> <!-- Default empty option -->
                         {% for poi in pois %}
                             <option value="{{ poi.id }}" {% if selected_poi == poi.id %}selected{% endif %}>
@@ -204,6 +228,10 @@
             const routingPointsCount = document.getElementById('routing_points_count').value;
             const startIndex = document.getElementById('start_index').value;
             const endIndex = document.getElementById('end_index').value;
+            // New Characteristic Distance Values
+            const minCharacteristicDistance = document.getElementById('min_characteristic_distance').value;
+            const maxCharacteristicDistance = document.getElementById('max_characteristic_distance').value;
+
     
             const url = `/update_pois?country=${encodeURIComponent(country)}`
                         + `&release_version=${encodeURIComponent(releaseVersion)}`
@@ -212,7 +240,9 @@
                         + `&routing_points_count=${encodeURIComponent(routingPointsCount)}`
                         + `&start_index=${encodeURIComponent(startIndex)}`
                         + `&end_index=${encodeURIComponent(endIndex)}`
-                        + `&search=${encodeURIComponent(searchQuery)}`;  // <-- important fix
+                        + `&search=${encodeURIComponent(searchQuery)}`
+                        + `&min_characteristic_distance=${encodeURIComponent(minCharacteristicDistance)}`
+                        + `&max_characteristic_distance=${encodeURIComponent(maxCharacteristicDistance)}`;
     
             fetch(url)
                 .then(response => response.json())
@@ -282,6 +312,8 @@
         document.getElementById('category').addEventListener('change', updatePois);
         document.getElementById('rppa').addEventListener('change', updatePois);
         document.getElementById('routing_points_count').addEventListener('change', updatePois);
+        document.getElementById('min_characteristic_distance').addEventListener('input', updatePois);
+        document.getElementById('max_characteristic_distance').addEventListener('input', updatePois);
 
         // **New event listeners for Start Index and End Index**
         document.getElementById('start_index').addEventListener('change', updatePois);
@@ -304,6 +336,16 @@
             const formData = new FormData(this);
             const rppa = document.getElementById('rppa').value;
             const routingPointsCount = document.getElementById('routing_points_count').value; // New filter
+
+            // Prevent form submission if Min > Max
+            const minDistance = parseFloat(document.getElementById('min_characteristic_distance').value) || 0;
+            const maxDistance = parseFloat(document.getElementById('max_characteristic_distance').value) || Infinity;
+
+            if (minDistance > maxDistance) {
+                event.preventDefault();
+                alert('Minimum Characteristic Distance cannot be greater than Maximum Characteristic Distance.');
+                return;
+            }
     
             // Add the current selected_rppa and routing_points_count values to the form data
             formData.append('selected_rppa', rppa);

@@ -57,38 +57,74 @@ def prepare_poi_options(data, include_release_version=False):
         lambda x: x[:max_name_length - 3] + '...' if len(x) > max_name_length else x
     )
 
-    # 2) Optionally compute max_category_length for alignment
-    max_category_length = data['category_name'].astype(str).str.len().max()
-    max_category_length = max(max_category_length, len('Category'))
+    # 2) Optionally compute max lengths for all columns for alignment
+    max_category_length = max(data['category_name'].astype(str).str.len().max(), len('Category'))
+    max_count_length = len('Count')  # Header length
+    max_match_length = len('Match')  # Header length
+    max_version_length = len('Version') if include_release_version else 0
+    max_distance_length = len('Characteristic Distance[m]')  # Header length
+
+    # Update max lengths based on data
+    # Count column is fixed as "[Ref, Prov]", which is 9 characters
+    # So max_count_length remains 9 or len('Count'), whichever is larger
+    max_count_length = max(max_count_length, len('[Ref, Prov]'))
+
+    # Match (rppa) is a float with two decimals, e.g., "0.95", so max_match_length remains len('Match') unless rppa values are longer
+    max_rppa_length = data['rppa'].astype(str).str.len().max()
+    max_match_length = max(max_match_length, max_rppa_length)
+
+    # Version column length
+    if include_release_version:
+        max_version_length = max(max_version_length, data['release_version'].astype(str).str.len().max())
+
+    # Characteristic Distance[m] is formatted as float with two decimals and padding
+    # Example: "  150.00", which is 8 characters
+    max_distance_length = max(max_distance_length, len(f"{data['poi_characteristic_distance'].max():8.2f}"))
 
     # 3) Build the line for each row
     def build_label(row):
-        label = f"{row['trunc_name']:<{max_name_length}} | {row['category_name']:<{max_category_length}} | [{row['num_reference_routing_points']:}, {row['num_provider_routing_points']}] |  {row['rppa']:.2f}"
+        label = (
+            f"{row['trunc_name']:<{max_name_length}} | "
+            f"{row['category_name']:<{max_category_length}} | "
+            f"[{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] | "
+            f"{row['rppa']:<{max_match_length}.2f}"
+        )
         if include_release_version and 'release_version' in row:
-            label += f" | {row['release_version']}"
-        label += f" | {row['poi_characteristic_distance']:8.2f}"
+            label += f" | {row['release_version']:<{max_version_length}}"
+        label += f" | {row['poi_characteristic_distance']:<{max_distance_length}.2f}"
         return label.replace(' ', '\u00A0')  # Replace spaces with non-breaking spaces
-    
+
     # 4) Build a list of {id, label} dictionaries
     pois = []
     for _, row in data.iterrows():
         label = build_label(row)
         pois.append({
             'id': row['poi_id'],   # Unique ID
-            'label': label
+            'label': label,
+            'disabled': False      # Flag to indicate if the option is disabled
         })
 
-    title_label = f"{'  POI_Name':<{max_name_length}} | {'Category':<{max_category_length}} | Count  | Match |"
+    # 5) Add Title Row at the Beginning
+    # Construct the title using the same formatting as labels
+    title_label = (
+        f"{'POI_Name':<{max_name_length}} | "
+        f"{'Category':<{max_category_length}} | "
+        f"Count  | "
+        f"{'Match':<{max_match_length}} | "
+    )
     if include_release_version:
-        title_label += " Version      |"
-    title_label += " Characteristic_Distance[m]"
+        title_label += f"{'Version':<{max_version_length}} | "
+    title_label += f"{'Characteristic_Distance[m]':<{max_distance_length}}"
     title_label = title_label.replace(' ', '-')  # Replace spaces with non-breaking spaces
     title_label = title_label.replace('_', '\u00A0')  # Replace spaces with non-breaking spaces
+
 
     pois.insert(0, {
         'id': '',  # Empty ID to differentiate from valid POIs
         'label': title_label,
+        'disabled': True  # Disable selection for the title row
     })
+
     return pois  # Return list of dictionaries instead of list of strings
 
 def extract_unique_rrpa(df_pandas):

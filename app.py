@@ -53,7 +53,7 @@ def extract_filter_options(df, selected_version, selected_category, selected_rpp
     Extract and prepare filter options from the dataframe.
     """
     rrpa_list = ['All'] + [str(rppa) for rppa in extract_unique_rrpa(df)]
-    routing_points_counts = ['All'] + extract_unique_routing_points_counts(df)
+    routing_points_counts = extract_unique_routing_points_counts(df)
     release_versions = ['All'] + df['release_version'].unique().tolist()
     categories = ['All'] + df['category_name'].unique().tolist()
 

@@ -59,13 +59,14 @@ def prepare_poi_options(data, include_release_version=False):
 
     # 2) Optionally compute max_category_length for alignment
     max_category_length = data['category_name'].astype(str).str.len().max()
+    max_category_length = max(max_category_length, len('Category'))
 
     # 3) Build the line for each row
     def build_label(row):
-        label = f"{row['trunc_name']:<{max_name_length}} - {row['category_name']:<{max_category_length}} - [{row['num_reference_routing_points']}, {row['num_provider_routing_points']}] - {row['rppa']}"
+        label = f"{row['trunc_name']:<{max_name_length}} | {row['category_name']:<{max_category_length}} | [{row['num_reference_routing_points']:}, {row['num_provider_routing_points']}] |  {row['rppa']:.2f}"
         if include_release_version and 'release_version' in row:
-            label += f" - {row['release_version']}"
-        label += f" - {row['poi_characteristic_distance']:8.2f} m"
+            label += f" | {row['release_version']}"
+        label += f" | {row['poi_characteristic_distance']:8.2f}"
         return label.replace(' ', '\u00A0')  # Replace spaces with non-breaking spaces
     
     # 4) Build a list of {id, label} dictionaries
@@ -77,10 +78,17 @@ def prepare_poi_options(data, include_release_version=False):
             'label': label
         })
 
-    
-    #title = f"-- POI Name {' ' * max_name_length} -- {' ' * max_category_length} - "
-    #title.replace(' ', '\u00A0')
-    #pois = [{{'id': -1,   'label': title}}] + pois
+    title_label = f"{'  POI_Name':<{max_name_length}} | {'Category':<{max_category_length}} | Count  | Match |"
+    if include_release_version:
+        title_label += " Version      |"
+    title_label += " Characteristic_Distance[m]"
+    title_label = title_label.replace(' ', '-')  # Replace spaces with non-breaking spaces
+    title_label = title_label.replace('_', '\u00A0')  # Replace spaces with non-breaking spaces
+
+    pois.insert(0, {
+        'id': '',  # Empty ID to differentiate from valid POIs
+        'label': title_label,
+    })
     return pois  # Return list of dictionaries instead of list of strings
 
 def extract_unique_rrpa(df_pandas):

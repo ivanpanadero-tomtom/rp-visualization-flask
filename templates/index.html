@@ -25,6 +25,10 @@
             height: auto;
         }
 
+        .small-input {
+            width: 100px; /* Adjust the width as needed */
+        }
+
         /* Container for the RPPA box, map, and legend */
         .map-container {
             width: 100%;
@@ -117,17 +121,52 @@
                 </div>
             </div>
 
-            <!-- Third Row: POI Selection -->
+            <!-- Third Row: POI Search Bar and Start/End Index -->
             <div class="row g-3 mt-3">
-                <div class="col-md-12">
-                    <label for="poi-dropdown" class="form-label">Select a POI:</label>
+                <!-- POI Search Bar Column -->
+                <div class="col-md-6">
+                    <label for="poi-dropdown" class="form-label">Select a POI name:</label>
                     <div class="input-group mb-3">
                         <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
                         <button type="submit" class="btn btn-primary">Show Map</button>
                     </div>
-                    <div class="info-text">
-                        POI name - POI Category - [#RPs Google, #RPs Orbis] - RPPA = X:
+                </div>
+                
+                <!-- Start/End Index and Total Loaded POIs Column -->
+                <div class="col-md-6 d-flex justify-content-start align-items-end">
+                    <div class="me-4">
+                        <label for="start_index" class="form-label">Start Index:</label>
+                        <input 
+                            type="number" 
+                            id="start_index" 
+                            name="start_index" 
+                            class="form-control small-input"
+                            value="1"            
+                            min="1" 
+                            max="{{ len_df_pandas }}"
+                        >
                     </div>
+                    <div class="me-4">
+                        <label for="end_index" class="form-label">End Index:</label>
+                        <input 
+                            type="number" 
+                            id="end_index" 
+                            name="end_index" 
+                            class="form-control small-input"
+                            value="100"           
+                            min="1" 
+                            max="{{ len_df_pandas }}"
+                        >
+                    </div>
+                    <div class="ms-4">
+                        <span>Total loaded POIs: <span id="total-pois">{{ len_df_pandas }}</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fourth Row: POI List -->
+            <div class="row g-3 mt-3">
+                <div class="col-md-12">
                     <select name="poi" id="poi-dropdown" class="form-select monospace-select" size="10">
                         <option value="">-- Select a POI --</option> <!-- Default empty option -->
                         {% for poi in pois %}
@@ -136,34 +175,6 @@
                             </option>
                         {% endfor %}
                     </select>
-                </div>
-            </div>
-
-             <!-- Fourth Row: Start/End Index -->
-             <div class="row g-3 mt-3">
-                <div class="col-md-6">
-                    <label for="start_index" class="form-label">Start Index:</label>
-                    <input 
-                        type="number" 
-                        id="start_index" 
-                        name="start_index" 
-                        class="form-control"
-                        value="3"            
-                        min="1" 
-                        max="{{ len_df_pandas }}"
-                    >
-                </div>
-                <div class="col-md-6">
-                    <label for="end_index" class="form-label">End Index:</label>
-                    <input 
-                        type="number" 
-                        id="end_index" 
-                        name="end_index" 
-                        class="form-control"
-                        value="10"           
-                        min="1" 
-                        max="{{ len_df_pandas }}"
-                    >
                 </div>
             </div>
         </form>
@@ -227,7 +238,9 @@
                         }
                         rppaSelect.appendChild(option);
                     });
-    
+
+                    document.getElementById('total-pois').textContent = data.len_df_pandas;
+
                     // Update Routing Points Count dropdown
                     const rpcSelect = document.getElementById('routing_points_count');
                     rpcSelect.innerHTML = '';
@@ -269,6 +282,11 @@
         document.getElementById('category').addEventListener('change', updatePois);
         document.getElementById('rppa').addEventListener('change', updatePois);
         document.getElementById('routing_points_count').addEventListener('change', updatePois);
+
+        // **New event listeners for Start Index and End Index**
+        document.getElementById('start_index').addEventListener('change', updatePois);
+        document.getElementById('end_index').addEventListener('change', updatePois);
+
     
         document.getElementById('poiSearch').addEventListener('input', function() {
             updatePois();

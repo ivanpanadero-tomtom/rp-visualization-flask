@@ -131,7 +131,8 @@ def update_pois():
         start_index = int(request.args.get('start_index', DEFAULT_START_INDEX))
         end_index = int(request.args.get('end_index', DEFAULT_END_INDEX))
         search_query = request.args.get('search', '')
-
+        
+        start_index = start_index - 1
         logging.info(
             f"Received /update_pois request with country={country}, release_version={release_version}, "
             f"category={category}, selected_rppa={selected_rppa}, routing_points_count={selected_routing_points_count}, "
@@ -169,7 +170,7 @@ def update_pois():
             'selected_rppa': selected_rppa,
             'routing_points_counts': filter_options['routing_points_counts'],
             'selected_routing_points_count': selected_routing_points_count,
-            'total_length': total_length
+            'len_df_pandas': total_length
         })
     except Exception as e:
         logging.error(f"Error in /update_pois: {e}")

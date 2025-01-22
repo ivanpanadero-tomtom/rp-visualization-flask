@@ -21,9 +21,18 @@ def load_data(country_name):
         df['routing_points_count_str']
         .str.replace('Reference', 'Google', case=False)
         .str.replace('Provider', 'Orbis', case=False)
-)   
+    )
     df = df.reset_index(drop=True)    # ensure a clean 0..n numeric index
+
+    # Convert 'rppa' to float, coercing errors to NaN and then drop those rows
+    df['rppa'] = pd.to_numeric(df['rppa'], errors='coerce')
+    df = df.dropna(subset=['rppa'])
+    
     df['poi_id'] = df.index          # use the row index as unique ID
+    df['rppa'] = df['rppa'].astype(float)
+    df['rppa'] = df['rppa'].apply(lambda x: round(x, 2))
+        
+
     # Log the assignment for verification
     logging.info(f"POI ID column type: {df['poi_id'].dtype}")
     logging.info(f"First few POI IDs:\n{df[['poi_id', 'name']].head()}")
@@ -56,6 +65,7 @@ def prepare_poi_options(data, include_release_version=False):
     data['trunc_name'] = data['name'].astype(str).apply(
         lambda x: x[:max_name_length - 3] + '...' if len(x) > max_name_length else x
     )
+    max_name_length = max(max_name_length, data['name'].str.len().max())
 
     # 2) Optionally compute max lengths for all columns for alignment
     max_category_length = max(data['category_name'].astype(str).str.len().max(), len('Category'))
@@ -70,7 +80,7 @@ def prepare_poi_options(data, include_release_version=False):
     max_count_length = max(max_count_length, len('[Ref, Prov]'))
 
     # Match (rppa) is a float with two decimals, e.g., "0.95", so max_match_length remains len('Match') unless rppa values are longer
-    max_rppa_length = data['rppa'].astype(str).str.len().max()
+    max_rppa_length = 4
     max_match_length = max(max_match_length, max_rppa_length)
 
     # Version column length
@@ -101,7 +111,6 @@ def prepare_poi_options(data, include_release_version=False):
         pois.append({
             'id': row['poi_id'],   # Unique ID
             'label': label,
-            'disabled': False      # Flag to indicate if the option is disabled
         })
 
     # 5) Add Title Row at the Beginning
@@ -115,14 +124,24 @@ def prepare_poi_options(data, include_release_version=False):
     if include_release_version:
         title_label += f"{'Version':<{max_version_length}} | "
     title_label += f"{'Characteristic_Distance[m]':<{max_distance_length}}"
-    title_label = title_label.replace(' ', '-')  # Replace spaces with non-breaking spaces
+    title_label = title_label.replace(' ', '\u00A0')  # Replace spaces with non-breaking spaces
     title_label = title_label.replace('_', '\u00A0')  # Replace spaces with non-breaking spaces
 
+    format_str = ''
+    for i in title_label:
+        if i == '|':
+            format_str += '|'
+        else:
+            format_str += '-'
+    
+    pois.insert(0, {
+        'id': '',  # Empty ID to differentiate from valid POIs
+        'label': format_str,
+    })
 
     pois.insert(0, {
         'id': '',  # Empty ID to differentiate from valid POIs
         'label': title_label,
-        'disabled': True  # Disable selection for the title row
     })
 
     return pois  # Return list of dictionaries instead of list of strings
@@ -291,28 +310,13 @@ def filter_df(df_pandas, release_version, category, selected_rppa, selected_rout
 
     # Apply RPPA filter to the DataFrame using the 'rppa' column
     if selected_rppa and selected_rppa != 'All':
-        # Check if selected_rppa contains a split character
-        if '-' in selected_rppa:
-            rppa_range = selected_rppa.split('-')
-            try:
-                min_rppa = float(rppa_range[0])
-                max_rppa = float(rppa_range[1]) if len(rppa_range) > 1 else 1.0
-                logging.info(f"Filtering RPPA in range: {min_rppa} - {max_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA range format.")
-                return jsonify({'error': 'Invalid RPPA range format.'}), 400
-        else:
-            # If it's a single value like '0.9'
-            try:
-                min_rppa = max_rppa = float(selected_rppa)
-                logging.info(f"Filtering RPPA for value: {min_rppa}")
-            except ValueError:
-                logging.error("Invalid RPPA value.")
-                return jsonify({'error': 'Invalid RPPA value.'}), 400
+        try:
+            rppa_value = float(selected_rppa)
+            df_pandas = df_pandas[df_pandas['rppa'] == rppa_value]
+            logging.info(f"Filtered data by rppa: {rppa_value}")
+        except ValueError:
+            logging.error(f"Invalid selected_rppa value: '{selected_rppa}'. Skipping RPPA filter.")
 
-        # Filter the DataFrame based on the 'rppa' column
-        df_pandas = df_pandas[(df_pandas['rppa'] >= min_rppa) & (df_pandas['rppa'] <= max_rppa)]
-        logging.info(f"Number of POIs after RPPA filtering: {len(df_pandas)}")
 
     # Apply Characteristic Distance Filtering outside RPPA condition
     if min_characteristic_distance is not None:

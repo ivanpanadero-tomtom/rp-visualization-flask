@@ -52,10 +52,13 @@ def extract_filter_options(df, selected_version, selected_category, selected_rpp
     """
     Extract and prepare filter options from the dataframe.
     """
-    rrpa_list = ['All'] + [str(rppa) for rppa in extract_unique_rrpa(df)]
+    rrpa_list = [f"{float(rppa):.2f}" for rppa in extract_unique_rrpa(df)]
+    rrpa_list = sorted(rrpa_list)
     routing_points_counts = extract_unique_routing_points_counts(df)
-    release_versions = ['All'] + df['release_version'].unique().tolist()
-    categories = ['All'] + df['category_name'].unique().tolist()
+    release_versions = df['release_version'].unique().tolist()
+    release_versions = sorted(release_versions)
+    categories =  df['category_name'].unique().tolist()
+    categories = sorted(categories)
 
     logging.info(f"Extracted RPPA list: {rrpa_list}")
     logging.info(f"Extracted Routing Points Counts: {routing_points_counts}")
@@ -128,7 +131,7 @@ def update_pois():
         country = request.args.get('country')
         release_version = request.args.get('release_version', 'All')
         category = request.args.get('category', 'All')
-        selected_rppa = request.args.get('selected_rppa', 'All')
+        selected_rppa = request.args.get('selected_rppa', 'All').strip()
         selected_routing_points_count = request.args.get('routing_points_count', 'All')
         start_index = int(request.args.get('start_index', DEFAULT_START_INDEX))
         end_index = int(request.args.get('end_index', DEFAULT_END_INDEX))

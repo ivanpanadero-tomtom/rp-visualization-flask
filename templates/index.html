@@ -10,6 +10,10 @@
 
     <!-- Your Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    >
     <style>
         /* Custom Styles */
         .rppa-box {
@@ -22,6 +26,40 @@
             margin-bottom: 15px;
             width: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .fixed-badge {
+            /* Fixed Dimensions */
+            width: 80px;          /* Set a fixed width */
+            height: 30px;         /* Set a fixed height */
+            
+            /* Flexbox for Centering Content */
+            display: inline-flex; /* Enables flexbox on the span */
+            justify-content: center; /* Centers content horizontally */
+            align-items: center;     /* Centers content vertically */
+            
+            /* Text Styling */
+            text-align: center;    /* Centers text */
+            white-space: nowrap;   /* Prevents text from wrapping */
+            overflow: hidden;      /* Hides overflowing text */
+            text-overflow: ellipsis; /* Adds ellipsis (...) for overflow */
+            
+            /* Optional: Adjust Font Size and Weight */
+            font-size: 1rem;       /* Adjust font size as needed */
+            font-weight: bold;     /* Makes the text bold */
+            
+            /* Optional: Border Radius for Consistency */
+            border-radius: 50px;   /* Makes the badge more pill-shaped */
+        }
+
+        .arrow-icon {
+            font-size: 1.5rem; /* Increases the size of the arrow */
+            /* Optionally, adjust the width using transform */
+            transform: scaleX(2.9); /* Makes the arrow longer horizontally */
+            color: #0d6efd; /* Optional: Change color to match your theme */
+            /* Ensures vertical alignment */
+            display: inline-flex;
+            align-items: center;
         }
 
         .legend-container img {
@@ -92,12 +130,12 @@
                 <!-- Select Release Version -->
                 <div class="col-md-4">
                     <label for="release_version" class="form-label">Select Release Version:</label>
-                    <select name="release_version" id="release_version" class="form-select">
-                        <option value="">-- Select Release Version --</option> <!-- Optional Placeholder -->
-                        {% for rv in release_versions %}
-                        <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
-                        {% endfor %}
-                    </select>
+                        <select name="release_version" id="release_version" class="form-select">
+                            <option value="All" {% if selected_version == 'All' %}selected{% endif %}>All</option> <!-- Corrected value -->
+                            {% for rv in release_versions %}
+                            <option value="{{ rv }}" {% if rv == selected_version %}selected{% endif %}>{{ rv }}</option>
+                            {% endfor %}
+                        </select>
                 </div>
                 
                 <!-- Characteristic Distance: Min & Max -->
@@ -133,11 +171,13 @@
             <!-- Second Row: RPPA, Routing Points Count, and Category -->
             <div class="row g-3 mt-3">
                 <div class="col-md-4">
-                    <label for="rppa" class="form-label">Select match:</label>
+                    <label for="rppa" class="form-label">Select Match:</label>
                     <select name="rppa" id="rppa" class="form-select">
-                        <option value="">-- Select RPPA Match --</option> <!-- Optional Placeholder -->
+                        <option value="All" {% if selected_rppa == 'All' %}selected{% endif %}>All</option>
                         {% for rppa in rrpa_list %}
-                        <option value="{{ rppa }}" {% if rppa == selected_rppa %}selected{% endif %}>{{ rppa }}</option>
+                        <option value="{{ rppa }}" {% if rppa == selected_rppa %}selected{% endif %}>
+                            {{ "{0:.2f}".format(rppa | float) }}
+                        </option>
                         {% endfor %}
                     </select>
                 </div>
@@ -153,56 +193,68 @@
                 <div class="col-md-4">
                     <label for="category" class="form-label">Select Category:</label>
                     <select name="category" id="category" class="form-select">
-                        <option value="">-- Select Category --</option> <!-- Optional Placeholder -->
+                        <option value="">All</option> <!-- Optional Placeholder -->
                         {% for category in categories %}
                         <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
                         {% endfor %}
                     </select>
                 </div>
             </div>
-
-            <!-- Third Row: POI Search Bar and Start/End Index -->
-            <div class="row g-3 mt-3">
-                <!-- POI Search Bar Column -->
-                <div class="col-md-6">
-                    <label for="poi-dropdown" class="form-label">Select a POI name:</label>
-                    <div class="input-group mb-3">
-                        <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
-                        <!-- "Show Map" Button Removed -->
-                    </div>
+            <!-- Third Row: POI Search Bar, Total Loaded POIs, Arrow, and Displayed POIs -->
+            <!-- Third Row: POI Search Bar, Total Loaded POIs, Arrow, and Displayed POIs -->
+            <!-- Third Row: POI Search Bar, Total Loaded POIs, and Displayed POIs -->
+            <div class="row g-3 mt-3 align-items-center">
+                <!-- First Column: POI Search Bar (One-Third Width) -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <label for="poi-dropdown" class="form-label me-2 mb-0">Name:</label>
+                    <input type="text" id="poiSearch" placeholder="Search..." class="form-control">
                 </div>
-                
-                <!-- Start/End Index and Total Loaded POIs Column -->
-                <div class="col-md-6 d-flex justify-content-start align-items-end">
-                    <div class="me-4">
-                        <label for="start_index" class="form-label">Start Index:</label>
-                        <input 
-                            type="number" 
-                            id="start_index" 
-                            name="start_index" 
-                            class="form-control small-input"
-                            value="1"            
-                            min="1" 
-                            max="{{ len_df_pandas }}"
-                        >
-                    </div>
-                    <div class="me-4">
-                        <label for="end_index" class="form-label">End Index:</label>
-                        <input 
-                            type="number" 
-                            id="end_index" 
-                            name="end_index" 
-                            class="form-control small-input"
-                            value="100"           
-                            min="1" 
-                            max="{{ len_df_pandas }}"
-                        >
-                    </div>
-                    <div class="ms-4">
-                        <span>Total loaded POIs: <span id="total-pois">{{ len_df_pandas }}</span></span>
+            
+                <!-- Second Column: Total Loaded POIs and Displayed POIs (Two-Thirds Width) -->
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center justify-content-start">
+                        <!-- Total Loaded POIs with Arrow Section -->
+                        <div class="d-flex align-items-center me-4">
+                            <span class="form-label mb-0 me-2 fw-bold">Total Loaded POIs:</span>
+                            <span id="total-pois" class="badge bg-primary fs-6 me-2 fixed-badge">{{ len_df_pandas }}</span>
+                            <i class="bi bi-arrow-right arrow-icon" aria-label="Next"></i> <!-- Enhanced Arrow -->
+                            <span class="ms-2"></span> <!-- White Space Next to the Arrow -->
+                        </div>
+            
+                        <!-- Displayed POIs Section -->
+                        <div class="d-flex align-items-center">
+                            <label for="displayed-pois" class="form-label me-2 mb-0">Display POIs </label>
+                            <div class="d-flex align-items-center">
+                                <div class="me-3 d-flex align-items-center">
+                                    <label for="start_index" class="form-label me-1 mb-0">from</label>
+                                    <input 
+                                        type="number" 
+                                        id="start_index" 
+                                        name="start_index" 
+                                        class="form-control small-input"
+                                        value="1"            
+                                        min="1" 
+                                        max="{{ len_df_pandas }}"
+                                    >
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <label for="end_index" class="form-label me-1 mb-0">to</label>
+                                    <input 
+                                        type="number" 
+                                        id="end_index" 
+                                        name="end_index" 
+                                        class="form-control small-input"
+                                        value="100"           
+                                        min="1" 
+                                        max="{{ len_df_pandas }}"
+                                    >
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Fourth Row: POI List -->
             <div class="row g-3 mt-3">
@@ -320,7 +372,7 @@
                     // Add a placeholder option
                     const rppaPlaceholder = document.createElement('option');
                     rppaPlaceholder.value = "";
-                    rppaPlaceholder.textContent = "-- Select RPPA Match --";
+                    rppaPlaceholder.textContent = "All";
                     rppaSelect.appendChild(rppaPlaceholder);
                     data.rrpa_list.forEach(rrpaValue => {
                         const option = document.createElement('option');

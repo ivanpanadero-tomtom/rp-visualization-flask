@@ -27,7 +27,7 @@ def load_data(country_name):
     # Convert 'rppa' to float, coercing errors to NaN and then drop those rows
     df['rppa'] = pd.to_numeric(df['rppa'], errors='coerce')
     df = df.dropna(subset=['rppa'])
-    
+
     df['poi_id'] = df.index          # use the row index as unique ID
     df['rppa'] = df['rppa'].astype(float)
     df['rppa'] = df['rppa'].apply(lambda x: round(x, 2))
@@ -65,7 +65,7 @@ def prepare_poi_options(data, include_release_version=False):
     data['trunc_name'] = data['name'].astype(str).apply(
         lambda x: x[:max_name_length - 3] + '...' if len(x) > max_name_length else x
     )
-    max_name_length = max(max_name_length, data['name'].str.len().max())
+    max_name_length = min(max_name_length, data['name'].str.len().max())
 
     # 2) Optionally compute max lengths for all columns for alignment
     max_category_length = max(data['category_name'].astype(str).str.len().max(), len('Category'))

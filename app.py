@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response
 import folium
 from utils import (
     load_data,
@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 # Constants for pagination
 DEFAULT_START_INDEX = 0
-DEFAULT_END_INDEX = 10
+DEFAULT_END_INDEX = 100
 
 # Set up logging
 logging.basicConfig(

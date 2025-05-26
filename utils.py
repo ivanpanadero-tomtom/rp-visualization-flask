@@ -6,6 +6,7 @@ import folium
 import logging
 from flask import jsonify
 from data_info import data_paths_dict
+
 def load_data(country_name):
     """
     Load parquet data based on the country and extract 'rppa' into a separate column.

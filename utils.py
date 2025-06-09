@@ -269,7 +269,7 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
             position: fixed;
             top: 10px;
             right: 10px;
-            width: 200px;
+            width: 220px;
             padding: 10px;
             background-color: white;
             border: 2px solid grey;
@@ -279,8 +279,24 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
             font-family: Arial, sans-serif;
             font-size: 14px;
         ">
-            <h4>Google POI:</h4>
-            <p>({reference_lat:.6f}, {reference_lon:.6f})</p>
+            <h4 style="margin:0 0 5px 0;">Google POI:</h4>
+            <p id="coords-text" style="margin:0 0 8px 0;">
+                ({reference_lat:.6f}, {reference_lon:.6f})
+            </p>
+            <button
+                style="
+                    padding: 4px 8px;
+                    font-size: 12px;
+                    cursor: pointer;
+                    border: 1px solid #666;
+                    border-radius: 3px;
+                    background-color: #f0f0f0;
+                "
+                onclick="navigator.clipboard.writeText('{reference_lat:.6f}, {reference_lon:.6f}')
+                         .catch(err=>alert('Copy failed: '+err));"
+            >
+                Copy
+            </button>
         </div>
         """
 

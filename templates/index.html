@@ -295,34 +295,38 @@
                 noResultsText: 'No country found',
                 noChoicesText: 'No countries available',
                 renderChoiceLimit: -1, // Show all matching options
+            } );
+            const params = new URLSearchParams(window.location.search);
+            for (const key of ['country','release_version','category','rppa','routing_points_count']) {
+            const el = document.getElementById(key);
+            if (params.has(key) && el) el.value = params.get(key);
+            }
+            // Simple inputs
+            ['poiSearch','min_characteristic_distance','max_characteristic_distance',
+            'start_index','end_index']
+            .forEach(id => {
+                if (params.has(id)) document.getElementById(id).value = params.get(id);
             });
 
-            // Optionally, initialize Choices.js on other select elements
-            /*
-            const releaseVersionSelect = document.getElementById('release_version');
-            const releaseVersionChoices = new Choices(releaseVersionSelect, {
-                searchEnabled: true,
-                searchPlaceholderValue: 'Search for a release version...',
-                itemSelectText: '',
-                shouldSort: true,
-                placeholderValue: '-- Select Release Version --',
-                noResultsText: 'No release version found',
-                noChoicesText: 'No release versions available',
-                renderChoiceLimit: -1,
-            });
-
-            const categorySelect = document.getElementById('category');
-            const categoryChoices = new Choices(categorySelect, {
-                searchEnabled: true,
-                searchPlaceholderValue: 'Search for a category...',
-                itemSelectText: '',
-                shouldSort: true,
-                placeholderValue: '-- Select Category --',
-                noResultsText: 'No category found',
-                noChoicesText: 'No categories available',
-                renderChoiceLimit: -1,
-            });
-            */
+            updatePois();
+            
+            if (params.has('poi')) {
+                const desiredPoi = params.get('poi');
+                // Poll until options are populated
+                const trySelect = () => {
+                    const select = document.getElementById('poi-dropdown');
+                    // look for an <option> whose value matches the desired poi
+                    const hasIt = Array.from(select.options).some(opt => opt.value === desiredPoi);
+                    if (hasIt) {
+                        select.value = desiredPoi;
+                        document.getElementById('myForm').dispatchEvent(new Event('submit'));
+                    } else {
+                        // try again in 100ms, until that option arrives
+                        setTimeout(trySelect, 100);
+                    }
+                    };
+                    trySelect();
+                }
         });
 
         // Existing JavaScript functions and event listeners
@@ -422,6 +426,34 @@
             });
         }
 
+        function updateUrl() {
+            const params = new URLSearchParams();
+            const controls = {
+            country:   document.getElementById('country').value,
+            release_version: document.getElementById('release_version').value,
+            category:  document.getElementById('category').value,
+            rppa:      document.getElementById('rppa').value,
+            routing_points_count: document.getElementById('routing_points_count').value,
+            search:    document.getElementById('poiSearch').value,
+            min_characteristic_distance: document.getElementById('min_characteristic_distance').value,
+            max_characteristic_distance: document.getElementById('max_characteristic_distance').value,
+            start_index: document.getElementById('start_index').value,
+            end_index:   document.getElementById('end_index').value,
+            poi:       document.getElementById('poi-dropdown').value
+            };
+            for (const [k,v] of Object.entries(controls)) {
+            if (v !== '' && v != null) params.set(k, v);
+            }
+            history.replaceState(null, '', '?' + params.toString());
+        }
+
+        // // Wrap updatePois to also bump the URL
+        // const origUpdatePois = updatePois;
+        // updatePois = function() {
+        //     origUpdatePois();
+        //     updateUrl();
+        // };
+
         // Event Listeners
         document.getElementById('country').addEventListener('change', updatePois);
         document.getElementById('release_version').addEventListener('change', updatePois);
@@ -444,6 +476,8 @@
         document.getElementById('poi-dropdown').addEventListener('dblclick', function() {
             document.getElementById('myForm').dispatchEvent(new Event('submit'));
         });
+
+        document.getElementById('poi-dropdown').addEventListener('change', updateUrl);
 
         // Handle Form Submission
         document.getElementById('myForm').addEventListener('submit', function (event) {
@@ -491,8 +525,11 @@
                             </div>
                         </div>
                     `;
+
+                  updateUrl();  
                 })
                 .catch(error => console.error('Error:', error));
+
         });
     </script>
 </body>

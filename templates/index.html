@@ -272,10 +272,56 @@
         </form>
     </div>
 
+    <div class="container my-3">
+        <label for="session-url" class="form-label">Session URL</label>
+        <div class="input-group">
+            <!-- Copy button on the left -->
+            <button class="btn btn-outline-secondary" type="button" id="copy-url-btn" title="Copy URL to clipboard">
+                <i class="bi bi-clipboard"></i>
+            </button>
+            <input
+                type="text"
+                id="session-url"
+                class="form-control"
+                placeholder="Paste a URL here to load its session…"
+                autocomplete="off"
+            >
+            <!-- Enter button on the right -->
+            <button class="btn btn-outline-primary" type="button" id="go-to-url-btn" title="Load this URL">
+                <i class="bi bi-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
     <div class="container-fluid p-0">
         <div id="mapContainer" class="map-container">
         </div>
     </div>
+
+    <script>
+        // Copy URL button functionality
+        document.getElementById('copy-url-btn').addEventListener('click', function() {
+            const urlInput = document.getElementById('session-url');
+            urlInput.select();
+            document.execCommand('copy');
+            
+            // Change icon temporarily to indicate success
+            const icon = this.querySelector('i');
+            icon.classList.remove('bi-clipboard');
+            icon.classList.add('bi-check2');
+            
+            setTimeout(() => {
+                icon.classList.remove('bi-check2');
+                icon.classList.add('bi-clipboard');
+            }, 2000);
+        });
+
+        // Go to URL button functionality (same as pressing Enter)
+        document.getElementById('go-to-url-btn').addEventListener('click', function() {
+            const urlInput = document.getElementById('session-url');
+            window.location.href = urlInput.value.trim();
+        });
+    </script>
 
     <!-- Choices.js JS -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -285,6 +331,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize Choices.js on the country select element
+            const urlInput = document.getElementById('session-url');
             const countrySelect = document.getElementById('country');
             const countryChoices = new Choices(countrySelect, {
                 searchEnabled: true,
@@ -307,6 +354,79 @@
             .forEach(id => {
                 if (params.has(id)) document.getElementById(id).value = params.get(id);
             });
+
+            function updateUrlField() {
+                const params = new URLSearchParams();
+                const controls = {
+                country:   document.getElementById('country').value,
+                release_version: document.getElementById('release_version').value,
+                category:  document.getElementById('category').value,
+                rppa:      document.getElementById('rppa').value,
+                routing_points_count: document.getElementById('routing_points_count').value,
+                search:    document.getElementById('poiSearch').value,
+                min_characteristic_distance: document.getElementById('min_characteristic_distance').value,
+                max_characteristic_distance: document.getElementById('max_characteristic_distance').value,
+                start_index: document.getElementById('start_index').value,
+                end_index:   document.getElementById('end_index').value,
+                poi:       document.getElementById('poi-dropdown').value
+                };
+                // only include non-empty values
+                for (const [k,v] of Object.entries(controls)) {
+                if (v !== '' && v != null) params.set(k, v);
+                }
+                // stick the full URL into the textbox
+                urlInput.value = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+            }
+
+            ['country','release_version','category','rppa','routing_points_count',
+                    'poiSearch','min_characteristic_distance','max_characteristic_distance',
+                    'start_index','end_index','poi-dropdown'
+                ].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    // update on both change (dropdowns, number inputs) and input (text search)
+                    el.addEventListener('change', updateUrlField);
+                    el.addEventListener('input',  updateUrlField);
+                });
+
+                // 4️⃣ Run it once on load
+                updateUrlField();
+
+                // 5️⃣ Handle “paste” into that Session URL box:
+                urlInput.addEventListener('paste', (e) => {
+                    setTimeout(() => {
+                    try {
+                        const pasted = new URL(urlInput.value, window.location.origin);
+                        const p = pasted.searchParams;
+                        // loop through known params and reapply
+                        for (const key of [
+                        'country','release_version','category','rppa','routing_points_count',
+                        'min_characteristic_distance','max_characteristic_distance',
+                        'start_index','end_index','search','poi'
+                        ]) {
+                        if (!p.has(key)) continue;
+                        let elId = key;
+                        if (key === 'search') elId = 'poiSearch';
+                        if (key === 'poi')    elId = 'poi-dropdown';
+                        const el = document.getElementById(elId);
+                        if (el) el.value = p.get(key);
+                        }
+                        // rerun your existing update + map logic:
+                        updatePois();
+                        document.getElementById('myForm').dispatchEvent(new Event('submit'));
+                    } catch(err) {
+                        console.warn('Invalid session URL pasted');
+                    }
+                    }, 0);
+                });
+
+            urlInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    // go to whatever URL they’ve pasted (or copied into) the box
+                    window.location.href = urlInput.value.trim();
+                }
+                });
 
             updatePois();
             

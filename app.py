@@ -248,8 +248,11 @@ def get_map():
             logging.error(f"Failed to create map: {e}")
             return jsonify({'error': 'Failed to create map.'}), 500
 
-        # Convert the Folium map to HTML
+        # Get the iframe snippet, then patch it for clipboard
         map_html = m._repr_html_()
+        # (limit to the first occurrence, just in case)
+        map_html = map_html.replace('<iframe', '<iframe allow="clipboard-write"', 1)
+
 
         # Generate color based on RPPA
         try:

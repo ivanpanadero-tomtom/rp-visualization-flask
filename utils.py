@@ -263,44 +263,49 @@ def create_folium_map(reference_latlon, provider_latlon, provider_routing_points
         icon_color = 'black'
         icon_name = 'info-sign'  # Update based on actual icon used
 
-        # HTML template for the info box
+        clipboard_js = """
+        <script>
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';     // avoid page jump
+            document.body.appendChild(ta);
+            ta.focus(); ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).catch(function() {
+                fallbackCopy(text);
+            });
+            } else {
+            fallbackCopy(text);
+            }
+        }
+        </script>
+        """
+        m.get_root().html.add_child(Element(clipboard_js))
+
+        # 2) Then build your info box, calling copyToClipboard():
         info_html = f"""
         <div style="
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            width: 220px;
-            padding: 10px;
-            background-color: white;
-            border: 2px solid grey;
-            border-radius: 5px;
-            box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            z-index: 9999;
-            font-family: Arial, sans-serif;
+            position: fixed; top: 10px; right: 10px;
+            width: 220px; padding: 10px;
+            background-color: white; border: 2px solid grey;
+            border-radius: 5px; box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            z-index: 9999; font-family: Arial, sans-serif;
             font-size: 14px;
         ">
-            <h4 style="margin:0 0 5px 0;">Google POI:</h4>
-            <p id="coords-text" style="margin:0 0 8px 0;">
-                ({reference_lat:.6f}, {reference_lon:.6f})
-            </p>
-            <button
-                style="
-                    padding: 4px 8px;
-                    font-size: 12px;
-                    cursor: pointer;
-                    border: 1px solid #666;
-                    border-radius: 3px;
-                    background-color: #f0f0f0;
-                "
-                onclick="navigator.clipboard.writeText('{reference_lat:.6f}, {reference_lon:.6f}')
-                         .catch(err=>alert('Copy failed: '+err));"
-            >
-                Copy
-            </button>
+        <h4 style="margin:0 0 5px 0;">Google POI:</h4>
+        <p style="margin:0 0 8px 0;">
+            ({reference_lat:.6f}, {reference_lon:.6f})
+        </p>
+        <button onclick="copyToClipboard('{reference_lat:.6f}, {reference_lon:.6f}')">
+            Copy
+        </button>
         </div>
         """
-
-        # Add the HTML to the map
         m.get_root().html.add_child(Element(info_html))
 
         return m
